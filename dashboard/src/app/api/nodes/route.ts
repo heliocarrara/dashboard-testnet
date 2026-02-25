@@ -1,10 +1,20 @@
-
 import { NextResponse } from 'next/server';
 import pool from '@/lib/db';
 
 export async function GET() {
   try {
-    const result = await pool.query('SELECT * FROM testnet_node_identity ORDER BY id ASC');
+    // Calculate status dynamically based on last_seen (heartbeat every 30s, timeout 60s)
+    const query = `
+      SELECT *, 
+        CASE 
+          WHEN last_seen IS NULL THEN 'pending'
+          WHEN last_seen > NOW() - INTERVAL '1 minute' THEN 'online'
+          ELSE 'offline'
+        END as status
+      FROM testnet_node_identity 
+      ORDER BY id ASC
+    `;
+    const result = await pool.query(query);
     return NextResponse.json(result.rows);
   } catch (error) {
     console.error('Failed to fetch nodes:', error);
