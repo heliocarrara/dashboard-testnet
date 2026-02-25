@@ -1,0 +1,82 @@
+Para entender como essa topologia de 8 nós vai se comportar na prática, você precisa separar a **conectividade física** (quem "conversa" com quem via IP) da **confiança de consenso** (quem "acredita" em quem).
+
+Aqui está a anatomia do funcionamento para o seu laboratório:
+
+### 1. Quem conecta em quem? (Peer-to-Peer)
+
+Na rede Stellar, a conexão é em malha (mesh). No seu script, o `PREFERRED_PEERS` dita essa prioridade.
+
+* **Os 5 Validadores:** Ficarão conectados entre si (pela rede local, latência quase zero) e **também devem conectar aos nós da SDF**. Se eles ficarem isolados só entre eles, eles não saberão o que está acontecendo na Testnet real. O Stellar Core cuida disso automaticamente se você não desabilitar a descoberta de peers.
+* **Os 3 Watchers:** Eles se conectam aos seus Validadores locais (para pegar dados rápido) e também aos nós da SDF. Um Watcher é "passivo": ele apenas escuta as mensagens de consenso que circulam na rede para reconstruir o estado do ledger localmente.
+
+### 2. Quem se conecta à SDF?
+
+**Todos devem se conectar.** Mesmo que você tenha 8 nós locais, para eles estarem na "Testnet", eles precisam ouvir o que os nós oficiais (`history.stellar.org`) estão publicando.
+
+* **Os Validadores** precisam da SDF para validar que o bloco (ledger) que eles estão fechando é o mesmo do resto do mundo.
+* **Os Watchers** precisam da SDF para baixar os arquivos de histórico (`History Archives`) caso eles fiquem offline por alguns minutos e precisem "alcançar" a rede (catchup).
+
+### 3. Quem pode propor transações?
+
+Aqui há uma confusão comum: **Qualquer nó pode receber e propor uma transação**, mas apenas os **Validadores** podem confirmar que ela é válida e incluí-la no ledger.
+
+* **Via Watcher (Horizon/RPC):** Se você enviar uma transação para a API de um dos seus 3 Watchers, ele vai validar a assinatura e a sequência localmente e então fará o "broadcast" (propagação) dessa transação para os vizinhos (seus 5 validadores + nós da SDF).
+* **Fluxo:** App -> Watcher (Horizon) -> Rede P2P (Validadores) -> Consenso -> Ledger.
+
+### 4. O Quórum: O ponto crítico da sua configuração
+
+A configuração do seu "Quorum Set" (dentro do `stellar-core.cfg` que o Docker gera) é o que define a hierarquia. Para o seu laboratório funcionar na Testnet:
+
+* **Incoerência a evitar:** Não configure seus 5 validadores para confiarem apenas uns nos outros. Se você fizer isso e um deles discordar da SDF, suas 8 máquinas vão criar uma "Testnet paralela" (fork) e você não estará analisando o armazenamento da rede real, mas sim de uma rede fantasma.
+* **Configuração correta:** Seus nós devem ter um Quorum que inclua a SDF como "maioria necessária". Seus 5 nós locais servirão para você analisar como o tráfego P2P se comporta entre eles antes de repassar para fora.
+
+### Resumo da Topologia no seu Laboratório:
+
+| Nó | Papel | Conexão Primária | Armazenamento (Foco da Análise) |
+| --- | --- | --- | --- |
+| **Validador 1-5** | Consenso | Outros 4 locais + SDF | **Baixo:** Buckets e SQL do Core. |
+| **Watcher 6-7** | API Horizon | Validadores locais | **Altíssimo:** Histórico completo de transações e operações. |
+| **Watcher 8** | API RPC | Validadores locais | **Alto:** Dados de Smart Contracts (Soroban) e temporários. |
+
+Sendo sincero: a ideia é funcional, mas o seu script de gerenciamento atual e a arquitetura do Neon precisam de um "ajuste de realidade" para que isso não vire um caos de nós desconectados.
+
+Para esse sistema em React gerenciar os 8 nós de forma coerente, você não pode apenas jogar IPs no banco. Você precisa de uma **matriz de adjacência** ou de uma lógica de **hierarquia de Quorum**.
+
+Aqui está como eu estruturaria esse sistema para que ele seja útil para sua análise de storage e funcional para o laboratório:
+
+### 1. A Estrutura de Dados no Neon
+
+Esqueça apenas "IP". Para o sistema React funcionar, sua tabela `testnet_node_identity` precisa de colunas de **Role** (Papel) e **Quorum**:
+
+```sql
+CREATE TABLE testnet_node_identity (
+    id SERIAL PRIMARY KEY,
+    hostname TEXT UNIQUE,
+    ip_address TEXT, -- IP público que o aluno vai cadastrar
+    node_seed TEXT,  -- Gerado pelo sistema React
+    public_key TEXT,
+    role TEXT,       -- 'validator' ou 'watcher'
+    quorum_group INT -- Para agrupar quem confia em quem
+);
+
+```
+
+### 2. A Lógica de Conexão (O Coração do Sistema)
+
+No React, quando o usuário cadastrar a Máquina 6 como "Watcher", o sistema deve automaticamente buscar os IPs dos nós 1 a 5 (Validadores) e sugerir como `PREFERRED_PEERS`.
+
+* **Regra para Validadores (1-5):** O script de cada máquina deve ler do Neon os IPs dos outros 4 validadores + os IPs fixos da SDF.
+* **Regra para Watchers (6-8):** Devem ler apenas os IPs dos 5 validadores locais. Isso economiza banda de saída do laboratório e foca a análise de armazenamento no tráfego interno.
+
+### 3. O Fluxo de Trabalho no Laboratório
+
+1. **O Aluno liga a máquina:** Roda um script `check-in` que descobre o IP público (`curl -s ifconfig.me`) e envia para o Neon com o `hostname`.
+2. **No Dashboard React:** O administrador (você) vê as 8 máquinas listadas. Você clica em "Configurar Rede".
+* O React gera os 8 `seeds`.
+* O React define: "Nós 1-5 = Validadores", "Nós 6-8 = Watchers".
+
+
+3. **Deploy:** Quando o aluno clica em "Iniciar" na máquina física, o script Bash faz um `SELECT` no Neon, monta o `stellar-core.cfg` customizado com os peers corretos e sobe o Docker.
+
+
+
