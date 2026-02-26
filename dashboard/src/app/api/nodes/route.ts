@@ -5,13 +5,20 @@ export async function GET() {
   try {
     // Calculate status dynamically based on last_seen (heartbeat every 30s, timeout 60s)
     const query = `
-      SELECT *, 
+      SELECT 
+        t.*, 
         CASE 
           WHEN last_seen IS NULL THEN 'pending'
           WHEN last_seen > NOW() - INTERVAL '1 minute' THEN 'online'
           ELSE 'offline'
-        END as status
-      FROM testnet_node_identity 
+        END as status,
+        COALESCE(
+          (SELECT json_agg(target_node_id) 
+           FROM node_relationships 
+           WHERE source_node_id = t.id), 
+          '[]'::json
+        ) as peers
+      FROM testnet_node_identity t
       ORDER BY ordem ASC, id ASC
     `;
     const result = await pool.query(query);

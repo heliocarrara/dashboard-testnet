@@ -140,27 +140,42 @@ done
 # 5. Configure Network Topology
 # ------------------------------------------------------------------------------
 
-# Fetch Validator IPs for Peers
-VALIDATOR_IPS=$(run_sql_cmd "SELECT ip_address FROM $TABLE_IDENTITY WHERE role = 'validator' AND hostname != '$MY_HOSTNAME' AND ip_address IS NOT NULL;" | awk 'NF')
-VALIDATOR_PEERS=""
-for IP in $VALIDATOR_IPS; do
-    VALIDATOR_PEERS+="${IP}:11625,"
+# Fetch Peers (IP and Public Key) based on node_relationships
+PEER_DATA=$(run_sql_cmd "
+  SELECT t.ip_address || '|' || t.public_key 
+  FROM $TABLE_IDENTITY t 
+  JOIN node_relationships r ON t.id = r.target_node_id 
+  WHERE r.source_node_id = (SELECT id FROM $TABLE_IDENTITY WHERE hostname = '$MY_HOSTNAME')
+  AND t.ip_address IS NOT NULL;
+" | awk 'NF')
+
+PREFERRED_PEERS=""
+VALIDATORS_JSON=""
+
+# Process Peers
+for PEER in $PEER_DATA; do
+  IP=$(echo "$PEER" | cut -d'|' -f1)
+  PUBKEY=$(echo "$PEER" | cut -d'|' -f2)
+  
+  # Add to PREFERRED_PEERS (format: ip:port)
+  PREFERRED_PEERS+="${IP}:11625,"
+  
+  # Add to VALIDATORS list for Quorum Set
+  if [ -n "$PUBKEY" ]; then
+      VALIDATORS_JSON+="\"$PUBKEY\","
+  fi
 done
 
-# Build PREFERRED_PEERS
-if [ "$EXISTING_ROLE" == "validator" ]; then
-    # Validators connect to other validators + SDF
-    PREFERRED_PEERS="${VALIDATOR_PEERS}${SDF_PEERS}"
-else
-    # Watchers connect primarily to local validators
-    PREFERRED_PEERS="${VALIDATOR_PEERS%,}" # Remove trailing comma if any
-    # If no local validators yet (shouldn't happen due to gatekeeper), fallback to SDF
-    if [ -z "$PREFERRED_PEERS" ]; then
-        PREFERRED_PEERS="$SDF_PEERS"
-    fi
-fi
+# Remove trailing comma
+PREFERRED_PEERS=${PREFERRED_PEERS%,}
+VALIDATORS_JSON=${VALIDATORS_JSON%,}
+
+# Build QUORUM_SET JSON
+# Threshold: 66% (2/3 majority)
+QUORUM_SET="[{\"threshold_percent\": 66, \"validators\": [\"\$SELF\", $VALIDATORS_JSON]}]"
 
 echo -e "🔗 Peers Preferenciais: ${BLUE}$PREFERRED_PEERS${NC}"
+echo -e "🗳️ Quorum Set Configurado: ${BLUE}$QUORUM_SET${NC}"
 
 # ------------------------------------------------------------------------------
 # 6. Generate Docker Compose
@@ -199,6 +214,7 @@ services:
     environment:
       - NODE_SEED=$SECRET_SEED
       - PREFERRED_PEERS=$PREFERRED_PEERS
+      - QUORUM_SET='$QUORUM_SET'
       - ENABLE_HAYSTACK=false
       - NETWORK=TESTNET
       - KNOWN_PEERS=$SDF_PEERS

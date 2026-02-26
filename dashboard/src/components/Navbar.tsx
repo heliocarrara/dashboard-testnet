@@ -1,23 +1,48 @@
 'use client';
 
 import React from 'react';
-import { Activity, LayoutGrid, Server, Settings } from 'lucide-react';
+import { Activity, LayoutGrid, Server, Settings, X } from 'lucide-react';
 
 interface NavbarProps {
     activeTab: 'dashboard' | 'nodes' | 'settings';
     onTabChange: (tab: 'dashboard' | 'nodes' | 'settings') => void;
+    isOpen?: boolean;
+    onClose?: () => void;
 }
 
-export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
+export default function Navbar({ activeTab, onTabChange, isOpen = false, onClose }: NavbarProps) {
   return (
-    <nav className="fixed top-0 left-0 h-full w-64 bg-gray-900 border-r border-gray-800 p-4 flex flex-col z-50">
-      <div className="flex items-center gap-3 mb-10 px-2">
-        <Activity className="text-blue-500 w-8 h-8" />
-        <div>
-            <h1 className="text-xl font-bold text-white tracking-tight">Stellar Lab</h1>
-            <p className="text-xs text-gray-500">Testnet Manager</p>
+    <>
+      {/* Mobile Overlay */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+          onClick={onClose}
+        />
+      )}
+      
+      <nav className={`
+        fixed top-0 left-0 h-full w-64 bg-gray-900 border-r border-gray-800 p-4 flex flex-col z-50
+        transition-transform duration-300 ease-in-out
+        md:translate-x-0
+        ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+      `}>
+        <div className="flex items-center justify-between mb-10 px-2">
+          <div className="flex items-center gap-3">
+            <Activity className="text-blue-500 w-8 h-8" />
+            <div>
+                <h1 className="text-xl font-bold text-white tracking-tight">Stellar Lab</h1>
+                <p className="text-xs text-gray-500">Testnet Manager</p>
+            </div>
+          </div>
+          {/* Mobile Close Button */}
+          <button 
+            onClick={onClose}
+            className="md:hidden p-1 text-gray-400 hover:text-white rounded-lg hover:bg-gray-800"
+          >
+            <X size={20} />
+          </button>
         </div>
-      </div>
 
       <div className="space-y-2 flex-1">
         <button 
@@ -53,5 +78,6 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
           </div>
       </div>
     </nav>
+    </>
   );
 }

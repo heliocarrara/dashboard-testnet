@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { RefreshCw, Activity, Database, Cpu, Settings, MoreVertical, Edit2, Trash2 } from 'lucide-react';
+import { RefreshCw, Activity, Database, Cpu, Settings, MoreVertical, Edit2, Trash2, Menu } from 'lucide-react';
 import NetworkGraph from '@/components/NetworkGraph';
 import ProvisionModal from '@/components/ProvisionModal';
 import TransactionInjection from '@/components/TransactionInjection';
@@ -22,6 +22,7 @@ interface Node {
   config_status: string;
   last_seen: string;
   ordem?: number | null;
+  peers?: number[];
 }
 
 export default function Home() {
@@ -30,6 +31,7 @@ export default function Home() {
   const [editingNode, setEditingNode] = useState<Node | null>(null);
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'dashboard' | 'nodes' | 'settings'>('dashboard');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const fetchNodes = async () => {
     try {
@@ -94,18 +96,34 @@ export default function Home() {
 
   return (
     <div className="flex h-screen bg-gray-900 text-gray-100 overflow-hidden font-sans">
-      <Navbar activeTab={activeTab} onTabChange={setActiveTab} />
+      <Navbar 
+        activeTab={activeTab} 
+        onTabChange={(tab) => {
+          setActiveTab(tab);
+          setIsMobileMenuOpen(false);
+        }}
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+      />
 
-      <main className="ml-64 flex-1 flex flex-col h-full overflow-hidden relative">
+      <main className="md:ml-64 ml-0 flex-1 flex flex-col h-full overflow-hidden relative transition-all duration-300">
         {/* Header */}
         <header className="px-8 py-5 border-b border-gray-800 flex justify-between items-center bg-gray-900/95 backdrop-blur z-10 shrink-0">
-          <div>
-             <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <div className="flex items-center gap-4">
+             <button 
+                onClick={() => setIsMobileMenuOpen(true)}
+                className="md:hidden p-2 -ml-2 text-gray-400 hover:text-white rounded-lg hover:bg-gray-800 transition-colors"
+             >
+                <Menu size={24} />
+             </button>
+             <div>
+                <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
                 {activeTab === 'dashboard' ? 'Dashboard' : activeTab === 'nodes' ? 'Node Management' : 'System Settings'}
              </h1>
              <p className="text-gray-500 text-xs">
                  {activeTab === 'dashboard' ? 'Real-time Network Monitoring' : activeTab === 'nodes' ? 'Cluster Configuration & Inventory' : 'Platform Preferences'}
              </p>
+             </div>
           </div>
           <div className="flex items-center gap-6">
              <div className="text-right">
@@ -127,16 +145,16 @@ export default function Home() {
         {/* Content Grid */}
         <div className="flex-1 p-6 overflow-hidden">
             {activeTab === 'dashboard' && (
-                <div className="grid grid-cols-12 gap-6 h-full">
+                <div className="grid grid-cols-12 gap-6 h-full overflow-y-auto xl:overflow-hidden">
                     {/* Left Column: Graph (Larger) */}
-                    <div className="col-span-12 xl:col-span-7 flex flex-col bg-gray-800 rounded-xl border border-gray-700 shadow-xl overflow-hidden relative">
+                    <div className="col-span-12 xl:col-span-7 flex flex-col bg-gray-800 rounded-xl border border-gray-700 shadow-xl overflow-hidden relative min-h-[500px]">
                         <div className="absolute top-4 left-4 z-10 bg-gray-900/80 backdrop-blur px-3 py-1 rounded-full border border-gray-700 flex items-center gap-2">
                             <Database size={14} className="text-blue-400" />
                             <span className="text-xs font-bold text-gray-300">Topology Map</span>
                         </div>
                         <div className="flex-1 overflow-hidden relative">
                              <NetworkGraph 
-                                nodes={nodes.map(n => ({ ...n, id: n.id.toString() }))} 
+                                nodes={nodes} 
                                 selectedNodeId={selectedNodeId}
                                 onNodeSelect={setSelectedNodeId}
                              />
@@ -181,8 +199,9 @@ export default function Home() {
                                 <table className="w-full text-left border-collapse">
                                     <thead className="bg-gray-900/50 text-gray-400 text-xs uppercase font-bold sticky top-0 z-10 backdrop-blur-md">
                                         <tr>
-                                            <th className="px-4 py-3 border-b border-gray-700 w-16">ID</th>
+                                            <th className="px-4 py-3 border-b border-gray-700 w-16">Num</th>
                                             <th className="px-4 py-3 border-b border-gray-700">Hostname</th>
+                                            <th className="px-4 py-3 border-b border-gray-700">IP</th>
                                             <th className="px-4 py-3 border-b border-gray-700 w-24">Status</th>
                                             <th className="px-4 py-3 border-b border-gray-700 w-12"></th>
                                         </tr>
@@ -190,8 +209,9 @@ export default function Home() {
                                     <tbody className="divide-y divide-gray-700/50 text-sm">
                                         {nodes.slice(0, 10).map((node) => (
                                             <tr key={node.id} className="hover:bg-gray-700/30 transition-colors group">
-                                                <td className="px-4 py-2 font-mono text-xs text-gray-500">#{node.id}</td>
+                                                <td className="px-4 py-2 font-mono text-xs text-gray-500">{node.ordem || '-'}</td>
                                                 <td className="px-4 py-2 font-medium text-gray-200">{node.hostname}</td>
+                                                <td className="px-4 py-2 font-mono text-xs text-gray-400">{node.ip_address}</td>
                                                 <td className="px-4 py-2">
                                                     <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${node.status === 'online' ? 'bg-green-900 text-green-300' : 'bg-red-900 text-red-300'}`}>
                                                         {node.status}
