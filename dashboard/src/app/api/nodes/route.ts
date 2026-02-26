@@ -12,7 +12,7 @@ export async function GET() {
           ELSE 'offline'
         END as status
       FROM testnet_node_identity 
-      ORDER BY id ASC
+      ORDER BY ordem ASC, id ASC
     `;
     const result = await pool.query(query);
     return NextResponse.json(result.rows);
@@ -25,7 +25,7 @@ export async function GET() {
 export async function PUT(request: Request) {
   try {
     const body = await request.json();
-    const { id, role, quorum_group } = body;
+    const { id, role, quorum_group, hostname, ip_address, ordem } = body;
 
     if (!id) {
       return NextResponse.json({ error: 'ID is required' }, { status: 400 });
@@ -33,11 +33,15 @@ export async function PUT(request: Request) {
 
     const query = `
       UPDATE testnet_node_identity
-      SET role = $1, quorum_group = $2
-      WHERE id = $3
+      SET role = COALESCE($1, role), 
+          quorum_group = COALESCE($2, quorum_group),
+          hostname = COALESCE($3, hostname),
+          ip_address = COALESCE($4, ip_address),
+          ordem = COALESCE($5, ordem)
+      WHERE id = $6
       RETURNING *
     `;
-    const values = [role, quorum_group, id];
+    const values = [role, quorum_group, hostname, ip_address, ordem, id];
     
     const result = await pool.query(query, values);
 
@@ -49,5 +53,28 @@ export async function PUT(request: Request) {
   } catch (error) {
     console.error('Failed to update node:', error);
     return NextResponse.json({ error: 'Failed to update node' }, { status: 500 });
+  }
+}
+
+export async function DELETE(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+
+    if (!id) {
+      return NextResponse.json({ error: 'ID is required' }, { status: 400 });
+    }
+
+    const query = `DELETE FROM testnet_node_identity WHERE id = $1 RETURNING *`;
+    const result = await pool.query(query, [id]);
+
+    if (result.rowCount === 0) {
+      return NextResponse.json({ error: 'Node not found' }, { status: 404 });
+    }
+
+    return NextResponse.json({ message: 'Node deleted successfully' });
+  } catch (error) {
+    console.error('Failed to delete node:', error);
+    return NextResponse.json({ error: 'Failed to delete node' }, { status: 500 });
   }
 }

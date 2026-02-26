@@ -9,18 +9,16 @@ interface NetworkNode {
   role: string | null;
   status: string;
   config_status: string;
+  ordem?: number | null;
 }
 
 interface NetworkGraphProps {
   nodes: NetworkNode[];
+  selectedNodeId: string | null;
+  onNodeSelect: (id: string | null) => void;
 }
 
-const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes }) => {
-  // State for interaction
-  const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalData, setModalData] = useState<{ title: string; node: NetworkNode | undefined; type: string } | null>(null);
-
+const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes, selectedNodeId, onNodeSelect }) => {
   // Filter nodes by role
   const validators = nodes.filter(n => n.role === 'validator');
   const watchers = nodes.filter(n => n.role?.startsWith('watcher'));
@@ -44,12 +42,7 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes }) => {
 
   const handleNodeClick = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
-    setSelectedNodeId(selectedNodeId === id ? null : id);
-  };
-
-  const handleNodeDoubleClick = (title: string, node: NetworkNode | undefined, type: string) => {
-    setModalData({ title, node, type });
-    setModalOpen(true);
+    onNodeSelect(selectedNodeId === id ? null : id);
   };
 
   const renderNode = (
@@ -84,12 +77,28 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes }) => {
         }
     }
 
+    // Determine the label to show inside the circle
+    let circleLabel = '?';
+    if (type === 'sdf') {
+        circleLabel = 'SDF';
+    } else if (assignedNode && assignedNode.ordem) {
+        // Use the new 'ordem' field if available
+        circleLabel = assignedNode.ordem.toString();
+    } else if (type === 'validator') {
+        // Fallback: Extract the number from the title "Validator X"
+        const match = title.match(/Validator (\d+)/);
+        circleLabel = match ? match[1] : (assignedNode?.id.toString() || '?');
+    } else if (assignedNode) {
+        circleLabel = assignedNode.id.toString();
+    }
+
     return (
       <div 
         className="absolute transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group z-20 cursor-pointer"
         style={{ left: x, top: y }}
-        onClick={(e) => handleNodeClick(nodeIdForSelection, e)}
-        onDoubleClick={() => handleNodeDoubleClick(title, assignedNode, type)}
+        onClick={(e) => {
+            handleNodeClick(nodeIdForSelection, e);
+        }}
       >
         {/* Node Circle */}
         <div className={`
@@ -99,10 +108,8 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes }) => {
         `}>
             {type === 'sdf' ? (
                 <span className="text-[10px] text-blue-300 font-bold opacity-70">SDF</span>
-            ) : assignedNode ? (
-                <span className="text-2xl font-bold text-white leading-none">{assignedNode.id}</span>
             ) : (
-                <span className="text-gray-600 text-3xl font-bold opacity-30">?</span>
+                <span className="text-2xl font-bold text-white leading-none">{circleLabel}</span>
             )}
 
             {/* Online Indicator */}
@@ -121,6 +128,7 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes }) => {
       </div>
     );
   };
+
 
   // Generate Positions
   const validatorPositions = Array.from({ length: 5 }).map((_, i) => getPosition(i, 5, VALIDATOR_RADIUS));
@@ -158,7 +166,7 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes }) => {
   };
 
   return (
-    <div className="relative w-full h-[750px] bg-gray-950 rounded-xl border border-gray-800 overflow-hidden shadow-2xl" onClick={() => setSelectedNodeId(null)}>
+    <div className="relative w-full h-full bg-gray-950 overflow-hidden" onClick={() => onNodeSelect(null)}>
       
       {/* Background Grid */}
       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#4b5563 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
@@ -270,90 +278,9 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes }) => {
           </React.Fragment>
       ))}
 
-      {/* MODAL */}
-      {modalOpen && modalData && (
-          <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={(e) => e.stopPropagation()}>
-              <div className="bg-gray-900 border border-gray-700 rounded-xl shadow-2xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in duration-200">
-                  <div className="bg-gray-800 px-6 py-4 border-b border-gray-700 flex justify-between items-center">
-                      <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                          {modalData.node ? (
-                              <span className="w-3 h-3 rounded-full bg-green-500"></span>
-                          ) : (
-                              <span className="w-3 h-3 rounded-full bg-gray-500"></span>
-                          )}
-                          {modalData.title}
-                      </h3>
-                      <button onClick={() => setModalOpen(false)} className="text-gray-400 hover:text-white">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                              <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                          </svg>
-                      </button>
-                  </div>
-                  
-                  <div className="p-6">
-                      {modalData.node ? (
-                          <div className="space-y-4">
-                              <div className="grid grid-cols-2 gap-4">
-                                  <div className="bg-gray-800 p-3 rounded border border-gray-700">
-                                      <p className="text-xs text-gray-500 uppercase">Node ID</p>
-                                      <p className="text-white font-mono font-bold text-lg">{modalData.node.id}</p>
-                                  </div>
-                                  <div className="bg-gray-800 p-3 rounded border border-gray-700">
-                                      <p className="text-xs text-gray-500 uppercase">Role</p>
-                                      <p className="text-blue-400 font-bold capitalize">{modalData.type}</p>
-                                  </div>
-                              </div>
-                              
-                              <div className="space-y-2">
-                                  <div className="flex justify-between border-b border-gray-800 py-2">
-                                      <span className="text-gray-400">Hostname</span>
-                                      <span className="text-white font-mono">{modalData.node.hostname}</span>
-                                  </div>
-                                  <div className="flex justify-between border-b border-gray-800 py-2">
-                                      <span className="text-gray-400">IP Address</span>
-                                      <span className="text-white font-mono">{modalData.node.ip_address}</span>
-                                  </div>
-                                  <div className="flex justify-between border-b border-gray-800 py-2">
-                                      <span className="text-gray-400">Status</span>
-                                      <span className={`px-2 py-0.5 rounded text-xs font-bold ${modalData.node.status === 'online' ? 'bg-green-900 text-green-300' : 'bg-red-900 text-red-300'}`}>
-                                          {modalData.node.status.toUpperCase()}
-                                      </span>
-                                  </div>
-                              </div>
-                          </div>
-                      ) : (
-                          <div className="space-y-4">
-                              <div className="text-center mb-6">
-                                  <div className="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-3 border-2 border-dashed border-gray-600">
-                                      <span className="text-2xl text-gray-500">+</span>
-                                  </div>
-                                  <h4 className="text-white font-bold">Configure New Node</h4>
-                                  <p className="text-sm text-gray-400">This slot is currently empty. Enter details to provision.</p>
-                              </div>
-
-                              <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
-                                  <div>
-                                      <label className="block text-xs text-gray-400 mb-1 uppercase">Hostname</label>
-                                      <input type="text" className="w-full bg-gray-800 border border-gray-700 rounded p-2 text-white focus:border-blue-500 focus:outline-none" placeholder="e.g. validator-01" />
-                                  </div>
-                                  <div>
-                                      <label className="block text-xs text-gray-400 mb-1 uppercase">IP Address</label>
-                                      <input type="text" className="w-full bg-gray-800 border border-gray-700 rounded p-2 text-white focus:border-blue-500 focus:outline-none" placeholder="e.g. 192.168.1.10" />
-                                  </div>
-                                  <button className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 rounded mt-4 transition-colors">
-                                      Save Configuration
-                                  </button>
-                              </form>
-                          </div>
-                      )}
-                  </div>
-              </div>
-          </div>
-      )}
-
-      {/* Unassigned List (Bottom Right Floating) */}
+      {/* Unassigned List (Bottom Right Floating) - Adjusted position to not overlap with panel */}
       {unassigned.length > 0 && (
-          <div className="absolute bottom-4 right-4 bg-gray-900/90 p-4 rounded-lg border border-gray-700 shadow-xl z-30 max-w-xs backdrop-blur-md">
+          <div className="absolute bottom-32 right-4 bg-gray-900/90 p-4 rounded-lg border border-gray-700 shadow-xl z-30 max-w-xs backdrop-blur-md">
              <h4 className="text-xs font-bold text-orange-400 uppercase mb-3 flex items-center gap-2">
                 <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
                 New Nodes Detected
@@ -363,7 +290,7 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes }) => {
                      <div key={node.id} className="flex justify-between items-center text-sm text-gray-300 border-b border-gray-800 pb-2 last:border-0 last:pb-0 cursor-pointer hover:bg-gray-800 p-1 rounded" onClick={(e) => handleNodeClick(node.id, e)}>
                          <div className="flex flex-col">
                             <span className="font-bold text-white">{node.hostname}</span>
-                            <span className="text-[10px] text-gray-500">{node.id}</span>
+                            <span className="font-mono text-[10px] text-gray-500">{node.id}</span>
                          </div>
                          <span className="text-[10px] bg-gray-800 px-2 py-0.5 rounded text-blue-300 border border-gray-700">{node.ip_address}</span>
                      </div>

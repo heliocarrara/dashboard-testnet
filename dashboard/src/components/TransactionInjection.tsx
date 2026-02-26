@@ -1,10 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
+import { Zap, X } from 'lucide-react';
 
 const TransactionInjection: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleInject = async () => {
     setLoading(true);
@@ -35,33 +37,79 @@ const TransactionInjection: React.FC = () => {
     }
   };
 
+  if (!isOpen) {
+    return (
+        <button 
+            onClick={() => setIsOpen(true)}
+            className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-red-900/20"
+        >
+            <Zap size={20} />
+            <span>Launch Stress Test</span>
+        </button>
+    );
+  }
+
   return (
-    <div className="bg-white p-4 rounded-lg shadow border border-gray-200 mt-4">
-      <h3 className="text-lg font-bold mb-2 text-gray-800">Transaction Injection (Stress Test)</h3>
-      <div className="grid grid-cols-2 gap-4 mb-4">
-        <div>
-            <label className="block text-sm font-medium text-gray-700">Source Account</label>
-            <input type="text" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" placeholder="G..." disabled />
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+      <div className="bg-gray-900 border border-gray-700 rounded-xl shadow-2xl w-full max-w-md overflow-hidden relative">
+        <button 
+            onClick={() => setIsOpen(false)}
+            className="absolute top-4 right-4 text-gray-400 hover:text-white"
+        >
+            <X size={20} />
+        </button>
+
+        <div className="p-6 border-b border-gray-800 bg-gray-800/50">
+            <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                <Zap className="text-red-500" />
+                Transaction Injection
+            </h3>
+            <p className="text-sm text-gray-400 mt-1">Configure and launch network stress tests.</p>
         </div>
-        <div>
-            <label className="block text-sm font-medium text-gray-700">Destination Account</label>
-            <input type="text" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" placeholder="G..." disabled />
+        
+        <div className="p-6 space-y-6">
+            <div className="grid grid-cols-2 gap-4">
+                <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Source Account</label>
+                    <input type="text" className="w-full bg-gray-800 border border-gray-700 rounded p-3 text-white font-mono text-sm focus:border-red-500 outline-none" placeholder="G..." disabled />
+                </div>
+                <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Destination Account</label>
+                    <input type="text" className="w-full bg-gray-800 border border-gray-700 rounded p-3 text-white font-mono text-sm focus:border-red-500 outline-none" placeholder="G..." disabled />
+                </div>
+            </div>
+
+            <div>
+                <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Batch Size (Tx)</label>
+                <div className="flex items-center gap-4">
+                    <input type="number" className="w-24 bg-gray-800 border border-gray-700 rounded p-3 text-white font-bold focus:border-red-500 outline-none" defaultValue={100} />
+                    <span className="text-xs text-gray-500">Transactions per batch</span>
+                </div>
+            </div>
+
+            <div className="pt-4 border-t border-gray-800">
+                <button
+                    onClick={handleInject}
+                    disabled={loading}
+                    className="w-full bg-red-600 hover:bg-red-500 text-white font-bold py-3 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
+                >
+                    {loading ? (
+                        <>
+                            <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                            Running Test...
+                        </>
+                    ) : (
+                        'Start Injection'
+                    )}
+                </button>
+                {status && (
+                    <div className={`mt-4 p-3 rounded text-center text-sm font-medium ${status.includes('Failed') || status.includes('Error') ? 'bg-red-900/50 text-red-200' : 'bg-green-900/50 text-green-200'}`}>
+                        {status}
+                    </div>
+                )}
+            </div>
         </div>
       </div>
-      <div className="flex items-center justify-between">
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Batch Size</label>
-            <input type="number" className="mt-1 block w-24 border border-gray-300 rounded-md shadow-sm p-2" defaultValue={100} />
-          </div>
-          <button
-            onClick={handleInject}
-            disabled={loading}
-            className="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 disabled:opacity-50"
-          >
-            {loading ? 'Injecting...' : 'Inject Transactions'}
-          </button>
-      </div>
-      {status && <p className="text-green-600 text-sm mt-2">{status}</p>}
     </div>
   );
 };
