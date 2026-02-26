@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { RefreshCw, Activity, Database, Cpu, Settings, MoreVertical, Edit2, Trash2, Menu } from 'lucide-react';
+import { RefreshCw, Activity, Database, Cpu, Settings, MoreVertical, Edit2, Trash2, Menu, FileCode, Copy, X } from 'lucide-react';
 import NetworkGraph from '@/components/NetworkGraph';
 import ProvisionModal from '@/components/ProvisionModal';
 import TransactionInjection from '@/components/TransactionInjection';
@@ -30,6 +30,107 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [editingNode, setEditingNode] = useState<Node | null>(null);
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
+  const [viewingDockerCompose, setViewingDockerCompose] = useState<Node | null>(null);
+  const [composeTemplate, setComposeTemplate] = useState<{template: string, variables: Record<string, string>} | null>(null);
+
+  useEffect(() => {
+    // Fetch template once on mount
+    fetch('/api/setup-template')
+        .then(res => res.json())
+        .then(data => {
+            if (data.template) {
+                setComposeTemplate(data);
+            }
+        })
+        .catch(err => console.error('Failed to load compose template', err));
+  }, []);
+
+  const generateDockerCompose = (node: Node) => {
+    if (!composeTemplate) return 'Loading template...';
+
+    const { template, variables } = composeTemplate;
+
+    const services = node.role === 'validator' ? 'core' 
+                   : node.role === 'watcher_horizon' ? 'core,horizon' 
+                   : node.role === 'watcher_rpc' ? 'core,rpc' 
+                   : 'core';
+    
+    const isValidator = node.role === 'validator';
+    
+    // Find peers (assuming node.peers contains IDs of connected peers)
+    const peerNodes = node.peers 
+        ? node.peers.map(peerId => nodes.find(n => n.id === peerId)).filter(Boolean)
+        : [];
+        
+    const preferredPeers = peerNodes.map(p => `${p?.ip_address}:11625`).join(',');
+    
+    // Validators for Quorum Set (All validators in the network)
+    const validators = nodes
+        .filter(n => n.role === 'validator' && n.public_key)
+        .map(n => `"${n.public_key}"`)
+        .join(',');
+        
+    const quorumSet = `[{"threshold_percent": 66, "validators": ["$SELF", ${validators}]}]`;
+
+    // Replace variables in template
+    let content = template;
+
+    // Replace Script Variables (from setup-node.sh definitions)
+    const varsToExclude = ['QUORUM_SET', 'PREFERRED_PEERS', 'SECRET_SEED', 'IS_VALIDATOR', 'SERVICES_TO_ENABLE'];
+    Object.entries(variables).forEach(([key, value]) => {
+        if (varsToExclude.includes(key)) return;
+        // Replace $VAR and ${VAR}
+        const regex = new RegExp(`\\$${key}|\\$\{${key}\}`, 'g');
+              content = content.replace(regex, () => value);
+          });
+
+    // Replace Runtime Variables (calculated here)
+    const runtimeVars: Record<string, string> = {
+        'NODE_SEED': node.node_seed,
+        'PREFERRED_PEERS': preferredPeers,
+        'QUORUM_SET': quorumSet,
+        'IS_VALIDATOR': isValidator.toString(),
+        'SERVICES_TO_ENABLE': services,
+        // Hostname is used in container_name: stellar-node-${node.hostname} (likely not a var in script but useful)
+    };
+
+    // Helper for safe replacement
+    const safeReplace = (pattern: RegExp, value: string) => {
+        return content.replace(pattern, () => value);
+    };
+
+    // The script uses $SECRET_SEED for NODE_SEED, let's map it
+    // Script: NODE_SEED=$SECRET_SEED
+    content = safeReplace(/\$SECRET_SEED|\$\{SECRET_SEED\}/g, node.node_seed);
+    
+    // Script: PREFERRED_PEERS=$PREFERRED_PEERS
+    // Note: The regex needs to handle cases where the script might use complex bash syntax like ${VAR%,} or similar if present inside the cat block.
+    // We use a generic regex for bash variables that might have modifiers.
+    
+    // Replace $PREFERRED_PEERS or ${PREFERRED_PEERS...}
+    content = safeReplace(/\$\{PREFERRED_PEERS[^}]*\}|\$PREFERRED_PEERS/g, preferredPeers);
+
+    // Script: QUORUM_SET='$QUORUM_SET'
+    // Using safeReplace ensures that $ inside the JSON string (like $SELF) are treated literally and not as replacement patterns.
+    content = safeReplace(/\$\{QUORUM_SET[^}]*\}|\$QUORUM_SET/g, quorumSet);
+
+    // Script: NODE_IS_VALIDATOR=$IS_VALIDATOR
+    content = safeReplace(/\$\{IS_VALIDATOR[^}]*\}|\$IS_VALIDATOR/g, isValidator.toString());
+
+    // Script: command: ["--testnet", "--enable", "$SERVICES_TO_ENABLE"]
+    content = safeReplace(/\$\{SERVICES_TO_ENABLE[^}]*\}|\$SERVICES_TO_ENABLE/g, services);
+
+    // Also replace ${node.hostname} if it was used in my previous hardcoded version, 
+    // BUT the script uses container_name: stellar-node. It doesn't use hostname variable inside the cat block usually.
+    // Let's check the script content again.
+    // Script has: container_name: stellar-node
+    // It does NOT have dynamic container name in the script!
+    // But if we want unique container names per node in this view, we might want to inject it.
+    // However, the user asked to use the script content. The script uses fixed container_name "stellar-node".
+    // I will respect the script content.
+
+    return content;
+  };
   const [activeTab, setActiveTab] = useState<'dashboard' | 'nodes' | 'settings'>('dashboard');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -254,6 +355,7 @@ export default function Home() {
                                     <th className="px-4 py-3 border-b border-gray-700">Node Details</th>
                                     <th className="px-4 py-3 border-b border-gray-700 w-24">Role</th>
                                     <th className="px-4 py-3 border-b border-gray-700 w-16 text-center">Ord</th>
+                                    <th className="px-4 py-3 border-b border-gray-700 w-32">Docker Compose</th>
                                     <th className="px-4 py-3 border-b border-gray-700 w-24 text-right">Actions</th>
                                 </tr>
                             </thead>
@@ -285,6 +387,15 @@ export default function Home() {
                                         </td>
                                          <td className="px-4 py-3 text-center">
                                              <span className="text-xs font-mono text-gray-400">{node.ordem || '-'}</span>
+                                        </td>
+                                        <td className="px-4 py-3">
+                                            <button
+                                                onClick={() => setViewingDockerCompose(node)}
+                                                className="px-3 py-1.5 bg-blue-900/30 hover:bg-blue-900/50 border border-blue-800 rounded text-xs text-blue-300 transition-colors flex items-center gap-2"
+                                            >
+                                                <FileCode size={14} />
+                                                View Config
+                                            </button>
                                         </td>
                                         <td className="px-4 py-3 text-right">
                                             <button 
@@ -329,6 +440,45 @@ export default function Home() {
             onClose={() => setSelectedNodeId(null)}
             onEdit={(node) => setEditingNode(node)}
         />
+
+        {viewingDockerCompose && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+                <div className="bg-gray-900 border border-gray-700 rounded-xl shadow-2xl w-full max-w-3xl flex flex-col max-h-[90vh]">
+                    <div className="p-4 border-b border-gray-800 flex justify-between items-center">
+                        <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                            <FileCode size={20} className="text-blue-400" />
+                            Docker Compose Configuration
+                        </h3>
+                        <button onClick={() => setViewingDockerCompose(null)} className="text-gray-400 hover:text-white">
+                            <X size={20} />
+                        </button>
+                    </div>
+                    <div className="p-0 overflow-auto custom-scrollbar flex-1 bg-[#1e1e1e]">
+                        <pre className="text-sm font-mono text-gray-300 p-4 leading-relaxed whitespace-pre-wrap break-all">
+                            {generateDockerCompose(viewingDockerCompose)}
+                        </pre>
+                    </div>
+                    <div className="p-4 border-t border-gray-800 bg-gray-900 flex justify-end gap-3">
+                        <button 
+                            onClick={() => setViewingDockerCompose(null)}
+                            className="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-gray-800 transition-colors"
+                        >
+                            Close
+                        </button>
+                        <button 
+                            onClick={() => {
+                                navigator.clipboard.writeText(generateDockerCompose(viewingDockerCompose));
+                                alert('Copied to clipboard!');
+                            }}
+                            className="px-4 py-2 rounded-lg text-sm font-medium bg-blue-600 hover:bg-blue-500 text-white transition-colors flex items-center gap-2"
+                        >
+                            <Copy size={16} />
+                            Copy Configuration
+                        </button>
+                    </div>
+                </div>
+            </div>
+        )}
       </main>
     </div>
   );
