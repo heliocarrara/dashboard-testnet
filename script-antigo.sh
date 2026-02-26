@@ -174,6 +174,7 @@ services:
       - NODE_SEED=$SECRET_SEED
       - PREFERRED_PEERS=$PREFERRED_PEERS
       - ENABLE_HAYSTACK=false
+      - POSTGRES_PASSWORD=stellar
     volumes:
       - $VOLUME_PATH:/mnt/stellar  # Mapeando o volume persistente
     command: ["--testnet", "--enable", "core,horizon,rpc"]
@@ -192,6 +193,17 @@ command -v docker >/dev/null || {
     echo -e "${RED}Docker não encontrado!${NC}"
     exit 1
 }
+
+# Verifica se o Docker Daemon está acessível (WSL integration check)
+if ! docker info >/dev/null 2>&1; then
+    echo -e "${RED}Erro: Não foi possível conectar ao Docker Daemon.${NC}"
+    echo -e "${YELLOW}Se você está usando WSL 2, verifique se a integração está ativada no Docker Desktop:${NC}"
+    echo -e "1. Abra o Docker Desktop"
+    echo -e "2. Vá em Settings > Resources > WSL Integration"
+    echo -e "3. Ative a integração para a sua distro (Ubuntu/Debian/etc)"
+    echo -e "4. Clique em Apply & Restart"
+    exit 1
+fi
 
 bootstrap_db
 check_identity

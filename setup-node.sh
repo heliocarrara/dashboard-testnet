@@ -43,6 +43,17 @@ command -v docker >/dev/null || {
     exit 1
 }
 
+# Verifica se o Docker Daemon está acessível (WSL integration check)
+if ! docker info >/dev/null 2>&1; then
+    echo -e "${RED}Erro: Não foi possível conectar ao Docker Daemon.${NC}"
+    echo -e "${YELLOW}Se você está usando WSL 2, verifique se a integração está ativada no Docker Desktop:${NC}"
+    echo -e "1. Abra o Docker Desktop"
+    echo -e "2. Vá em Settings > Resources > WSL Integration"
+    echo -e "3. Ative a integração para a sua distro (Ubuntu/Debian/etc)"
+    echo -e "4. Clique em Apply & Restart"
+    exit 1
+fi
+
 echo -e "${BLUE}🔄 Preparando ambiente...${NC}"
 sudo mkdir -p $VOLUME_PATH
 sudo chown $(whoami):$(whoami) $VOLUME_PATH
@@ -172,7 +183,16 @@ VALIDATORS_JSON=${VALIDATORS_JSON%,}
 
 # Build QUORUM_SET JSON
 # Threshold: 66% (2/3 majority)
-QUORUM_SET="[{\"threshold_percent\": 66, \"validators\": [\"\$SELF\", $VALIDATORS_JSON]}]"
+if [ -n "$VALIDATORS_JSON" ]; then
+    QUORUM_SET="[{\"threshold_percent\": 66, \"validators\": [\"\$SELF\", $VALIDATORS_JSON]}]"
+else
+    QUORUM_SET="[{\"threshold_percent\": 66, \"validators\": [\"\$SELF\"]}]"
+fi
+
+# Escape double quotes for YAML compatibility
+# We need to ensure that the JSON string inside the YAML is properly escaped
+# Example: [{"key": "value"}] -> "[{\"key\": \"value\"}]"
+QUORUM_SET_SAFE=$(echo "$QUORUM_SET" | sed 's/"/\\"/g')
 
 echo -e "🔗 Peers Preferenciais: ${BLUE}$PREFERRED_PEERS${NC}"
 echo -e "🗳️ Quorum Set Configurado: ${BLUE}$QUORUM_SET${NC}"
@@ -212,13 +232,14 @@ services:
       - "11625:11625"
       - "11626:11626"
     environment:
-      - NODE_SEED=$SECRET_SEED
-      - PREFERRED_PEERS=$PREFERRED_PEERS
-      - QUORUM_SET='$QUORUM_SET'
+      - NODE_SEED="$SECRET_SEED"
+      - PREFERRED_PEERS="$PREFERRED_PEERS"
+      - "QUORUM_SET=$QUORUM_SET_SAFE"
       - ENABLE_HAYSTACK=false
       - NETWORK=TESTNET
-      - KNOWN_PEERS=$SDF_PEERS
-      - NODE_IS_VALIDATOR=$IS_VALIDATOR
+      - KNOWN_PEERS="$SDF_PEERS"
+      - NODE_IS_VALIDATOR="$IS_VALIDATOR"
+      - POSTGRES_PASSWORD=stellar
     volumes:
       # CORREÇÃO CRÍTICA DO DIRETÓRIO INTERNO:
       - $VOLUME_PATH:/opt/stellar
