@@ -19,7 +19,7 @@ NC='\033[0m'
 DB_URL="postgresql://neondb_owner:npg_QBCYNh9m3Uvc@ep-rapid-snow-ac6jntdp-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
 TABLE_IDENTITY="testnet_node_identity"
 
-IMAGE="docker.io/stellar/quickstart:latest"
+IMAGE="docker.io/stellar/quickstart:testing"
 VOLUME_PATH="/srv/stellar_testnet_data"
 
 # SDF Testnet Nodes (for Quorum & Peers)
@@ -165,9 +165,30 @@ echo -e "🔗 Peers Preferenciais: ${BLUE}$PREFERRED_PEERS${NC}"
 # ------------------------------------------------------------------------------
 # 6. Generate Docker Compose
 # ------------------------------------------------------------------------------
+
+# Define os serviços baseados na Role (A nossa tabela da topologia)
+if [ "$EXISTING_ROLE" == "validator" ]; then
+  SERVICES_TO_ENABLE="core"
+  IS_VALIDATOR="true"
+elif [ "$EXISTING_ROLE" == "watcher_horizon" ]; then
+  SERVICES_TO_ENABLE="core,horizon"
+  IS_VALIDATOR="false"
+elif [ "$EXISTING_ROLE" == "watcher_rpc" ]; then
+  SERVICES_TO_ENABLE="core,rpc"
+  IS_VALIDATOR="false"
+else
+  # Fallback de segurança
+  SERVICES_TO_ENABLE="core"
+  IS_VALIDATOR="false"
+fi
+
+# Corrigindo a imagem para testnet
+IMAGE="docker.io/stellar/quickstart:testing"
+
 cat > docker-compose.yml <<EOF
+version: '3.8'
 services:
-  stellar-core:
+  stellar-node:
     image: $IMAGE
     container_name: stellar-node
     restart: unless-stopped
@@ -180,27 +201,18 @@ services:
       - PREFERRED_PEERS=$PREFERRED_PEERS
       - ENABLE_HAYSTACK=false
       - NETWORK=TESTNET
-      # Simple Quorum Config: Trust SDF nodes always (critical for Testnet sync)
       - KNOWN_PEERS=$SDF_PEERS
-EOF
-
-# Add specific configs
-if [ "$EXISTING_ROLE" == "validator" ]; then
-    echo "      - NODE_IS_VALIDATOR=true" >> docker-compose.yml
-else
-    echo "      - NODE_IS_VALIDATOR=false" >> docker-compose.yml
-fi
-
-# Volumes
-cat >> docker-compose.yml <<EOF
+      - NODE_IS_VALIDATOR=$IS_VALIDATOR
     volumes:
-      - $VOLUME_PATH:/var/lib/stellar
-    command: ["--testnet", "--enable", "core,horizon,rpc"]
+      # CORREÇÃO CRÍTICA DO DIRETÓRIO INTERNO:
+      - $VOLUME_PATH:/opt/stellar
+    # COMANDO DINÂMICO BASEADO NA ROLE DA MÁQUINA:
+    command: ["--testnet", "--enable", "$SERVICES_TO_ENABLE"]
 EOF
 
 # ------------------------------------------------------------------------------
 # 7. Start
 # ------------------------------------------------------------------------------
-echo -e "${GREEN}🚀 Iniciando nó Stellar ($EXISTING_ROLE)...${NC}"
+echo -e "${GREEN}🚀 Iniciando nó Stellar ($EXISTING_ROLE) com serviços: $SERVICES_TO_ENABLE...${NC}"
 docker compose up -d
 docker logs -f stellar-node

@@ -162,7 +162,8 @@ export default function Home() {
                       >
                         <option value="none">None</option>
                         <option value="validator">Validator</option>
-                        <option value="watcher">Watcher</option>
+                        <option value="watcher_horizon">Watcher (Horizon)</option>
+                        <option value="watcher_rpc">Watcher (RPC)</option>
                       </select>
                     </td>
                     <td className="px-6 py-4">

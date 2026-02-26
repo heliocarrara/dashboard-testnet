@@ -1,157 +1,87 @@
-Essa é uma excelente restrição de segurança e arquitetura. Ao impedir o *startup* antes de ter o quórum mínimo (5 validadores), você evita que os nós fiquem "batendo cabeça" sozinhos ou entrem em *fork* logo no início.
+Analisando o código do seu script `stellar.sh`, posso afirmar que a **lógica de orquestração está excelente**, mas há **três erros críticos na configuração do Docker** que quebram completamente a topologia que definimos para o seu laboratório.
 
-Aqui está como estruturar essa Dashboard e a lógica de bloqueio no Neon:
+A sua ideia de usar um banco PostgreSQL (Neon DB) para registrar o IP das máquinas, gerenciar o "gatekeeper" (que espera 5 validadores estarem prontos) e montar os peers dinamicamente é brilhante e atende perfeitamente ao cenário distribuído.
 
-### 1. Visualização da Dashboard: "Node-Link Topology"
+No entanto, a parte final do seu script (onde o `docker-compose.yml` é gerado) está distante do que precisamos e fará com que o laboratório inteiro trave ou perca os dados. Aqui estão os problemas e como corrigi-los:
 
-Em vez de uma lista, a dashboard deve ser um grafo visual dividido por camadas (Layers/Tiers). Use bibliotecas como **React Flow** ou **D3.js**.
+### 1. O Erro Mais Grave: Caminho do Volume (Perda de Dados)
+No seu script, você mapeou o volume como `- $VOLUME_PATH:/var/lib/stellar`. 
+A documentação oficial da imagem `stellar/quickstart` é rigorosa quanto a isso: o diretório interno **precisa obrigatoriamente ser o `/opt/stellar`**. Esse diretório especial é verificado pelo container no momento da inicialização para decidir se ele deve rodar em "modo persistente" (salvando no disco) ou "modo efêmero" (apagando tudo ao reiniciar). Se você usar `/var/lib/stellar`, os seus nós nunca salvarão o histórico da Testnet.
 
-* **Layer 1 (External):** Representação dos nós da SDF (Stellar Development Foundation). São os nós "âncoras" da Testnet.
-* **Layer 2 (Core/Validadores):** Os seus 5 nós locais. Eles aparecem conectados entre si e com a Layer 1.
-* **Layer 3 (Watchers/API):** Os 3 nós que servem dados. Eles aparecem conectados apenas aos seus Validadores locais (Layer 2).
+### 2. Destruição da Topologia (Todos rodando tudo)
+Nas últimas linhas do script, você deixou o comando de inicialização fixo para **todas** as máquinas: `command: ["--testnet", "--enable", "core,horizon,rpc"]`.
+Se você rodar isso, as suas máquinas 1 a 5 (Validadores), que deveriam ser leves, vão subir o banco PostgreSQL pesado, a API do Horizon e o Soroban RPC, esgotando a RAM e o disco delas rapidamente. O comando precisa ser dinâmico de acordo com a `ROLE` da máquina.
 
-**Visual no React:**
-
-* Cada nó é um círculo.
-* **Cor Cinza:** Máquina detectada (IP no banco), mas sem configuração.
-* **Cor Amarela:** Configurada, mas aguardando o quórum (os 5 estarem prontos).
-* **Cor Verde:** Rodando e sincronizado.
+### 3. A Tag da Imagem Docker
+Na linha 15 do seu script, a imagem está definida como `docker.io/stellar/quickstart:latest`.
+A documentação indica que a tag `latest` é focada em estabilidade para a Mainnet. Para rodar na Testnet, a recomendação oficial é utilizar a tag `testing` (`stellar/quickstart:testing`), pois ela contém os lançamentos candidatos e softwares compatíveis com a rede de testes.
 
 ---
 
-### 2. A Lógica de Bloqueio (O "Gatekeeper")
+### Como corrigir o seu Script
 
-Para garantir que o container só suba se os 5 validadores existirem, o seu script Bash na máquina do laboratório deve fazer uma verificação no Neon antes do `docker compose up`.
-
-**Exemplo da lógica no Script Bash:**
+Você precisa alterar apenas o bloco **"6. Generate Docker Compose"** e **"7. Start"** do seu script para que ele se adapte à nossa tabela. Substitua a parte final do seu código original por esta versão corrigida:
 
 ```bash
-check_quorum_readiness() {
-    # Conta quantos nós do tipo 'validator' estão com IP e Seed cadastrados no Neon
-    VALIDATORS_READY=$(run_sql_cmd "SELECT COUNT(*) FROM $TABLE_IDENTITY WHERE role = 'validator' AND node_seed IS NOT NULL AND ip_address IS NOT NULL;")
+# ------------------------------------------------------------------------------
+# 6. Generate Docker Compose
+# ------------------------------------------------------------------------------
 
-    if [ "$VALIDATORS_READY" -lt 5 ]; then
-        echo -e "${RED}❌ ERRO: Quórum insuficiente ($VALIDATORS_READY/5 validadores prontos).${NC}"
-        echo -e "${YELLOW}Aguarde a configuração de todos os validadores no Dashboard React.${NC}"
-        exit 1
-    fi
-    echo -e "${GREEN}✅ Quórum verificado. Iniciando nó...${NC}"
-}
+# Define os serviços baseados na Role (A nossa tabela da topologia)
+if [ "$EXISTING_ROLE" == "validator" ]; then
+  SERVICES_TO_ENABLE="core"
+  IS_VALIDATOR="true"
+elif [ "$EXISTING_ROLE" == "watcher_horizon" ]; then
+  SERVICES_TO_ENABLE="core,horizon"
+  IS_VALIDATOR="false"
+elif [ "$EXISTING_ROLE" == "watcher_rpc" ]; then
+  SERVICES_TO_ENABLE="core,rpc"
+  IS_VALIDATOR="false"
+else
+  # Fallback de segurança
+  SERVICES_TO_ENABLE="core"
+  IS_VALIDATOR="false"
+fi
 
+# Corrigindo a imagem para testnet
+IMAGE="docker.io/stellar/quickstart:testing"
+
+cat > docker-compose.yml <<EOF
+version: '3.8'
+services:
+  stellar-node:
+    image: $IMAGE
+    container_name: stellar-node
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+      - "11625:11625"
+      - "11626:11626"
+    environment:
+      - NODE_SEED=$SECRET_SEED
+      - PREFERRED_PEERS=$PREFERRED_PEERS
+      - ENABLE_HAYSTACK=false
+      - NETWORK=TESTNET
+      - KNOWN_PEERS=$SDF_PEERS
+      - NODE_IS_VALIDATOR=$IS_VALIDATOR
+    volumes:
+      # CORREÇÃO CRÍTICA DO DIRETÓRIO INTERNO:
+      - $VOLUME_PATH:/opt/stellar
+    # COMANDO DINÂMICO BASEADO NA ROLE DA MÁQUINA:
+    command: ["--testnet", "--enable", "$SERVICES_TO_ENABLE"]
+EOF
+
+# ------------------------------------------------------------------------------
+# 7. Start
+# ------------------------------------------------------------------------------
+echo -e "${GREEN}🚀 Iniciando nó Stellar ($EXISTING_ROLE) com serviços: $SERVICES_TO_ENABLE...${NC}"
+docker compose up -d
+docker logs -f stellar-node
 ```
 
----
+**O que mudou com essa correção:**
+* Agora o `$VOLUME_PATH` aponta para `/opt/stellar`, garantindo que os gargalos de disco que vamos medir via `iotop` realmente aconteçam no seu SSD persistente.
+* As variáveis `EXISTING_ROLE` (que você puxa do seu Neon DB) agora decidem o que será ativado via `--enable`. (Certifique-se de que no seu painel web as funções estejam nomeadas de forma compatível, ex: `validator`, `watcher_horizon` e `watcher_rpc`).
+* A tag da imagem foi atualizada para a `testing` exigida para Testnet. 
 
-### 3. Modais e Componentes da Dashboard
-
-#### A. Modal de "Provisionamento em Lote"
-
-Como você precisa de 5 validadores, o Dashboard deve ter um botão **"Auto-Configurar Core"**.
-
-* Ele pega as 5 primeiras máquinas que deram "check-in" no laboratório.
-* Gera as 5 Seeds de uma vez.
-* Atribui o Role `validator` e o mesmo `quorum_group` para elas.
-* Salva tudo no Neon. Só após isso o botão "Lançar Rede" fica habilitado para os alunos.
-
-#### B. Componente de "Tier Layer" (ReactFlow)
-
-No React, você pode definir as posições (y-axis) para forçar o visual de Tiers:
-
-* `y: 0` -> SDF Nodes
-* `y: 200` -> Seus 5 Validadores (conectados entre si)
-* `y: 400` -> Seus 3 Watchers (conectados aos validadores acima)
-
----
-
-### 4. Incoerências e Riscos (Sinceridade Técnica)
-
-1. **O Risco do "Nó Fantasma":** Se um aluno fechar o notebook ou a máquina cair, o banco ainda dirá que existem 5 validadores, mas o consenso vai falhar na prática (precisa de >66% de nós ativos). O seu Dashboard precisa de um **Heartbeat**: se a máquina não enviar um sinal "estou viva" para o Neon em 30 segundos, o status no grafo muda para vermelho e o botão de "Start" das outras máquinas deve ser bloqueado ou emitir alerta.
-2. **IP Dinâmico:** Em laboratórios, o IP pode mudar se a máquina reiniciar. O Dashboard deve permitir que o aluno "Re-vincule" o IP ao hostname sem perder a Seed já gerada.
-3. **Análise de Storage enviesada:** Se você subir os 5 validadores ao mesmo tempo, o crescimento do storage será idêntico. Sugira no Dashboard que um dos validadores seja configurado como **"Full History"** e os outros como **"Default"**. Assim, sua análise de armazenamento terá dados comparativos (quanto custa guardar tudo vs. quanto custa guardar só o básico).
-
-### Sugestão de Layout no Dashboard:
-
-* **Lado Esquerdo:** O Grafo de nós (Tiers).
-* **Lado Direito:** Painel de métricas agregadas (Soma do storage total do laboratório, uso de CPU médio).
-* **Inferior:** Console de logs global (mostra o que está acontecendo na rede como um todo).
-
----
-
-## 1. Formulário de "Check-in" e Registro de Máquina
-
-Este é o primeiro contato. O aluno chega na máquina física e o formulário já deve vir pré-preenchido com o que ele detectou localmente.
-
-* **Hostname (Read-only):** Detectado automaticamente pelo agente Bash.
-* **IP Público/Local:** O aluno confirma o IP que a máquina assumiu no laboratório.
-* **Nome do Responsável:** Para saber quem está operando aquele nó no laboratório.
-* **Botão: [Registrar no Cluster]** -> Isso cria a entrada inicial no Neon.
-
-## 2. Formulário de Configuração de Identidade (Modal)
-
-Este formulário "batiza" o nó com as credenciais criptográficas.
-
-* **Alias do Nó:** Ex: `Validador-UFMT-01`.
-* **Gerador de Keypair:** * Campo para **Public Key**.
-* Campo para **Secret Seed** (com botão "Gerar via Stellar-Core").
-
-
-* **Nível de Histórico (Storage Analysis):**
-* *Dropdown*:
-1. **Minimal:** (Apenas o necessário para o consenso).
-2. **Full History:** (Baixa todo o histórico da rede - *ideal para sua análise de storage máximo*).
-
-
-
-
-* **Botão: [Salvar Identidade]**
-
-## 3. Formulário de Definição de Papel e Tier (O "Gatekeeper")
-
-Este é o formulário que decide onde o nó se encaixa na hierarquia que você planejou.
-
-* **Role Selection:**
-* ( ) **Validador (Tier 2):** Participa da votação.
-* ( ) **Watcher (Horizon/RPC):** Apenas lê dados.
-
-
-* **Configuração de Quorum (Dinâmico):**
-* *Se for Validador:* Abre uma lista de checkboxes com os outros nós que já fizeram check-in. O usuário seleciona os parceiros de confiança.
-* *Toggle:* **"Confiar nos nós da SDF (Recomendado)"**.
-
-
-* **Seleção de Serviços:**
-* Checkboxes: [x] Core  [ ] Horizon  [ ] RPC (Soroban).
-
-
-* **Regra de Validação:** O botão **[Finalizar Configuração]** só habilita se o sistema detectar que já existem 5 validadores configurados no banco.
-
-## 4. Formulário de Injeção de Transação (Stress Test)
-
-Útil para gerar dados e observar o crescimento do armazenamento em tempo real.
-
-* **Source Account:** (Pode ser uma conta de teste com XLM na Testnet).
-* **Destination Account:** (Outro nó do laboratório).
-* **Amount:** Quantidade de XLM.
-* **Batch Size:** (Ex: Enviar 100 transações de uma vez) -> *Isso é ótimo para ver o banco de dados do Horizon inchar rapidamente para sua análise.*
-
----
-
-## Estrutura de UX e Modais
-
-| Formulário | Quando aparece? | Objetivo |
-| --- | --- | --- |
-| **Registro** | Ao abrir a URL pela primeira vez na máquina. | Vincular o hardware ao banco Neon. |
-| **Configuração** | No Dashboard, ao clicar em uma máquina "Cinza". | Definir a identidade e o que o nó vai rodar. |
-| **Deploy** | Quando a "Layer de Validadores" está completa. | Gerar o arquivo final e dar o `docker compose up`. |
-
----
-
-### Incoerências e Riscos nos Formulários:
-
-1. **Exposição da Seed:** Como o sistema é para laboratório, o formulário de Identidade mostrará a `Secret Seed`. Adicione um botão de "Olho" (hide/show) e um aviso: *"Esta chave dá controle total ao nó. Não compartilhe"*.
-2. **Validação de Quorum:** O formulário de Quorum deve impedir que um usuário selecione "Zero" parceiros. Um validador que não confia em ninguém nunca vai fechar um ledger.
-3. **Conflito de IP:** Se o formulário de Registro detectar um IP que já pertence a outro Hostname, ele deve disparar um erro de "IP em uso", evitando que o script de inicialização tente subir dois nós com a mesma identidade de rede.
-
-### Próximo passo sugerido:
-
-Você quer que eu monte o **JSON de configuração** que esse formulário do React deve enviar para o banco Neon, de modo que o seu script Bash consiga ler e transformar em um arquivo `.cfg` perfeitamente formatado?
+Com essas pequenas alterações no bloco final, o seu script automatizado está perfeito e pronto para subir o laboratório exatamente como planejamos!
