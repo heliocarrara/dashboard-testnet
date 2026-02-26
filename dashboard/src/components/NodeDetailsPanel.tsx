@@ -1,13 +1,14 @@
 import React from 'react';
-import { X, Server, Shield, Edit2 } from 'lucide-react';
+import { X, Server, Shield, Edit2, Activity } from 'lucide-react';
 
 interface NodeDetailsPanelProps {
   node: any;
   onClose: () => void;
   onEdit: (node: any) => void;
+  onMonitor: (node: any) => void;
 }
 
-const NodeDetailsPanel: React.FC<NodeDetailsPanelProps> = ({ node, onClose, onEdit }) => {
+const NodeDetailsPanel: React.FC<NodeDetailsPanelProps> = ({ node, onClose, onEdit, onMonitor }) => {
   if (!node) return null;
 
   return (
@@ -71,6 +72,17 @@ const NodeDetailsPanel: React.FC<NodeDetailsPanelProps> = ({ node, onClose, onEd
                 <span className="text-[10px] font-mono text-green-400 bg-green-900/20 px-1.5 py-0.5 rounded border border-green-900/30 inline-block">Synced</span>
              </div>
           </div>
+
+          {/* Monitor Button */}
+          {node.role && node.role.includes('watcher') && (
+            <button
+              onClick={() => onMonitor(node)}
+              className="w-full bg-blue-900/30 hover:bg-blue-900/50 text-blue-400 border border-blue-900/50 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2 mt-4"
+            >
+              <Activity size={16} />
+              Open Monitor
+            </button>
+          )}
         </div>
       </div>
     </div>

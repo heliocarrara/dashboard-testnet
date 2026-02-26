@@ -1,12 +1,29 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Zap, X } from 'lucide-react';
+import { Zap, X, Server } from 'lucide-react';
 
-const TransactionInjection: React.FC = () => {
+interface Node {
+    id: number;
+    hostname: string;
+    ip_address: string;
+    role: string | null;
+    status: string;
+}
+
+interface TransactionInjectionProps {
+    nodes: Node[];
+}
+
+const TransactionInjection: React.FC<TransactionInjectionProps> = ({ nodes }) => {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [targetNodeIp, setTargetNodeIp] = useState<string>('');
+
+  // Filter for available Horizon nodes (watchers or validators that have horizon enabled - assuming validators might not have it exposed but watchers do)
+  // Based on docker-compose, watcher_horizon has 'horizon' service enabled.
+  const horizonNodes = nodes.filter(n => n.role === 'watcher_horizon' && n.status === 'online');
 
   const handleInject = async () => {
     setLoading(true);
@@ -19,7 +36,8 @@ const TransactionInjection: React.FC = () => {
           source: 'G...', // Placeholder
           destination: 'G...', // Placeholder
           amount: '100',
-          batchSize: 100
+          batchSize: 100,
+          horizonUrl: targetNodeIp ? `http://${targetNodeIp}:8000` : undefined
         })
       });
       const data = await res.json();
@@ -68,6 +86,32 @@ const TransactionInjection: React.FC = () => {
         </div>
         
         <div className="p-6 space-y-6">
+            
+            {/* Target Node Selection */}
+            <div>
+                <label className="block text-xs font-bold text-gray-500 uppercase mb-2 flex items-center gap-2">
+                    <Server size={12} />
+                    Target Horizon Node
+                </label>
+                <select 
+                    value={targetNodeIp}
+                    onChange={(e) => setTargetNodeIp(e.target.value)}
+                    className="w-full bg-gray-800 border border-gray-700 rounded p-3 text-white text-sm focus:border-red-500 outline-none appearance-none"
+                >
+                    <option value="">Auto-detect / Default</option>
+                    {horizonNodes.map(node => (
+                        <option key={node.id} value={node.ip_address}>
+                            {node.hostname} ({node.ip_address})
+                        </option>
+                    ))}
+                </select>
+                {horizonNodes.length === 0 && (
+                    <p className="text-[10px] text-yellow-500 mt-1">
+                        No online Horizon watchers detected. Test may fail if no default is configured.
+                    </p>
+                )}
+            </div>
+
             <div className="grid grid-cols-2 gap-4">
                 <div>
                     <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Source Account</label>

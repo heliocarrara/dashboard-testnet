@@ -8,6 +8,7 @@ import TransactionInjection from '@/components/TransactionInjection';
 import Navbar from '@/components/Navbar';
 import EditNodeModal from '@/components/EditNodeModal';
 import NodeDetailsPanel from '@/components/NodeDetailsPanel';
+import MonitoringModal from '@/components/MonitoringModal';
 
 interface Node {
   id: number;
@@ -29,6 +30,7 @@ export default function Home() {
   const [nodes, setNodes] = useState<Node[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingNode, setEditingNode] = useState<Node | null>(null);
+  const [monitoringNode, setMonitoringNode] = useState<Node | null>(null);
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
   const [viewingDockerCompose, setViewingDockerCompose] = useState<Node | null>(null);
   const [composeTemplate, setComposeTemplate] = useState<{template: string, variables: Record<string, string>} | null>(null);
@@ -282,7 +284,7 @@ export default function Home() {
                             </div>
 
                             <div className="bg-gray-800 p-5 rounded-xl border border-gray-700 shadow-lg flex flex-col justify-center">
-                                 <TransactionInjection />
+                                 <TransactionInjection nodes={nodes} />
                             </div>
                         </div>
 
@@ -355,6 +357,7 @@ export default function Home() {
                                     <th className="px-4 py-3 border-b border-gray-700">Node Details</th>
                                     <th className="px-4 py-3 border-b border-gray-700 w-24">Role</th>
                                     <th className="px-4 py-3 border-b border-gray-700 w-16 text-center">Ord</th>
+                                    <th className="px-4 py-3 border-b border-gray-700 w-32">Monitoring</th>
                                     <th className="px-4 py-3 border-b border-gray-700 w-32">Docker Compose</th>
                                     <th className="px-4 py-3 border-b border-gray-700 w-24 text-right">Actions</th>
                                 </tr>
@@ -387,6 +390,19 @@ export default function Home() {
                                         </td>
                                          <td className="px-4 py-3 text-center">
                                              <span className="text-xs font-mono text-gray-400">{node.ordem || '-'}</span>
+                                        </td>
+                                        <td className="px-4 py-3">
+                                            {node.role && node.role.includes('watcher') ? (
+                                                <button
+                                                    onClick={() => setMonitoringNode(node)}
+                                                    className="bg-blue-900/30 hover:bg-blue-900/50 text-blue-400 border border-blue-900/50 px-3 py-1.5 rounded text-xs font-medium transition-colors flex items-center gap-1.5"
+                                                >
+                                                    <Activity size={14} />
+                                                    Monitor
+                                                </button>
+                                            ) : (
+                                                <span className="text-gray-600 text-xs italic">-</span>
+                                            )}
                                         </td>
                                         <td className="px-4 py-3">
                                             <button
@@ -439,7 +455,18 @@ export default function Home() {
             node={selectedNodeId ? nodes.find(n => n.id.toString() === selectedNodeId) : null}
             onClose={() => setSelectedNodeId(null)}
             onEdit={(node) => setEditingNode(node)}
+            onMonitor={(node) => {
+                setSelectedNodeId(null);
+                setMonitoringNode(node);
+            }}
         />
+
+        {monitoringNode && (
+            <MonitoringModal
+                node={monitoringNode}
+                onClose={() => setMonitoringNode(null)}
+            />
+        )}
 
         {viewingDockerCompose && (
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">

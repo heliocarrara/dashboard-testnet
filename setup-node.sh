@@ -192,7 +192,8 @@ fi
 # Escape double quotes for YAML compatibility
 # We need to ensure that the JSON string inside the YAML is properly escaped
 # Example: [{"key": "value"}] -> "[{\"key\": \"value\"}]"
-QUORUM_SET_SAFE=$(echo "$QUORUM_SET" | sed 's/"/\\"/g')
+# Also we need to escape $ so docker-compose doesn't try to interpolate $SELF
+QUORUM_SET_SAFE=$(echo "$QUORUM_SET" | sed 's/"/\\"/g' | sed 's/\$SELF/$$SELF/g')
 
 echo -e "🔗 Peers Preferenciais: ${BLUE}$PREFERRED_PEERS${NC}"
 echo -e "🗳️ Quorum Set Configurado: ${BLUE}$QUORUM_SET${NC}"
