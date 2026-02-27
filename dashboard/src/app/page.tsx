@@ -290,8 +290,16 @@ export default function Home() {
                             </div>
                         </div>
 
-                        {/* Nodes Table (Mini) */}
-                        <div className="flex-1 bg-gray-800 rounded-xl border border-gray-700 shadow-xl overflow-hidden flex flex-col min-h-0">
+                        {/* Nodes Table (Mini) or Details Panel */}
+                        {selectedNodeId ? (
+                             <NodeDetailsPanel 
+                                node={nodes.find(n => n.id.toString() === selectedNodeId)} 
+                                onClose={() => setSelectedNodeId(null)}
+                                onEdit={setEditingNode}
+                                onMonitor={setMonitoringNode}
+                             />
+                        ) : (
+                        <div className="flex-1 bg-gray-800 rounded-xl border border-gray-700 shadow-xl overflow-hidden flex flex-col min-h-0 animate-in fade-in duration-200">
                             <div className="p-4 border-b border-gray-700 flex justify-between items-center bg-gray-800 shrink-0">
                                 <h2 className="text-sm font-bold text-white flex items-center gap-2">
                                     <Cpu size={16} className="text-purple-400" />
@@ -337,6 +345,7 @@ export default function Home() {
                                 </table>
                             </div>
                         </div>
+                        )}
                     </div>
                 </div>
             )}
@@ -477,16 +486,6 @@ export default function Home() {
             onClose={() => setEditingNode(null)} 
             onSave={handleUpdate}
             onDelete={handleDelete}
-        />
-
-        <NodeDetailsPanel 
-            node={selectedNodeId ? nodes.find(n => n.id.toString() === selectedNodeId) : null}
-            onClose={() => setSelectedNodeId(null)}
-            onEdit={(node) => setEditingNode(node)}
-            onMonitor={(node) => {
-                setSelectedNodeId(null);
-                setMonitoringNode(node);
-            }}
         />
 
         {monitoringNode && (

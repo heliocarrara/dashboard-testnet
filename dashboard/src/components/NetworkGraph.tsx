@@ -42,7 +42,7 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes, selectedNodeId, onNo
   // Filter nodes by role
   const validators = nodes.filter(n => n.role === 'validator');
   const watchers = nodes.filter(n => n.role?.startsWith('watcher'));
-  const sdfNodes = nodes.filter(n => n.role === 'sdf_validator');
+  const sdfNodes = nodes.filter(n => n.role === 'sdf_validator' || n.role === 'validator_sdf');
   const unassigned = nodes.filter(n => !n.role || n.role === 'none');
 
   // Dynamic Center and Radius
@@ -214,7 +214,7 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes, selectedNodeId, onNo
       if (!selectedNode) return false;
 
       // If SDF is selected, show incoming connections (who connects TO this SDF node)
-      if (selectedNode.role === 'sdf_validator') {
+      if (selectedNode.role === 'sdf_validator' || selectedNode.role === 'validator_sdf') {
           return selectedNodeId === id2;
       } 
       // If Validator is selected, show outgoing connections (peers) AND incoming from watchers
@@ -336,7 +336,9 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes, selectedNodeId, onNo
                             const key = `link-${node.id}-${peerId}`;
                             
                             // Determine style based on roles involved
-                            const isSdfLink = node.role === 'sdf_validator' || nodes.find(n => n.id.toString() === peerId.toString())?.role === 'sdf_validator';
+                            const isSdfLink = node.role === 'sdf_validator' || node.role === 'validator_sdf' || 
+                                              nodes.find(n => n.id.toString() === peerId.toString())?.role === 'sdf_validator' || 
+                                              nodes.find(n => n.id.toString() === peerId.toString())?.role === 'validator_sdf';
                             
                             return (
                                 <line 

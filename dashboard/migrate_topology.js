@@ -10,21 +10,21 @@ const SDF_NODES = [
     hostname: 'sdf-testnet-1',
     ip_address: 'core-live-testnet-1.stellar.org',
     public_key: 'GDKXE2OZMJIPOSLNA6N6F2BVCI3O777I2OOC4BV7VOYUEHYX7RTRYA7Y',
-    role: 'sdf_validator',
+    role: 'validator_sdf',
     node_seed: 'SDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF'
   },
   {
     hostname: 'sdf-testnet-2',
     ip_address: 'core-live-testnet-2.stellar.org',
     public_key: 'GCUCJTIUXO4RYQ6LUCNYE1M7LS4H3TP36FX5LHURFC47XXCNBAD5SS9G',
-    role: 'sdf_validator',
+    role: 'validator_sdf',
     node_seed: 'SDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF'
   },
   {
     hostname: 'sdf-testnet-3',
     ip_address: 'core-live-testnet-3.stellar.org',
     public_key: 'GAC1991C0D9N9024D6S527479F296062758362391033285906752044',
-    role: 'sdf_validator',
+    role: 'validator_sdf',
     node_seed: 'SDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF'
   }
 ];
@@ -74,7 +74,7 @@ async function migrate() {
 
     // 4. Get all nodes
     const localValidatorsRes = await client.query("SELECT id, hostname FROM testnet_node_identity WHERE role = 'validator' ORDER BY id");
-    const sdfValidatorsRes = await client.query("SELECT id, hostname FROM testnet_node_identity WHERE role = 'sdf_validator' ORDER BY id");
+    const sdfValidatorsRes = await client.query("SELECT id, hostname FROM testnet_node_identity WHERE role = 'validator_sdf' ORDER BY id");
     const watchersRes = await client.query("SELECT id, hostname FROM testnet_node_identity WHERE role LIKE 'watcher%' ORDER BY id");
 
     const localValidators = localValidatorsRes.rows;

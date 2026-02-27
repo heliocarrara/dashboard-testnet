@@ -15,79 +15,77 @@ const NodeDetailsPanel: React.FC<NodeDetailsPanelProps> = ({ node, onClose, onEd
   const roleDisplay = node.role === 'validator_sdf' ? 'SDF Validator' : (node.role || 'Unassigned');
 
   return (
-    <div className="absolute bottom-4 left-4 w-[400px] bg-gray-900/95 backdrop-blur-xl border border-gray-700 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.5)] z-40 transition-all duration-300 animate-in slide-in-from-bottom-10 max-h-[calc(100vh-120px)] overflow-y-auto custom-scrollbar">
-      <div className="p-5">
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <div className={`p-2 rounded-lg ${isOnline ? 'bg-green-500/10 text-green-400' : 'bg-red-500/10 text-red-400'}`}>
-              <Server size={20} />
-            </div>
-            <div>
-              <h2 className="text-lg font-bold text-white flex items-center gap-2">
-                {node.hostname}
-              </h2>
-              <div className="flex items-center gap-2 mt-0.5">
-                <span className="px-1.5 py-0.5 rounded text-[10px] bg-gray-800 border border-gray-700 text-gray-400 font-mono">
-                  #{node.id}
-                </span>
-                <span className={`flex items-center gap-1 text-[10px] font-medium ${isOnline ? 'text-green-400' : 'text-red-400'}`}>
-                  <span className={`w-1.5 h-1.5 rounded-full ${isOnline ? 'bg-green-400 animate-pulse' : 'bg-red-500'}`}></span>
-                  {isOnline ? 'Online' : 'Offline'}
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center gap-1">
-            <button 
-                onClick={() => onEdit(node)}
-                className="p-1.5 hover:bg-blue-900/30 rounded text-blue-400 hover:text-blue-300 transition-colors"
-                title="Edit Configuration"
-            >
-                <Edit2 size={14} />
-            </button>
-            <button 
-                onClick={onClose}
-                className="p-1.5 hover:bg-gray-800 rounded text-gray-500 hover:text-white transition-colors"
-            >
-                <X size={16} />
-            </button>
-          </div>
+    <div className="flex-1 bg-gray-800 rounded-xl border border-gray-700 shadow-xl overflow-hidden flex flex-col min-h-0 h-full animate-in fade-in zoom-in-95 duration-200">
+        <div className="p-4 border-b border-gray-700 flex justify-between items-center bg-gray-800 shrink-0">
+             <h2 className="text-sm font-bold text-white flex items-center gap-2">
+                 <Server size={16} className="text-blue-400" />
+                 Node Details
+             </h2>
+             <button onClick={onClose} className="p-1 hover:bg-gray-700 rounded-lg text-gray-400 hover:text-white transition-colors">
+                 <X size={16} />
+             </button>
         </div>
-
-        <div className="space-y-4">
-          {/* Role Card */}
-          <div className="bg-gray-800/50 p-3 rounded-lg border border-gray-700/50">
-            <div className="flex items-center gap-2 mb-1 text-gray-400 text-[10px] font-bold uppercase tracking-wider">
-              <Shield size={12} />
-              Node Role
+        
+        <div className="p-5 overflow-y-auto custom-scrollbar flex-1">
+            <div className="flex items-center gap-4 mb-6">
+                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${isOnline ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`}>
+                      <Server size={24} />
+                 </div>
+                 <div>
+                      <h3 className="text-xl font-bold text-white">{node.hostname}</h3>
+                      <div className="flex items-center gap-2 mt-1">
+                          <span className="px-2 py-0.5 rounded text-xs bg-gray-900 border border-gray-700 text-gray-400 font-mono">#{node.id}</span>
+                          <span className={`flex items-center gap-1.5 text-xs font-medium px-2 py-0.5 rounded ${isOnline ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`}>
+                               <span className={`w-1.5 h-1.5 rounded-full ${isOnline ? 'bg-green-400 animate-pulse' : 'bg-red-500'}`}></span>
+                               {isOnline ? 'Online' : 'Offline'}
+                          </span>
+                      </div>
+                 </div>
             </div>
-            <p className="text-sm font-medium text-white capitalize">{roleDisplay}</p>
-          </div>
 
-          {/* Details Grid */}
-          <div className="grid grid-cols-2 gap-2">
-             <div className="p-2.5 bg-gray-800/30 rounded border border-gray-700/30">
-                <span className="text-[10px] text-gray-400 block mb-1">IP Address</span>
-                <span className="text-xs font-mono text-gray-300 break-all">{node.ip_address}</span>
-             </div>
-             <div className="p-2.5 bg-gray-800/30 rounded border border-gray-700/30">
-                <span className="text-[10px] text-gray-400 block mb-1">Config Status</span>
-                <span className="text-[10px] font-mono text-green-400 bg-green-900/20 px-1.5 py-0.5 rounded border border-green-900/30 inline-block">Synced</span>
-             </div>
-          </div>
+            <div className="space-y-4">
+                 {/* Role Card */}
+                 <div className="bg-gray-900/50 p-4 rounded-xl border border-gray-700/50">
+                     <div className="flex items-center gap-2 mb-2 text-gray-400 text-xs font-bold uppercase tracking-wider">
+                         <Shield size={14} />
+                         Node Role
+                     </div>
+                     <p className="text-base font-medium text-white capitalize pl-6">{roleDisplay}</p>
+                 </div>
 
-          {/* Monitor Button */}
-          {node.role && (
-            <button
-              onClick={() => onMonitor(node)}
-              className="w-full bg-blue-900/30 hover:bg-blue-900/50 text-blue-400 border border-blue-900/50 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2 mt-4"
-            >
-              <Activity size={16} />
-              Open Monitor
-            </button>
-          )}
+                 {/* Network Details */}
+                 <div className="grid grid-cols-1 gap-3">
+                     <div className="bg-gray-900/50 p-3 rounded-xl border border-gray-700/50">
+                         <span className="text-xs text-gray-500 uppercase font-bold tracking-wider block mb-1">IP Address</span>
+                         <span className="text-sm font-mono text-gray-300">{node.ip_address}</span>
+                     </div>
+                     <div className="bg-gray-900/50 p-3 rounded-xl border border-gray-700/50">
+                         <span className="text-xs text-gray-500 uppercase font-bold tracking-wider block mb-1">Public Key</span>
+                         <span className="text-xs font-mono text-gray-400 break-all">{node.public_key || 'Not Available'}</span>
+                     </div>
+                 </div>
+
+                 {/* Actions */}
+                 <div className="grid grid-cols-2 gap-3 pt-2">
+                     <button 
+                         onClick={() => onEdit(node)}
+                         className="flex items-center justify-center gap-2 p-2.5 rounded-lg bg-gray-700 hover:bg-gray-600 text-gray-200 text-sm font-medium transition-colors border border-gray-600"
+                     >
+                         <Edit2 size={16} />
+                         Configure
+                     </button>
+                     {node.role && (
+                         <button
+                             onClick={() => onMonitor(node)}
+                             className="flex items-center justify-center gap-2 p-2.5 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/30 text-sm font-medium transition-colors"
+                         >
+                             <Activity size={16} />
+                             Monitor
+                         </button>
+                     )}
+                 </div>
+            </div>
         </div>
-      </div>
     </div>
   );
 };
