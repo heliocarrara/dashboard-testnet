@@ -31,6 +31,7 @@ export default function AccountsPanel({ nodes = [] }: AccountsPanelProps) {
     // Inspect Modal State
     const [inspectModalOpen, setInspectModalOpen] = useState(false);
     const [selectedAccount, setSelectedAccount] = useState<Account | null>(null);
+    const [manualPublicKey, setManualPublicKey] = useState<string>('');
     const [inspectSource, setInspectSource] = useState<'public' | 'node'>('public');
     const [selectedNodeIp, setSelectedNodeIp] = useState<string>('');
     const [inspectResult, setInspectResult] = useState<any>(null);
@@ -198,7 +199,7 @@ export default function AccountsPanel({ nodes = [] }: AccountsPanelProps) {
         }
     };
 
-    const openInspectModal = (account: Account) => {
+    const openInspectModal = (account: Account | null = null) => {
         setSelectedAccount(account);
         setInspectResult(null);
         setInspectSource('public');
@@ -206,13 +207,18 @@ export default function AccountsPanel({ nodes = [] }: AccountsPanelProps) {
     };
 
     const handleInspect = async () => {
-        if (!selectedAccount) return;
+        const targetPublicKey = selectedAccount?.public_key || manualPublicKey;
+
+        if (!targetPublicKey) {
+            alert('Please select an account or enter a public key');
+            return;
+        }
         
         setInspectLoading(true);
         setInspectResult(null);
 
         try {
-            let url = `/api/accounts/query?publicKey=${selectedAccount.public_key}`;
+            let url = `/api/accounts/query?publicKey=${targetPublicKey}`;
             
             if (inspectSource === 'node') {
                 if (!selectedNodeIp) {
@@ -247,6 +253,13 @@ export default function AccountsPanel({ nodes = [] }: AccountsPanelProps) {
                     <p className="text-gray-400 text-sm">Manage testnet accounts and funding.</p>
                 </div>
                 <div className="flex gap-3">
+                    <button 
+                        onClick={() => openInspectModal(null)} 
+                        className="p-2 bg-gray-800 hover:bg-gray-700 rounded-lg text-gray-400 hover:text-white transition-colors border border-gray-700"
+                        title="Inspect Any Account"
+                    >
+                        <Search size={20} />
+                    </button>
                     <button 
                         onClick={fetchAccounts} 
                         className="p-2 bg-gray-800 hover:bg-gray-700 rounded-lg text-gray-400 hover:text-white transition-colors border border-gray-700"
@@ -368,9 +381,18 @@ export default function AccountsPanel({ nodes = [] }: AccountsPanelProps) {
                                                 target="_blank" 
                                                 rel="noopener noreferrer"
                                                 className="text-gray-600 hover:text-blue-400 opacity-0 group-hover/key:opacity-100 transition-opacity"
-                                                title="View on Explorer"
+                                                title="View on Stellar.Expert"
                                             >
                                                 <ExternalLink size={14} />
+                                            </a>
+                                            <a 
+                                                href={`https://testnet.stellarchain.io/address/${account.public_key}`} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer"
+                                                className="text-gray-600 hover:text-purple-400 opacity-0 group-hover/key:opacity-100 transition-opacity"
+                                                title="View on StellarChain.io"
+                                            >
+                                                <Globe size={14} />
                                             </a>
                                         </div>
                                         <div className="text-[10px] text-gray-600 font-mono mt-1 truncate max-w-[200px]" title="Secret Key (Click to copy)">
@@ -437,11 +459,72 @@ export default function AccountsPanel({ nodes = [] }: AccountsPanelProps) {
                         <div className="p-6 overflow-y-auto custom-scrollbar flex-1">
                             <div className="mb-6">
                                 <label className="text-xs text-gray-500 uppercase font-bold mb-1 block">Account</label>
-                                <div className="text-white font-medium text-lg">{selectedAccount.name}</div>
-                                <div className="text-gray-400 font-mono text-xs break-all bg-gray-900/50 p-2 rounded border border-gray-700 mt-1">
-                                    {selectedAccount.public_key}
-                                </div>
+                                {selectedAccount ? (
+                                    <>
+                                        <div className="text-white font-medium text-lg">{selectedAccount.name}</div>
+                                        <div className="text-gray-400 font-mono text-xs break-all bg-gray-900/50 p-2 rounded border border-gray-700 mt-1">
+                                            {selectedAccount.public_key}
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div className="space-y-2">
+                                        <select 
+                                            onChange={(e) => {
+                                                const acc = accounts.find(a => a.public_key === e.target.value);
+                                                if (acc) {
+                                                    setSelectedAccount(acc);
+                                                    setManualPublicKey('');
+                                                } else {
+                                                    setSelectedAccount(null);
+                                                }
+                                            }}
+                                            className="w-full bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500"
+                                        >
+                                            <option value="">Select a known account...</option>
+                                            {accounts.map(acc => (
+                                                <option key={acc.id} value={acc.public_key}>
+                                                    {acc.name} ({acc.public_key.substring(0, 8)}...)
+                                                </option>
+                                            ))}
+                                        </select>
+                                        <div className="text-center text-xs text-gray-500 font-bold uppercase">- OR -</div>
+                                        <input 
+                                            type="text" 
+                                            placeholder="Enter Public Key manually (G...)"
+                                            value={manualPublicKey}
+                                            onChange={(e) => {
+                                                setManualPublicKey(e.target.value);
+                                                setSelectedAccount(null);
+                                            }}
+                                            className="w-full bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500 font-mono"
+                                        />
+                                    </div>
+                                )}
                             </div>
+
+                            {/* External Links */}
+                            {(selectedAccount || manualPublicKey.length >= 50) && (
+                                <div className="flex gap-3 mb-6">
+                                    <a 
+                                        href={`https://testnet.stellarchain.io/address/${selectedAccount?.public_key || manualPublicKey}`} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="flex-1 bg-purple-500/10 hover:bg-purple-500/20 text-purple-400 border border-purple-500/30 p-3 rounded-lg flex items-center justify-center gap-2 transition-colors font-bold text-sm"
+                                    >
+                                        <Globe size={16} />
+                                        View on StellarChain.io
+                                    </a>
+                                    <a 
+                                        href={`https://stellar.expert/explorer/testnet/account/${selectedAccount?.public_key || manualPublicKey}`} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="flex-1 bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 border border-blue-500/30 p-3 rounded-lg flex items-center justify-center gap-2 transition-colors font-bold text-sm"
+                                    >
+                                        <ExternalLink size={16} />
+                                        View on Stellar.Expert
+                                    </a>
+                                </div>
+                            )}
 
                             <div className="bg-gray-900/50 p-4 rounded-xl border border-gray-700 mb-6">
                                 <label className="text-xs text-gray-500 uppercase font-bold mb-3 block">Data Source</label>

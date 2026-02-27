@@ -65,6 +65,9 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
         message: string,
         details?: any
     }>>([]);
+    
+    // View Mode State
+    const [viewMode, setViewMode] = useState<'generator' | 'manual'>('generator');
 
     const addLog = (type: 'info' | 'success' | 'error' | 'warning', message: string, details?: any) => {
         setLogs(prev => [{
@@ -86,10 +89,35 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
 
     useEffect(() => {
         fetchAccounts();
+        fetchHistory();
         if (horizonNodes.length > 0) {
             setSelectedNode(horizonNodes[0].ip_address);
         }
     }, [nodes]);
+
+    const fetchHistory = async () => {
+        try {
+            const res = await fetch('/api/transactions/history?limit=50');
+            const data = await res.json();
+            
+            if (data.transactions) {
+                const mappedHistory: TransactionRecord[] = data.transactions.map((tx: any) => ({
+                    id: tx.id.toString(),
+                    timestamp: new Date(tx.created_at),
+                    source: tx.source_account, // Name mapping happens in render or needs account list
+                    destination: tx.destination_account,
+                    amount: tx.amount,
+                    status: tx.status,
+                    hash: tx.hash,
+                    message: tx.error_message || (tx.status === 'success' ? 'Confirmed' : 'Failed'),
+                    type: 'auto' // DB doesn't distinguish yet, assume auto or generic
+                }));
+                setTransactions(mappedHistory);
+            }
+        } catch (error) {
+            console.error('Failed to fetch transaction history:', error);
+        }
+    };
 
     const fetchAccounts = async () => {
         setLoading(true);
@@ -103,6 +131,56 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
         } finally {
             setLoading(false);
         }
+    };
+
+    const streamTransaction = async (payload: any, logPrefix: string = '') => {
+        const res = await fetch('/api/transactions/send', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        const reader = res.body?.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+        let finalResult = null;
+        let errorMsg = null;
+
+        if (!reader) throw new Error('Response body is null');
+
+        while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+
+            buffer += decoder.decode(value, { stream: true });
+            const lines = buffer.split('\n');
+            buffer = lines.pop() || '';
+
+            for (const line of lines) {
+                if (!line.trim()) continue;
+                try {
+                    const msg = JSON.parse(line);
+                    if (msg.type === 'log') {
+                        addLog('info', `${logPrefix}${msg.message}`);
+                    } else if (msg.type === 'result') {
+                        finalResult = msg.data;
+                    } else if (msg.type === 'error') {
+                        errorMsg = msg.error;
+                        // Detailed error handling if needed
+                        if (msg.details) {
+                             addLog('error', `${logPrefix}Details: ${msg.details}`);
+                        }
+                    }
+                } catch (e) {
+                    console.error('Error parsing stream line:', line);
+                }
+            }
+        }
+        
+        if (errorMsg) throw new Error(errorMsg);
+        if (!finalResult && !res.ok) throw new Error('Transaction failed');
+        
+        return finalResult;
     };
 
     const handleSendTransaction = async () => {
@@ -130,30 +208,13 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
         };
 
         try {
-            addLog('info', 'Building transaction envelope...');
-            
-            await new Promise(r => setTimeout(r, 500));
-            addLog('info', `Signing transaction with Source Account Secret Key...`);
-            
-            await new Promise(r => setTimeout(r, 500));
-            addLog('info', `Submitting to node: ${selectedNode}...`);
-
-            const res = await fetch('/api/transactions/send', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    sourceId: sourceAccount,
-                    destinationAddress: destinationAccount,
-                    amount,
-                    nodeIp: selectedNode
-                })
+            // Use streaming helper instead of direct fetch
+            const data = await streamTransaction({
+                sourceId: sourceAccount,
+                destinationAddress: destinationAccount,
+                amount,
+                nodeIp: selectedNode
             });
-
-            const data = await res.json();
-
-            if (!res.ok) {
-                throw new Error(data.error || 'Transaction failed');
-            }
 
             addLog('success', `Transaction Confirmed! Hash: ${data.hash}`);
             addLog('info', `Result Code: ${data.result?.result_xdr ? 'tx_success' : 'unknown'}`, data.result);
@@ -225,37 +286,21 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
             addLog('info', `[${i+1}/${genCount}] sending ${currentAmount} XLM from ${source.name} to ${dest.name}...`);
 
             try {
-                const res = await fetch('/api/transactions/send', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        sourceId: source.id,
-                        destinationAddress: dest.public_key,
-                        amount: currentAmount,
-                        nodeIp: node
-                    })
+                const data = await streamTransaction({
+                    sourceId: source.id,
+                    destinationAddress: dest.public_key,
+                    amount: currentAmount,
+                    nodeIp: node
+                }, `[${i+1}/${genCount}] `);
+
+                success++;
+                addLog('success', `[${i+1}/${genCount}] Success. Hash: ${data.hash?.substring(0,10)}...`);
+                addTransaction({
+                    ...newTx,
+                    status: 'success',
+                    hash: data.hash,
+                    message: 'Success'
                 });
-
-                const data = await res.json();
-
-                if (res.ok) {
-                    success++;
-                    addLog('success', `[${i+1}/${genCount}] Success. Hash: ${data.hash?.substring(0,10)}...`);
-                    addTransaction({
-                        ...newTx,
-                        status: 'success',
-                        hash: data.hash,
-                        message: 'Success'
-                    });
-                } else {
-                    fail++;
-                    addLog('error', `[${i+1}/${genCount}] Failed: ${data.error || 'Unknown'}`);
-                    addTransaction({
-                        ...newTx,
-                        status: 'error',
-                        message: data.error || 'Failed'
-                    });
-                }
             } catch (e: unknown) {
                 fail++;
                 const err = e as Error;
@@ -302,144 +347,163 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
                 </button>
             </div>
 
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+            <div className="flex flex-col gap-6">
                 
-                {/* Left Column: Manual Transaction */}
-                <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 flex flex-col gap-4">
-                    <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                        <Send size={20} className="text-blue-400" />
+                {/* Control Tabs */}
+                <div className="flex gap-4 border-b border-gray-700 pb-2">
+                    <button 
+                        onClick={() => setViewMode('generator')}
+                        className={`flex items-center gap-2 pb-2 px-4 border-b-2 transition-colors ${viewMode === 'generator' ? 'border-purple-500 text-purple-400 font-bold' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
+                    >
+                        <Activity size={18} />
+                        Traffic Generator
+                    </button>
+                    <button 
+                        onClick={() => setViewMode('manual')}
+                        className={`flex items-center gap-2 pb-2 px-4 border-b-2 transition-colors ${viewMode === 'manual' ? 'border-blue-500 text-blue-400 font-bold' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
+                    >
+                        <Send size={18} />
                         Manual Transfer
-                    </h3>
-                    
-                    <div className="space-y-4">
-                        <div>
-                            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Source Account (DB)</label>
-                            <select 
-                                value={sourceAccount}
-                                onChange={(e) => setSourceAccount(e.target.value)}
-                                className="w-full bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500"
-                            >
-                                <option value="">Select Source Account</option>
-                                {accounts.map(acc => (
-                                    <option key={acc.id} value={acc.id}>
-                                        {acc.name} ({acc.public_key.substring(0, 8)}...)
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+                    </button>
+                </div>
 
-                        <div>
-                            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Destination Address</label>
-                            <div className="flex gap-2">
+                {/* View Content */}
+                {viewMode === 'manual' ? (
+                    <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 flex flex-col gap-4 animate-in fade-in zoom-in duration-300">
+                        <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                            <Send size={20} className="text-blue-400" />
+                            Manual Transfer
+                        </h3>
+                        
+                        <div className="space-y-4">
+                            <div>
+                                <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Source Account (DB)</label>
                                 <select 
-                                    onChange={(e) => setDestinationAccount(e.target.value)}
-                                    className="w-1/3 bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500"
+                                    value={sourceAccount}
+                                    onChange={(e) => setSourceAccount(e.target.value)}
+                                    className="w-full bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500"
                                 >
-                                    <option value="">Select DB Account</option>
+                                    <option value="">Select Source Account</option>
                                     {accounts.map(acc => (
-                                        <option key={acc.id} value={acc.public_key}>
-                                            {acc.name}
+                                        <option key={acc.id} value={acc.id}>
+                                            {acc.name} ({acc.public_key.substring(0, 8)}...)
                                         </option>
                                     ))}
                                 </select>
-                                <input 
-                                    type="text" 
-                                    value={destinationAccount}
-                                    onChange={(e) => setDestinationAccount(e.target.value)}
-                                    placeholder="G..."
-                                    className="flex-1 bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500 font-mono"
-                                />
                             </div>
-                        </div>
 
-                        <div className="grid grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Amount (XLM)</label>
+                                <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Destination Address</label>
+                                <div className="flex gap-2">
+                                    <select 
+                                        onChange={(e) => setDestinationAccount(e.target.value)}
+                                        className="w-1/3 bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500"
+                                    >
+                                        <option value="">Select DB Account</option>
+                                        {accounts.map(acc => (
+                                            <option key={acc.id} value={acc.public_key}>
+                                                {acc.name}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    <input 
+                                        type="text" 
+                                        value={destinationAccount}
+                                        onChange={(e) => setDestinationAccount(e.target.value)}
+                                        placeholder="G..."
+                                        className="flex-1 bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500 font-mono"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Amount (XLM)</label>
+                                    <input 
+                                        type="number" 
+                                        value={amount}
+                                        onChange={(e) => setAmount(e.target.value)}
+                                        className="w-full bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Target Node</label>
+                                    <select 
+                                        value={selectedNode}
+                                        onChange={(e) => setSelectedNode(e.target.value)}
+                                        className="w-full bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500"
+                                    >
+                                        <option value="">Select Node</option>
+                                        {horizonNodes.map(node => (
+                                            <option key={node.id} value={node.ip_address}>
+                                                {node.hostname} ({node.ip_address})
+                                            </option>
+                                        ))}
+                                        <option value="custom">Custom IP...</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button 
+                                onClick={handleSendTransaction}
+                                disabled={txStatus.type === 'loading'}
+                                className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                {txStatus.type === 'loading' ? <RefreshCw className="animate-spin" /> : <Send size={18} />}
+                                Send Transaction
+                            </button>
+
+                            {txStatus.message && (
+                                <div className={`p-3 rounded-lg text-sm border ${txStatus.type === 'success' ? 'bg-green-900/30 border-green-800 text-green-400' : txStatus.type === 'error' ? 'bg-red-900/30 border-red-800 text-red-400' : 'bg-blue-900/30 border-blue-800 text-blue-400'}`}>
+                                    {txStatus.message}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                ) : (
+                    <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 flex flex-col gap-4 animate-in fade-in zoom-in duration-300">
+                        <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                            <Activity size={20} className="text-purple-400" />
+                            Traffic Generator
+                        </h3>
+                        <p className="text-gray-400 text-sm">Generate random transactions between existing accounts.</p>
+                        
+                        <div className="flex items-center gap-4">
+                            <div className="flex-1">
+                                <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Transaction Count</label>
                                 <input 
                                     type="number" 
-                                    value={amount}
-                                    onChange={(e) => setAmount(e.target.value)}
-                                    className="w-full bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500"
+                                    value={genCount}
+                                    onChange={(e) => setGenCount(parseInt(e.target.value))}
+                                    className="w-full bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3"
                                 />
                             </div>
-                            <div>
-                                <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Target Node</label>
-                                <select 
-                                    value={selectedNode}
-                                    onChange={(e) => setSelectedNode(e.target.value)}
-                                    className="w-full bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500"
-                                >
-                                    <option value="">Select Node</option>
-                                    {horizonNodes.map(node => (
-                                        <option key={node.id} value={node.ip_address}>
-                                            {node.hostname} ({node.ip_address})
-                                        </option>
-                                    ))}
-                                    <option value="custom">Custom IP...</option>
-                                </select>
-                            </div>
+                            <button 
+                                onClick={handleGenerateTraffic}
+                                disabled={isGenerating}
+                                className="mt-5 bg-purple-600 hover:bg-purple-500 text-white font-bold px-6 py-3 rounded-lg transition-colors flex items-center gap-2 disabled:opacity-50"
+                            >
+                                {isGenerating ? <RefreshCw className="animate-spin" /> : <Play size={18} />}
+                                Start
+                            </button>
                         </div>
 
-                        <button 
-                            onClick={handleSendTransaction}
-                            disabled={txStatus.type === 'loading'}
-                            className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                            {txStatus.type === 'loading' ? <RefreshCw className="animate-spin" /> : <Send size={18} />}
-                            Send Transaction
-                        </button>
-
-                        {txStatus.message && (
-                            <div className={`p-3 rounded-lg text-sm border ${txStatus.type === 'success' ? 'bg-green-900/30 border-green-800 text-green-400' : txStatus.type === 'error' ? 'bg-red-900/30 border-red-800 text-red-400' : 'bg-blue-900/30 border-blue-800 text-blue-400'}`}>
-                                {txStatus.message}
+                        {genProgress && (
+                            <div className="space-y-2">
+                                <div className="flex justify-between text-xs text-gray-400">
+                                    <span>Progress: {genProgress.current} / {genProgress.total}</span>
+                                    <span>Success: {genProgress.success} | Fail: {genProgress.fail}</span>
+                                </div>
+                                <div className="w-full bg-gray-700 h-2 rounded-full overflow-hidden">
+                                    <div 
+                                        className="bg-purple-500 h-full transition-all duration-300"
+                                        style={{ width: `${(genProgress.current / genProgress.total) * 100}%` }}
+                                    ></div>
+                                </div>
                             </div>
                         )}
                     </div>
-                </div>
-
-                {/* Right Column: Traffic Generator */}
-                <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 flex flex-col gap-4">
-                    <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                        <Activity size={20} className="text-purple-400" />
-                        Traffic Generator
-                    </h3>
-                    <p className="text-gray-400 text-sm">Generate random transactions between existing accounts.</p>
-                    
-                    <div className="flex items-center gap-4">
-                        <div className="flex-1">
-                            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Transaction Count</label>
-                            <input 
-                                type="number" 
-                                value={genCount}
-                                onChange={(e) => setGenCount(parseInt(e.target.value))}
-                                className="w-full bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3"
-                            />
-                        </div>
-                        <button 
-                            onClick={handleGenerateTraffic}
-                            disabled={isGenerating}
-                            className="mt-5 bg-purple-600 hover:bg-purple-500 text-white font-bold px-6 py-3 rounded-lg transition-colors flex items-center gap-2 disabled:opacity-50"
-                        >
-                            {isGenerating ? <RefreshCw className="animate-spin" /> : <Play size={18} />}
-                            Start
-                        </button>
-                    </div>
-
-                    {genProgress && (
-                        <div className="space-y-2">
-                            <div className="flex justify-between text-xs text-gray-400">
-                                <span>Progress: {genProgress.current} / {genProgress.total}</span>
-                                <span>Success: {genProgress.success} | Fail: {genProgress.fail}</span>
-                            </div>
-                            <div className="w-full bg-gray-700 h-2 rounded-full overflow-hidden">
-                                <div 
-                                    className="bg-purple-500 h-full transition-all duration-300"
-                                    style={{ width: `${(genProgress.current / genProgress.total) * 100}%` }}
-                                ></div>
-                            </div>
-                        </div>
-                    )}
-                </div>
+                )}
             </div>
 
             {/* Transaction History & Detailed Logs */}
@@ -499,10 +563,15 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
                                     <tr key={tx.id} className="hover:bg-gray-700/30 transition-colors">
                                         <td className="p-3 font-mono text-xs">{tx.timestamp.toLocaleTimeString()}</td>
                                         <td className="p-3">
-                                            <div className="flex flex-col">
-                                                <span className="text-white text-xs">{tx.source}</span>
-                                                <span className="text-gray-500 text-[10px]">↓</span>
-                                                <span className="text-white text-xs">{tx.destination}</span>
+                                            <div className="flex flex-col gap-1">
+                                                <div className="flex items-center gap-1 text-xs text-white" title={tx.source}>
+                                                    <span className="text-gray-500 text-[10px] w-8">From:</span>
+                                                    {accounts.find(a => a.public_key === tx.source || a.name === tx.source)?.name || (tx.source.length > 20 ? tx.source.substring(0, 8) + '...' : tx.source)}
+                                                </div>
+                                                <div className="flex items-center gap-1 text-xs text-white" title={tx.destination}>
+                                                    <span className="text-gray-500 text-[10px] w-8">To:</span>
+                                                    {accounts.find(a => a.public_key === tx.destination || a.name === tx.destination)?.name || (tx.destination.length > 20 ? tx.destination.substring(0, 8) + '...' : tx.destination)}
+                                                </div>
                                             </div>
                                         </td>
                                         <td className="p-3 text-white font-mono">{tx.amount} XLM</td>
@@ -523,7 +592,7 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
                                         </td>
                                         <td className="p-3 font-mono text-xs max-w-[200px] truncate" title={tx.hash || tx.message}>
                                             {tx.hash ? (
-                                                <a href={`https://horizon-testnet.stellar.org/transactions/${tx.hash}`} target="_blank" rel="noreferrer" className="text-blue-400 hover:underline flex items-center gap-1">
+                                                <a href={`https://testnet.stellarchain.io/transaction/${tx.hash}`} target="_blank" rel="noreferrer" className="text-blue-400 hover:underline flex items-center gap-1">
                                                     {tx.hash.substring(0, 12)}... <ExternalLink size={10} />
                                                 </a>
                                             ) : (
