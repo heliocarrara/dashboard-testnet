@@ -8,6 +8,7 @@ import TransactionInjection from '@/components/TransactionInjection';
 import Navbar from '@/components/Navbar';
 import EditNodeModal from '@/components/EditNodeModal';
 import NodeDetailsPanel from '@/components/NodeDetailsPanel';
+import AccountsPanel from '@/components/AccountsPanel';
 import MonitoringModal from '@/components/MonitoringModal';
 
 interface Node {
@@ -133,7 +134,7 @@ export default function Home() {
 
     return content;
   };
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'nodes' | 'settings'>('dashboard');
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'nodes' | 'settings' | 'accounts'>('dashboard');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const fetchNodes = async () => {
@@ -371,28 +372,54 @@ export default function Home() {
                                                 <span className="font-bold text-gray-200">{node.hostname}</span>
                                                 <span className="font-mono text-[10px] text-gray-500">{node.ip_address}</span>
                                                 <div className="mt-1 flex items-center gap-2">
-                                                    <span className={`w-1.5 h-1.5 rounded-full ${node.status === 'online' ? 'bg-green-500' : 'bg-red-500'}`}></span>
-                                                    <span className="text-[10px] text-gray-400 uppercase">{node.status}</span>
+                                                    <span className={`w-1.5 h-1.5 rounded-full ${node.status === 'online' || node.role === 'validator_sdf' ? 'bg-green-500' : 'bg-red-500'}`}></span>
+                                                    <span className="text-[10px] text-gray-400 uppercase">
+                                                        {node.role === 'validator_sdf' ? 'online' : node.status}
+                                                    </span>
                                                 </div>
                                             </div>
                                         </td>
                                         <td className="px-4 py-3">
-                                            <select
-                                                value={node.role || 'none'}
-                                                onChange={(e) => handleUpdate({ ...node, role: e.target.value })}
-                                                className="bg-gray-900 border border-gray-600 rounded px-2 py-1 text-[10px] focus:border-blue-500 outline-none w-full max-w-[120px]"
-                                            >
-                                                <option value="none">None</option>
-                                                <option value="validator">Validator</option>
-                                                <option value="watcher_horizon">Watcher (H)</option>
-                                                <option value="watcher_rpc">Watcher (R)</option>
-                                            </select>
+                                            {(() => {
+                                                switch(node.role) {
+                                                    case 'validator':
+                                                        return (
+                                                            <span className="px-2 py-0.5 rounded text-[9px] font-bold border bg-purple-500/10 text-purple-400 border-purple-500/20 uppercase tracking-wider shadow-[0_0_10px_rgba(168,85,247,0.1)]">
+                                                                Validator
+                                                            </span>
+                                                        );
+                                                    case 'validator_sdf':
+                                                        return (
+                                                            <span className="px-2 py-0.5 rounded text-[9px] font-bold border bg-amber-500/10 text-amber-400 border-amber-500/20 uppercase tracking-wider shadow-[0_0_10px_rgba(251,191,36,0.1)]">
+                                                                SDF Validator
+                                                            </span>
+                                                        );
+                                                    case 'watcher_horizon':
+                                                        return (
+                                                            <span className="px-2 py-0.5 rounded text-[9px] font-bold border bg-blue-500/10 text-blue-400 border-blue-500/20 uppercase tracking-wider shadow-[0_0_10px_rgba(59,130,246,0.1)]">
+                                                                Watcher (H)
+                                                            </span>
+                                                        );
+                                                    case 'watcher_rpc':
+                                                        return (
+                                                            <span className="px-2 py-0.5 rounded text-[9px] font-bold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 uppercase tracking-wider shadow-[0_0_10px_rgba(16,185,129,0.1)]">
+                                                                Watcher (R)
+                                                            </span>
+                                                        );
+                                                    default:
+                                                        return (
+                                                            <span className="px-2 py-0.5 rounded text-[9px] font-bold border bg-gray-800 text-gray-500 border-gray-700 uppercase tracking-wider">
+                                                                Unassigned
+                                                            </span>
+                                                        );
+                                                }
+                                            })()}
                                         </td>
                                          <td className="px-4 py-3 text-center">
                                              <span className="text-xs font-mono text-gray-400">{node.ordem || '-'}</span>
                                         </td>
                                         <td className="px-4 py-3">
-                                            {node.role && node.role.includes('watcher') ? (
+                                            {node.role ? (
                                                 <button
                                                     onClick={() => setMonitoringNode(node)}
                                                     className="bg-blue-900/30 hover:bg-blue-900/50 text-blue-400 border border-blue-900/50 px-3 py-1.5 rounded text-xs font-medium transition-colors flex items-center gap-1.5"
@@ -505,6 +532,10 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+        )}
+
+        {activeTab === 'accounts' && (
+            <AccountsPanel nodes={nodes} />
         )}
       </main>
     </div>

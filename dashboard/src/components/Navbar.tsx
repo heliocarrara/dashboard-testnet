@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import { Activity, LayoutGrid, Server, Settings, X } from 'lucide-react';
+import { Activity, LayoutGrid, Server, Settings, X, Wallet } from 'lucide-react';
 
 interface NavbarProps {
-    activeTab: 'dashboard' | 'nodes' | 'settings';
-    onTabChange: (tab: 'dashboard' | 'nodes' | 'settings') => void;
+    activeTab: 'dashboard' | 'nodes' | 'settings' | 'accounts';
+    onTabChange: (tab: 'dashboard' | 'nodes' | 'settings' | 'accounts') => void;
     isOpen?: boolean;
     onClose?: () => void;
 }
@@ -58,6 +58,13 @@ export default function Navbar({ activeTab, onTabChange, isOpen = false, onClose
         >
             <Server size={20} className={activeTab === 'nodes' ? "text-purple-400" : ""} />
             <span className="font-medium">Nodes</span>
+        </button>
+        <button 
+            onClick={() => onTabChange('accounts')}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${activeTab === 'accounts' ? 'bg-gray-800 text-white border border-gray-700' : 'text-gray-400 hover:bg-gray-800/50 hover:text-white'}`}
+        >
+            <Wallet size={20} className={activeTab === 'accounts' ? "text-green-400" : ""} />
+            <span className="font-medium">Accounts</span>
         </button>
         <button 
             onClick={() => onTabChange('settings')}

@@ -93,6 +93,7 @@ const EditNodeModal: React.FC<EditNodeModalProps> = ({ node, isOpen, onClose, on
                     >
                         <option value="none">None</option>
                         <option value="validator">Validator</option>
+                        <option value="validator_sdf">SDF Validator</option>
                         <option value="watcher_horizon">Watcher (Horizon)</option>
                         <option value="watcher_rpc">Watcher (RPC)</option>
                     </select>
