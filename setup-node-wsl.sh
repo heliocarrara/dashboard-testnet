@@ -20,7 +20,7 @@ DB_URL="postgresql://neondb_owner:npg_QBCYNh9m3Uvc@ep-rapid-snow-ac6jntdp-pooler
 TABLE_IDENTITY="testnet_node_identity"
 
 IMAGE="docker.io/stellar/quickstart:testing"
-VOLUME_PATH="/srv/stellar_testnet_data"
+VOLUME_PATH="./stellar_data"
 
 # SDF Testnet Nodes (for Quorum & Peers)
 SDF_PEERS="core-testnet1.stellar.org:11625,core-testnet2.stellar.org:11625,core-testnet3.stellar.org:11625"
@@ -29,7 +29,7 @@ SDF_PEERS="core-testnet1.stellar.org:11625,core-testnet2.stellar.org:11625,core-
 # Helpers
 # ------------------------------------------------------------------------------
 run_sql_cmd() {
-    docker run --rm \
+    docker.exe run --rm \
       --entrypoint /bin/bash \
       "$IMAGE" \
       -c "psql \"$DB_URL\" -t -c \"$1\""
@@ -38,13 +38,13 @@ run_sql_cmd() {
 # ------------------------------------------------------------------------------
 # 1. Prepare Environment
 # ------------------------------------------------------------------------------
-command -v docker >/dev/null || {
+command -v docker.exe >/dev/null || {
     echo -e "${RED}Docker não encontrado! Instale o Docker primeiro.${NC}"
     exit 1
 }
 
 # Verifica se o Docker Daemon está acessível (WSL integration check)
-if ! docker info >/dev/null 2>&1; then
+if ! docker.exe info >/dev/null 2>&1; then
     echo -e "${RED}Erro: Não foi possível conectar ao Docker Daemon.${NC}"
     echo -e "${YELLOW}Se você está usando WSL 2, verifique se a integração está ativada no Docker Desktop:${NC}"
     echo -e "1. Abra o Docker Desktop"
@@ -55,8 +55,8 @@ if ! docker info >/dev/null 2>&1; then
 fi
 
 echo -e "${BLUE}🔄 Preparando ambiente...${NC}"
-sudo mkdir -p $VOLUME_PATH
-sudo chown $(whoami):$(whoami) $VOLUME_PATH
+mkdir -p $VOLUME_PATH
+chown $(whoami):$(whoami) $VOLUME_PATH
 
 # ------------------------------------------------------------------------------
 # 2. Check Identity & Register
@@ -72,7 +72,7 @@ EXISTING=$(run_sql_cmd "SELECT node_seed || '|' || public_key || '|' || COALESCE
 if [ -z "$EXISTING" ]; then
     echo -e "${YELLOW}   -> Novo nó detectado. Gerando chaves...${NC}"
     
-    KEYPAIR=$(docker run --rm --entrypoint /bin/bash "$IMAGE" -c "stellar-core gen-seed")
+    KEYPAIR=$(docker.exe run --rm --entrypoint /bin/bash "$IMAGE" -c "stellar-core gen-seed")
     SECRET_SEED=$(echo "$KEYPAIR" | grep "Secret seed:" | awk '{print $3}')
     PUBLIC_KEY=$(echo "$KEYPAIR" | grep "Public:" | awk '{print $2}')
     
@@ -252,5 +252,5 @@ EOF
 # 7. Start
 # ------------------------------------------------------------------------------
 echo -e "${GREEN}🚀 Iniciando nó Stellar ($EXISTING_ROLE) com serviços: $SERVICES_TO_ENABLE...${NC}"
-docker compose up -d
-docker logs -f stellar-node
+docker.exe compose up -d
+docker.exe logs -f stellar-node
