@@ -19,9 +19,15 @@ export async function POST(request: Request) {
                 controller.enqueue(encoder.encode(JSON.stringify({ type: 'error', error, details }) + '\n'));
             };
 
+            let sourceAccount: any = null;
+            let destinationAddress: string = '';
+            let amount: string = '';
+
             try {
                 const body = await request.json();
-                const { sourceId, destinationAddress, amount, nodeIp } = body;
+                const { sourceId, nodeIp } = body;
+                destinationAddress = body.destinationAddress;
+                amount = body.amount;
 
                 if (!sourceId || !destinationAddress || !amount || !nodeIp) {
                     sendError('Missing required fields');
@@ -39,7 +45,7 @@ export async function POST(request: Request) {
                     return;
                 }
                 
-                const sourceAccount = result.rows[0];
+                sourceAccount = result.rows[0];
                 const sourceKeypair = Keypair.fromSecret(sourceAccount.secret_key);
                 sendLog(`Source account loaded: ${sourceAccount.public_key.substring(0, 8)}...`);
 
@@ -137,11 +143,13 @@ export async function POST(request: Request) {
                 
                 // Save failed transaction to DB
                 try {
-                    await pool.query(
-                        `INSERT INTO transactions (hash, source_account, destination_account, amount, status, error_message) 
-                         VALUES ($1, $2, $3, $4, 'failed', $5)`,
-                        [null, sourceAccount?.public_key || 'unknown', destinationAddress, amount, errorMessage]
-                    );
+                    if (sourceAccount && destinationAddress && amount) {
+                        await pool.query(
+                            `INSERT INTO transactions (hash, source_account, destination_account, amount, status, error_message) 
+                             VALUES ($1, $2, $3, $4, 'failed', $5)`,
+                            [null, sourceAccount.public_key, destinationAddress, amount, errorMessage]
+                        );
+                    }
                 } catch (dbError) {
                     console.error('Failed to save failed transaction:', dbError);
                 }
