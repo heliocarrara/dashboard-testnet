@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Plus, Trash2, Wallet, RefreshCw, Copy, ExternalLink, Coins, Search, X, Server, Globe } from 'lucide-react';
+import { Plus, Trash2, Wallet, RefreshCw, Copy, ExternalLink, Coins, Search, X, Server, Globe, AlertTriangle } from 'lucide-react';
 
 interface Account {
     id: number;

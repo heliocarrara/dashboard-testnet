@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import pool from '@/lib/db';
-import { Horizon, Keypair, TransactionBuilder, Asset, Networks, Operation } from 'stellar-sdk';
+import { Horizon, Keypair, TransactionBuilder, Asset, Networks, Operation, BASE_FEE } from 'stellar-sdk';
 
 export async function POST(request: Request) {
     try {
@@ -34,14 +34,14 @@ export async function POST(request: Request) {
                     : `http://${ip}:8000`;
                 
                 console.log(`Attempting transaction via ${serverUrl}...`);
-                const server = new Horizon.Server(serverUrl);
+                const server = new Horizon.Server(serverUrl, { allowHttp: true });
 
                 // Load Account
                 const source = await server.loadAccount(sourceKeypair.publicKey());
 
                 // Build Transaction
                 const transaction = new TransactionBuilder(source, {
-                    fee: Horizon.BASE_FEE,
+                    fee: BASE_FEE,
                     networkPassphrase: Networks.TESTNET
                 })
                 .addOperation(

@@ -9,7 +9,7 @@ import Navbar from '@/components/Navbar';
 import EditNodeModal from '@/components/EditNodeModal';
 import NodeDetailsPanel from '@/components/NodeDetailsPanel';
 import AccountsPanel from '@/components/AccountsPanel';
-import TransactionsPanel from '@/components/TransactionsPanel';
+import TransactionsPanel from '../components/TransactionsPanel';
 import MonitoringModal from '@/components/MonitoringModal';
 
 interface Node {

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ArrowRightLeft, Send, Play, Server, RefreshCw, Activity } from 'lucide-react';
+import { ArrowRightLeft, Send, Play, Server, RefreshCw, Activity, Filter, CheckCircle, XCircle, Info, Clock, Hash, ExternalLink, Download } from 'lucide-react';
 
 interface Account {
     id: number;
@@ -12,8 +12,28 @@ interface Account {
     balance?: string;
 }
 
+interface Node {
+    id: number;
+    hostname: string;
+    ip_address: string;
+    role: string | null;
+}
+
+interface TransactionRecord {
+    id: string;
+    timestamp: Date;
+    source: string;
+    destination: string;
+    amount: string;
+    status: 'success' | 'error' | 'pending';
+    hash?: string;
+    message?: string;
+    node?: string;
+    type: 'manual' | 'auto';
+}
+
 interface TransactionsPanelProps {
-    nodes?: any[];
+    nodes?: Node[];
 }
 
 export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps) {
@@ -32,21 +52,32 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
     const [isGenerating, setIsGenerating] = useState(false);
     const [genProgress, setGenProgress] = useState<{current: number, total: number, success: number, fail: number} | null>(null);
 
-    // Transaction Log State
+    // Transaction History State
+    const [transactions, setTransactions] = useState<TransactionRecord[]>([]);
+    const [filterStatus, setFilterStatus] = useState<'all' | 'success' | 'error'>('all');
+    const [filterType, setFilterType] = useState<'all' | 'manual' | 'auto'>('all');
+
+    // Logs (Ephemeral console)
     const [logs, setLogs] = useState<Array<{
         id: string, 
         timestamp: string, 
         type: 'info' | 'success' | 'error' | 'warning', 
-        message: string
+        message: string,
+        details?: any
     }>>([]);
 
-    const addLog = (type: 'info' | 'success' | 'error' | 'warning', message: string) => {
+    const addLog = (type: 'info' | 'success' | 'error' | 'warning', message: string, details?: any) => {
         setLogs(prev => [{
             id: Math.random().toString(36).substring(7),
             timestamp: new Date().toLocaleTimeString(),
             type,
-            message
-        }, ...prev].slice(0, 100)); // Keep last 100 logs
+            message,
+            details
+        }, ...prev].slice(0, 200)); 
+    };
+
+    const addTransaction = (tx: TransactionRecord) => {
+        setTransactions(prev => [tx, ...prev]);
     };
 
     const horizonNodes = nodes.filter(n => 
@@ -81,13 +112,26 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
             return;
         }
 
+        const sourceAccName = accounts.find(a => a.id.toString() === sourceAccount)?.name || sourceAccount;
+        
         setTxStatus({ type: 'loading', message: 'Submitting transaction...' });
-        addLog('info', `Initiating transaction: ${amount} XLM from Account #${sourceAccount} to ${destinationAccount.substring(0, 8)}...`);
+        addLog('info', `Initiating transaction: ${amount} XLM from ${sourceAccName} to ${destinationAccount.substring(0, 8)}...`);
+
+        const txId = Math.random().toString(36).substring(7);
+        const newTx: TransactionRecord = {
+            id: txId,
+            timestamp: new Date(),
+            source: sourceAccName,
+            destination: destinationAccount,
+            amount: amount,
+            status: 'pending',
+            node: selectedNode,
+            type: 'manual'
+        };
 
         try {
             addLog('info', 'Building transaction envelope...');
             
-            // Simulate step delay for visualization if desired, or just log
             await new Promise(r => setTimeout(r, 500));
             addLog('info', `Signing transaction with Source Account Secret Key...`);
             
@@ -112,16 +156,28 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
             }
 
             addLog('success', `Transaction Confirmed! Hash: ${data.hash}`);
-            addLog('info', `Result Code: ${data.result?.result_xdr ? 'tx_success' : 'unknown'}`); // Simplified
+            addLog('info', `Result Code: ${data.result?.result_xdr ? 'tx_success' : 'unknown'}`, data.result);
 
             setTxStatus({ type: 'success', message: `Transaction successful! Hash: ${data.hash.substring(0, 15)}...` });
+            
+            addTransaction({
+                ...newTx,
+                status: 'success',
+                hash: data.hash,
+                message: 'Confirmed'
+            });
+
             fetchAccounts(); 
-        } catch (error: any) {
-            setTxStatus({ type: 'error', message: error.message });
-            addLog('error', `Transaction Failed: ${error.message}`);
-            if (error.details) {
-                addLog('error', `Details: ${error.details}`);
-            }
+        } catch (error: unknown) {
+            const err = error as any;
+            setTxStatus({ type: 'error', message: err.message || 'Unknown error' });
+            addLog('error', `Transaction Failed: ${err.message || 'Unknown error'}`, err.details);
+            
+            addTransaction({
+                ...newTx,
+                status: 'error',
+                message: err.message || 'Unknown error'
+            });
         }
     };
 
@@ -140,54 +196,91 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
         let fail = 0;
 
         for (let i = 0; i < genCount; i++) {
-            // Pick random source and destination
             const source = accounts[Math.floor(Math.random() * accounts.length)];
             let dest = accounts[Math.floor(Math.random() * accounts.length)];
             
-            // Ensure distinct
             while (dest.id === source.id) {
                 dest = accounts[Math.floor(Math.random() * accounts.length)];
             }
 
-            addLog('info', `[${i+1}/${genCount}] sending ${amount} XLM from ${source.name} to ${dest.name}...`);
+            const currentAmount = (Math.random() * 10 + 1).toFixed(2);
+            
+            // Determine node (randomly from available)
+            const node = horizonNodes.length > 0 
+                ? horizonNodes[Math.floor(Math.random() * horizonNodes.length)].ip_address
+                : selectedNode;
+
+            const txId = Math.random().toString(36).substring(7);
+            const newTx: TransactionRecord = {
+                id: txId,
+                timestamp: new Date(),
+                source: source.name,
+                destination: dest.name, // Using name for readability in auto-gen
+                amount: currentAmount,
+                status: 'pending',
+                node: node,
+                type: 'auto'
+            };
+
+            addLog('info', `[${i+1}/${genCount}] sending ${currentAmount} XLM from ${source.name} to ${dest.name}...`);
 
             try {
-                // Determine node (randomly from available)
-                const node = horizonNodes.length > 0 
-                    ? horizonNodes[Math.floor(Math.random() * horizonNodes.length)].ip_address
-                    : selectedNode;
-
                 const res = await fetch('/api/transactions/send', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         sourceId: source.id,
                         destinationAddress: dest.public_key,
-                        amount: (Math.random() * 10 + 1).toFixed(2), // Random amount 1-10
+                        amount: currentAmount,
                         nodeIp: node
                     })
                 });
 
+                const data = await res.json();
+
                 if (res.ok) {
                     success++;
-                    addLog('success', `[${i+1}/${genCount}] Success`);
+                    addLog('success', `[${i+1}/${genCount}] Success. Hash: ${data.hash?.substring(0,10)}...`);
+                    addTransaction({
+                        ...newTx,
+                        status: 'success',
+                        hash: data.hash,
+                        message: 'Success'
+                    });
                 } else {
                     fail++;
-                    addLog('error', `[${i+1}/${genCount}] Failed`);
+                    addLog('error', `[${i+1}/${genCount}] Failed: ${data.error || 'Unknown'}`);
+                    addTransaction({
+                        ...newTx,
+                        status: 'error',
+                        message: data.error || 'Failed'
+                    });
                 }
-            } catch (e: any) {
+            } catch (e: unknown) {
                 fail++;
-                addLog('error', `[${i+1}/${genCount}] Error: ${e.message}`);
+                const err = e as Error;
+                addLog('error', `[${i+1}/${genCount}] Error: ${err.message || 'Unknown error'}`);
+                addTransaction({
+                    ...newTx,
+                    status: 'error',
+                    message: err.message
+                });
             }
 
             setGenProgress({ current: i + 1, total: genCount, success, fail });
-            // Small delay
             await new Promise(r => setTimeout(r, 200));
         }
 
         addLog('info', `Traffic Generation Completed. Success: ${success}, Fail: ${fail}`);
         setIsGenerating(false);
     };
+
+    // Filter Logic
+    const filteredTransactions = transactions.filter(tx => {
+        if (filterStatus !== 'all' && tx.status !== filterStatus) return false;
+        if (filterType !== 'all' && tx.type !== filterType) return false;
+        return true;
+    });
 
     return (
         <div className="h-full flex flex-col gap-6 p-6 overflow-y-auto custom-scrollbar">
@@ -304,70 +397,164 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
                     </div>
                 </div>
 
-                {/* Right Column: Generators & Logs */}
-                <div className="flex flex-col gap-6">
+                {/* Right Column: Traffic Generator */}
+                <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 flex flex-col gap-4">
+                    <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                        <Activity size={20} className="text-purple-400" />
+                        Traffic Generator
+                    </h3>
+                    <p className="text-gray-400 text-sm">Generate random transactions between existing accounts.</p>
                     
-                    {/* Traffic Generator */}
-                    <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 flex flex-col gap-4">
-                        <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                            <Activity size={20} className="text-purple-400" />
-                            Traffic Generator
-                        </h3>
-                        <p className="text-gray-400 text-sm">Generate random transactions between existing accounts.</p>
-                        
-                        <div className="flex items-center gap-4">
-                            <div className="flex-1">
-                                <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Transaction Count</label>
-                                <input 
-                                    type="number" 
-                                    value={genCount}
-                                    onChange={(e) => setGenCount(parseInt(e.target.value))}
-                                    className="w-full bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3"
-                                />
-                            </div>
-                            <button 
-                                onClick={handleGenerateTraffic}
-                                disabled={isGenerating}
-                                className="mt-5 bg-purple-600 hover:bg-purple-500 text-white font-bold px-6 py-3 rounded-lg transition-colors flex items-center gap-2 disabled:opacity-50"
-                            >
-                                {isGenerating ? <RefreshCw className="animate-spin" /> : <Play size={18} />}
-                                Start
-                            </button>
+                    <div className="flex items-center gap-4">
+                        <div className="flex-1">
+                            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Transaction Count</label>
+                            <input 
+                                type="number" 
+                                value={genCount}
+                                onChange={(e) => setGenCount(parseInt(e.target.value))}
+                                className="w-full bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3"
+                            />
                         </div>
-
-                        {genProgress && (
-                            <div className="space-y-2">
-                                <div className="flex justify-between text-xs text-gray-400">
-                                    <span>Progress: {genProgress.current} / {genProgress.total}</span>
-                                    <span>Success: {genProgress.success} | Fail: {genProgress.fail}</span>
-                                </div>
-                                <div className="w-full bg-gray-700 h-2 rounded-full overflow-hidden">
-                                    <div 
-                                        className="bg-purple-500 h-full transition-all duration-300"
-                                        style={{ width: `${(genProgress.current / genProgress.total) * 100}%` }}
-                                    ></div>
-                                </div>
-                            </div>
-                        )}
+                        <button 
+                            onClick={handleGenerateTraffic}
+                            disabled={isGenerating}
+                            className="mt-5 bg-purple-600 hover:bg-purple-500 text-white font-bold px-6 py-3 rounded-lg transition-colors flex items-center gap-2 disabled:opacity-50"
+                        >
+                            {isGenerating ? <RefreshCw className="animate-spin" /> : <Play size={18} />}
+                            Start
+                        </button>
                     </div>
 
-                    {/* Transaction Log Console */}
-                    <div className="bg-gray-900 rounded-xl border border-gray-700 flex flex-col flex-1 overflow-hidden h-[300px]">
-                        <div className="p-3 border-b border-gray-800 flex justify-between items-center bg-gray-900">
-                            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider flex items-center gap-2">
-                                <Server size={14} className="text-green-400" />
-                                Transaction Log
-                            </h3>
-                            <button onClick={() => setLogs([])} className="text-xs text-gray-500 hover:text-white">
-                                Clear
+                    {genProgress && (
+                        <div className="space-y-2">
+                            <div className="flex justify-between text-xs text-gray-400">
+                                <span>Progress: {genProgress.current} / {genProgress.total}</span>
+                                <span>Success: {genProgress.success} | Fail: {genProgress.fail}</span>
+                            </div>
+                            <div className="w-full bg-gray-700 h-2 rounded-full overflow-hidden">
+                                <div 
+                                    className="bg-purple-500 h-full transition-all duration-300"
+                                    style={{ width: `${(genProgress.current / genProgress.total) * 100}%` }}
+                                ></div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            {/* Transaction History & Detailed Logs */}
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 h-[400px]">
+                
+                {/* Transaction History Table */}
+                <div className="xl:col-span-2 bg-gray-800 rounded-xl border border-gray-700 flex flex-col overflow-hidden">
+                    <div className="p-4 border-b border-gray-700 flex justify-between items-center bg-gray-800">
+                        <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                            <Clock size={20} className="text-green-400" />
+                            Transaction History
+                        </h3>
+                        <div className="flex gap-2">
+                            <select 
+                                value={filterStatus} 
+                                onChange={(e) => setFilterStatus(e.target.value as any)}
+                                className="bg-gray-900 text-white text-xs rounded border border-gray-600 p-1"
+                            >
+                                <option value="all">All Status</option>
+                                <option value="success">Success</option>
+                                <option value="error">Error</option>
+                            </select>
+                            <select 
+                                value={filterType} 
+                                onChange={(e) => setFilterType(e.target.value as any)}
+                                className="bg-gray-900 text-white text-xs rounded border border-gray-600 p-1"
+                            >
+                                <option value="all">All Types</option>
+                                <option value="manual">Manual</option>
+                                <option value="auto">Auto</option>
+                            </select>
+                            <button onClick={() => setTransactions([])} className="p-1 hover:bg-gray-700 rounded text-gray-400">
+                                <XCircle size={16} />
                             </button>
                         </div>
-                        <div className="flex-1 overflow-y-auto p-4 space-y-2 font-mono text-xs custom-scrollbar bg-black/50">
-                            {logs.length === 0 && (
-                                <div className="text-gray-600 italic text-center mt-10">No logs available...</div>
-                            )}
-                            {logs.map(log => (
-                                <div key={log.id} className="flex gap-3">
+                    </div>
+                    <div className="flex-1 overflow-auto custom-scrollbar">
+                        <table className="w-full text-left text-sm text-gray-400">
+                            <thead className="bg-gray-900/50 text-gray-200 sticky top-0">
+                                <tr>
+                                    <th className="p-3">Time</th>
+                                    <th className="p-3">From - To</th>
+                                    <th className="p-3">Amount</th>
+                                    <th className="p-3">Status</th>
+                                    <th className="p-3">Hash / Details</th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-gray-700">
+                                {filteredTransactions.length === 0 && (
+                                    <tr>
+                                        <td colSpan={5} className="p-8 text-center text-gray-500 italic">
+                                            No transactions recorded in this session.
+                                        </td>
+                                    </tr>
+                                )}
+                                {filteredTransactions.map(tx => (
+                                    <tr key={tx.id} className="hover:bg-gray-700/30 transition-colors">
+                                        <td className="p-3 font-mono text-xs">{tx.timestamp.toLocaleTimeString()}</td>
+                                        <td className="p-3">
+                                            <div className="flex flex-col">
+                                                <span className="text-white text-xs">{tx.source}</span>
+                                                <span className="text-gray-500 text-[10px]">↓</span>
+                                                <span className="text-white text-xs">{tx.destination}</span>
+                                            </div>
+                                        </td>
+                                        <td className="p-3 text-white font-mono">{tx.amount} XLM</td>
+                                        <td className="p-3">
+                                            {tx.status === 'success' ? (
+                                                <span className="inline-flex items-center gap-1 text-green-400 text-xs bg-green-900/20 px-2 py-1 rounded-full">
+                                                    <CheckCircle size={12} /> Success
+                                                </span>
+                                            ) : tx.status === 'error' ? (
+                                                <span className="inline-flex items-center gap-1 text-red-400 text-xs bg-red-900/20 px-2 py-1 rounded-full">
+                                                    <XCircle size={12} /> Error
+                                                </span>
+                                            ) : (
+                                                <span className="inline-flex items-center gap-1 text-yellow-400 text-xs bg-yellow-900/20 px-2 py-1 rounded-full">
+                                                    <Activity size={12} className="animate-spin" /> Pending
+                                                </span>
+                                            )}
+                                        </td>
+                                        <td className="p-3 font-mono text-xs max-w-[200px] truncate" title={tx.hash || tx.message}>
+                                            {tx.hash ? (
+                                                <a href={`https://horizon-testnet.stellar.org/transactions/${tx.hash}`} target="_blank" rel="noreferrer" className="text-blue-400 hover:underline flex items-center gap-1">
+                                                    {tx.hash.substring(0, 12)}... <ExternalLink size={10} />
+                                                </a>
+                                            ) : (
+                                                <span className="text-red-400">{tx.message}</span>
+                                            )}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                {/* Detailed Log Console */}
+                <div className="bg-gray-900 rounded-xl border border-gray-700 flex flex-col overflow-hidden">
+                    <div className="p-3 border-b border-gray-800 flex justify-between items-center bg-gray-900">
+                        <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider flex items-center gap-2">
+                            <Server size={14} className="text-green-400" />
+                            Live Logs
+                        </h3>
+                        <button onClick={() => setLogs([])} className="text-xs text-gray-500 hover:text-white">
+                            Clear
+                        </button>
+                    </div>
+                    <div className="flex-1 overflow-y-auto p-4 space-y-2 font-mono text-xs custom-scrollbar bg-black/50">
+                        {logs.length === 0 && (
+                            <div className="text-gray-600 italic text-center mt-10">No logs available...</div>
+                        )}
+                        {logs.map(log => (
+                            <div key={log.id} className="flex flex-col gap-1 border-b border-gray-800/50 pb-2 last:border-0">
+                                <div className="flex gap-2">
                                     <span className="text-gray-500 shrink-0">[{log.timestamp}]</span>
                                     <span className={`${
                                         log.type === 'error' ? 'text-red-400' : 
@@ -381,8 +568,13 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
                                         {log.message}
                                     </span>
                                 </div>
-                            ))}
-                        </div>
+                                {log.details && (
+                                    <div className="pl-20 text-gray-500 text-[10px] whitespace-pre-wrap">
+                                        {JSON.stringify(log.details, null, 2)}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
