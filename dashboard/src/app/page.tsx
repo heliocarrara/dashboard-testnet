@@ -9,6 +9,7 @@ import Navbar from '@/components/Navbar';
 import EditNodeModal from '@/components/EditNodeModal';
 import NodeDetailsPanel from '@/components/NodeDetailsPanel';
 import AccountsPanel from '@/components/AccountsPanel';
+import TransactionsPanel from '@/components/TransactionsPanel';
 import MonitoringModal from '@/components/MonitoringModal';
 
 interface Node {
@@ -134,7 +135,7 @@ export default function Home() {
 
     return content;
   };
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'nodes' | 'settings' | 'accounts'>('dashboard');
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'nodes' | 'settings' | 'accounts' | 'transactions'>('dashboard');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const fetchNodes = async () => {
@@ -535,8 +536,12 @@ export default function Home() {
         )}
 
         {activeTab === 'accounts' && (
-            <AccountsPanel nodes={nodes} />
-        )}
+                  <AccountsPanel nodes={nodes} />
+                )}
+
+                {activeTab === 'transactions' && (
+                  <TransactionsPanel nodes={nodes} />
+                )}
       </main>
     </div>
   );

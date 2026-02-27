@@ -12,10 +12,42 @@ export async function GET() {
   }
 }
 
-// Create account
+// Create account (Single or Batch)
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+    
+    // Batch Creation
+    if (body.count && typeof body.count === 'number') {
+        const count = Math.min(Math.max(1, body.count), 50); // Limit between 1 and 50
+        const accounts = [];
+
+        for (let i = 0; i < count; i++) {
+            const pair = Keypair.random();
+            accounts.push({
+                name: `Batch Account ${Date.now()}-${i}`,
+                publicKey: pair.publicKey(),
+                secretKey: pair.secret()
+            });
+        }
+
+        // Generate placeholders: ($1, $2, $3), ($4, $5, $6), ...
+        const placeholders = accounts.map((_, i) => `($${i * 3 + 1}, $${i * 3 + 2}, $${i * 3 + 3})`).join(', ');
+        
+        // Flatten values array
+        const values = accounts.flatMap(acc => [acc.name, acc.publicKey, acc.secretKey]);
+
+        const query = `
+            INSERT INTO testnet_accounts (name, public_key, secret_key)
+            VALUES ${placeholders}
+            RETURNING *
+        `;
+
+        const result = await pool.query(query, values);
+        return NextResponse.json({ message: 'Batch created', count: result.rowCount, accounts: result.rows });
+    }
+
+    // Single Creation (Legacy/Default)
     const name = body.name || 'Untitled Account';
 
     // Generate new keypair

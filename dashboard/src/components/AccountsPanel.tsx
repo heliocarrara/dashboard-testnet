@@ -22,6 +22,12 @@ export default function AccountsPanel({ nodes = [] }: AccountsPanelProps) {
     const [creating, setCreating] = useState(false);
     const [funding, setFunding] = useState<number | null>(null);
 
+    // Batch Account State
+    const [batchCount, setBatchCount] = useState<number>(5);
+    const [isCreatingBatch, setIsCreatingBatch] = useState(false);
+    const [isFundingBatch, setIsFundingBatch] = useState(false);
+    const [batchStatus, setBatchStatus] = useState<string>('');
+
     // Inspect Modal State
     const [inspectModalOpen, setInspectModalOpen] = useState(false);
     const [selectedAccount, setSelectedAccount] = useState<Account | null>(null);
@@ -123,6 +129,64 @@ export default function AccountsPanel({ nodes = [] }: AccountsPanelProps) {
         }
     };
 
+    const handleCreateBatch = async () => {
+        if (batchCount < 1 || batchCount > 50) {
+            setBatchStatus('Please enter a count between 1 and 50');
+            return;
+        }
+
+        setIsCreatingBatch(true);
+        setBatchStatus('Creating accounts...');
+        
+        try {
+            const res = await fetch('/api/accounts', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ count: batchCount })
+            });
+
+            const data = await res.json();
+            
+            if (res.ok) {
+                setBatchStatus(`Success! Created ${data.count} accounts.`);
+                fetchAccounts();
+            } else {
+                setBatchStatus(`Error: ${data.error}`);
+            }
+        } catch (error: any) {
+            setBatchStatus(`Error: ${error.message}`);
+        } finally {
+            setIsCreatingBatch(false);
+            // Clear status after 3 seconds
+            setTimeout(() => setBatchStatus(''), 3000);
+        }
+    };
+
+    const handleBatchFund = async () => {
+        setIsFundingBatch(true);
+        setBatchStatus('Funding all unfunded accounts... This may take a while.');
+
+        try {
+            const res = await fetch('/api/accounts/fund/batch', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+            const data = await res.json();
+            
+            if (res.ok) {
+                setBatchStatus(data.message);
+                fetchAccounts();
+            } else {
+                setBatchStatus(`Error: ${data.error}`);
+            }
+        } catch (error: any) {
+            setBatchStatus(`Error: ${error.message}`);
+        } finally {
+            setIsFundingBatch(false);
+        }
+    };
+
     const handleDeleteAccount = async (id: number) => {
         if (!confirm('Are you sure you want to delete this account?')) return;
         
@@ -199,6 +263,60 @@ export default function AccountsPanel({ nodes = [] }: AccountsPanelProps) {
                         {creating ? 'Creating...' : 'Create Account'}
                     </button>
                 </div>
+            </div>
+
+            {/* Batch Operations */}
+            <div className="mb-6 bg-gray-800 rounded-xl border border-gray-700 p-4">
+                <h3 className="text-sm font-bold text-gray-300 uppercase tracking-wider mb-4 flex items-center gap-2">
+                    <Server size={14} className="text-purple-400" />
+                    Batch Operations
+                </h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {/* Create Batch */}
+                    <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-700">
+                        <label className="text-xs text-gray-500 font-bold uppercase mb-2 block">Create Accounts</label>
+                        <div className="flex gap-2">
+                            <input 
+                                type="number" 
+                                min="1" 
+                                max="50"
+                                value={batchCount}
+                                onChange={(e) => setBatchCount(parseInt(e.target.value) || 0)}
+                                className="w-20 bg-gray-800 text-white text-sm rounded border border-gray-600 p-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                            />
+                            <button 
+                                onClick={handleCreateBatch}
+                                disabled={isCreatingBatch}
+                                className="flex-1 bg-blue-900/50 hover:bg-blue-900 border border-blue-800 text-blue-400 text-xs font-bold py-2 rounded transition-colors flex items-center justify-center gap-2"
+                            >
+                                {isCreatingBatch ? <RefreshCw className="animate-spin" size={14} /> : <Plus size={14} />}
+                                Create
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Fund Batch */}
+                    <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-700">
+                        <label className="text-xs text-gray-500 font-bold uppercase mb-2 block">Fund Unfunded</label>
+                        <div className="flex gap-2">
+                            <button 
+                                onClick={handleBatchFund}
+                                disabled={isFundingBatch}
+                                className="w-full bg-green-900/50 hover:bg-green-900 border border-green-800 text-green-400 text-xs font-bold py-2 rounded transition-colors flex items-center justify-center gap-2"
+                            >
+                                {isFundingBatch ? <RefreshCw className="animate-spin" size={14} /> : <Coins size={14} />}
+                                Fund All
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                {batchStatus && (
+                    <div className="text-xs text-gray-400 text-center mt-2 p-2 bg-gray-900 rounded">
+                        {batchStatus}
+                    </div>
+                )}
             </div>
 
             <div className="flex-1 overflow-auto bg-gray-800 rounded-xl border border-gray-700 shadow-xl">
