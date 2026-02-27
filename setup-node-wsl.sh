@@ -59,6 +59,61 @@ mkdir -p $VOLUME_PATH
 chown $(whoami):$(whoami) $VOLUME_PATH
 
 # ------------------------------------------------------------------------------
+# 1.1 Firewall Configuration
+# ------------------------------------------------------------------------------
+echo -e "${BLUE}🛡️ Configurando Firewall...${NC}"
+
+# Check for UFW (Ubuntu/Debian)
+if command -v ufw >/dev/null; then
+    if sudo ufw status | grep -q "Status: active"; then
+        echo -e "${YELLOW}🔒 UFW detectado e ativo. Configurando regras...${NC}"
+        sudo ufw allow 11625/tcp
+        sudo ufw allow 11626/tcp
+        sudo ufw allow 8000/tcp
+        echo -e "${GREEN}✅ Regras UFW aplicadas (11625, 11626, 8000).${NC}"
+    else
+        echo -e "${YELLOW}⚠️ UFW instalado mas INATIVO. Tentando ativar...${NC}"
+        echo -e "${YELLOW}ℹ️  Se desejar ativar, rode: sudo ufw allow ssh && sudo ufw enable${NC}"
+    fi
+
+# Check for firewalld (CentOS/RHEL/Fedora/OpenSUSE)
+elif command -v firewall-cmd >/dev/null; then
+    if sudo firewall-cmd --state | grep -q "running"; then
+        echo -e "${YELLOW}🔒 Firewalld detectado e ativo. Configurando regras...${NC}"
+        sudo firewall-cmd --permanent --add-port=11625/tcp
+        sudo firewall-cmd --permanent --add-port=11626/tcp
+        sudo firewall-cmd --permanent --add-port=8000/tcp
+        sudo firewall-cmd --reload
+        echo -e "${GREEN}✅ Regras Firewalld aplicadas (11625, 11626, 8000).${NC}"
+    else
+        echo -e "${YELLOW}⚠️ Firewalld instalado mas inativo.${NC}"
+    fi
+
+# Check for iptables (Universal Linux fallback)
+elif command -v iptables >/dev/null; then
+    echo -e "${YELLOW}🔒 Iptables detectado. Tentando adicionar regras...${NC}"
+    # Check if rules already exist to avoid duplicates
+    if ! sudo iptables -C INPUT -p tcp --dport 11625 -j ACCEPT 2>/dev/null; then
+        sudo iptables -I INPUT -p tcp --dport 11625 -j ACCEPT
+        echo -e "${GREEN}✅ Iptables: Porta 11625 liberada.${NC}"
+    fi
+    if ! sudo iptables -C INPUT -p tcp --dport 11626 -j ACCEPT 2>/dev/null; then
+        sudo iptables -I INPUT -p tcp --dport 11626 -j ACCEPT
+        echo -e "${GREEN}✅ Iptables: Porta 11626 liberada.${NC}"
+    fi
+    if ! sudo iptables -C INPUT -p tcp --dport 8000 -j ACCEPT 2>/dev/null; then
+        sudo iptables -I INPUT -p tcp --dport 8000 -j ACCEPT
+        echo -e "${GREEN}✅ Iptables: Porta 8000 liberada.${NC}"
+    fi
+    
+    echo -e "${YELLOW}⚠️ Regras iptables aplicadas em memória. Para persistir após reboot, use 'iptables-save' ou 'netfilter-persistent'.${NC}"
+
+else
+    echo -e "${RED}⚠️ Nenhum gerenciador de firewall conhecido encontrado (ufw, firewalld, iptables).${NC}"
+    echo -e "${YELLOW}Certifique-se manualmente de que as portas 11625, 11626 e 8000 TCP estão acessíveis externamente.${NC}"
+fi
+
+# ------------------------------------------------------------------------------
 # 2. Check Identity & Register
 # ------------------------------------------------------------------------------
 MY_HOSTNAME=$(hostname)
@@ -253,4 +308,16 @@ EOF
 # ------------------------------------------------------------------------------
 echo -e "${GREEN}🚀 Iniciando nó Stellar ($EXISTING_ROLE) com serviços: $SERVICES_TO_ENABLE...${NC}"
 docker.exe compose up -d
+
+# Check if port is open locally
+echo -e "${BLUE}🔍 Verificando se a porta 11626 está acessível localmente (aguardando 10s)...${NC}"
+sleep 10
+if curl.exe -s http://localhost:11626/info >/dev/null; then
+    echo -e "${GREEN}✅ Porta 11626 está respondendo localmente!${NC}"
+    echo -e "${BLUE}ℹ️  Se o Dashboard ainda mostrar 'Offline', verifique o firewall da rede.${NC}"
+else
+    echo -e "${RED}❌ Porta 11626 NÃO está respondendo localmente.${NC}"
+    echo -e "${YELLOW}Isso pode acontecer se o nó ainda estiver inicializando. Verifique os logs abaixo.${NC}"
+fi
+
 docker.exe logs -f stellar-node
