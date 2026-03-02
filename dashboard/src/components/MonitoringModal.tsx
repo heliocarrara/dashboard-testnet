@@ -68,7 +68,8 @@ const MonitoringModal: React.FC<MonitoringModalProps> = ({ node, onClose }) => {
   }, []);
 
   const addLog = (message: string) => {
-    setLogs(prev => [`[${new Date().toLocaleTimeString()}] ${message}`, ...prev]);
+    // Log functionality disabled per user request
+    // setLogs(prev => [`[${new Date().toLocaleTimeString()}] ${message}`, ...prev]);
   };
 
   const copyLogs = () => {
@@ -297,21 +298,21 @@ const MonitoringModal: React.FC<MonitoringModalProps> = ({ node, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-      <div className="bg-gray-900 border border-gray-700 rounded-xl shadow-2xl w-full max-w-lg overflow-hidden relative flex flex-col max-h-[90vh]">
+      <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-2xl w-full max-w-lg overflow-hidden relative flex flex-col max-h-[90vh]">
         <button 
             onClick={onClose}
-            className="absolute top-4 right-4 text-gray-400 hover:text-white z-10"
+            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-white z-10"
         >
             <X size={20} />
         </button>
 
-        <div className="p-6 border-b border-gray-800 bg-gray-800/50 shrink-0">
-            <h3 className="text-xl font-bold text-white flex items-center gap-2">
+        <div className="p-6 border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50 shrink-0">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
                 <Activity className="text-blue-500" />
                 Node Monitor
             </h3>
             <div className="flex items-center gap-2 mt-2">
-                <span className="text-sm font-mono text-gray-400 bg-gray-800 px-2 py-1 rounded border border-gray-700">
+                <span className="text-sm font-mono text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">
                     {node.hostname}
                 </span>
                 <span className="text-xs text-gray-500">
@@ -321,13 +322,13 @@ const MonitoringModal: React.FC<MonitoringModalProps> = ({ node, onClose }) => {
         </div>
 
         {/* Tabs */}
-        <div className="flex border-b border-gray-800 shrink-0">
+        <div className="flex border-b border-gray-200 dark:border-gray-800 shrink-0">
             <button
                 onClick={() => setActiveTab('horizon')}
                 className={`flex-1 py-3 text-sm font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 ${
                     activeTab === 'horizon' 
-                        ? 'bg-gray-800 text-blue-400 border-b-2 border-blue-500' 
-                        : 'text-gray-500 hover:text-gray-300 hover:bg-gray-800/50'
+                        ? 'bg-gray-100 dark:bg-gray-800 text-blue-600 dark:text-blue-400 border-b-2 border-blue-500' 
+                        : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800/50'
                 }`}
             >
                 <Activity size={16} />
@@ -337,8 +338,8 @@ const MonitoringModal: React.FC<MonitoringModalProps> = ({ node, onClose }) => {
                 onClick={() => setActiveTab('core')}
                 className={`flex-1 py-3 text-sm font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 ${
                     activeTab === 'core' 
-                        ? 'bg-gray-800 text-purple-400 border-b-2 border-purple-500' 
-                        : 'text-gray-500 hover:text-gray-300 hover:bg-gray-800/50'
+                        ? 'bg-gray-100 dark:bg-gray-800 text-purple-600 dark:text-purple-400 border-b-2 border-purple-500' 
+                        : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800/50'
                 }`}
             >
                 <Cpu size={16} />
@@ -348,11 +349,11 @@ const MonitoringModal: React.FC<MonitoringModalProps> = ({ node, onClose }) => {
         
         <div className="p-6 space-y-6 overflow-y-auto custom-scrollbar flex-1">
             {/* Target Info (Shared) */}
-            <div className="bg-gray-800/30 p-4 rounded-lg border border-gray-700/30">
+            <div className="bg-gray-50 dark:bg-gray-800/30 p-4 rounded-lg border border-gray-200 dark:border-gray-700/30">
                 <div className="grid grid-cols-2 gap-4">
                     <div>
                         <span className="block text-[10px] text-gray-500 uppercase">Role</span>
-                        <span className="text-sm font-medium text-white capitalize">{node.role}</span>
+                        <span className="text-sm font-medium text-gray-900 dark:text-white capitalize">{node.role}</span>
                     </div>
                     <div>
                         <span className="block text-[10px] text-gray-500 uppercase">Status (DB)</span>
@@ -410,16 +411,16 @@ const MonitoringModal: React.FC<MonitoringModalProps> = ({ node, onClose }) => {
             {/* Logs Area */}
             {logs.length > 0 && (
                 <div className="relative">
-                    <div className="bg-black/50 p-3 rounded-lg border border-gray-800 font-mono text-[10px] text-gray-400 h-32 overflow-y-auto">
+                    <div className="bg-gray-100 dark:bg-black/50 p-3 rounded-lg border border-gray-200 dark:border-gray-800 font-mono text-[10px] text-gray-600 dark:text-gray-400 h-32 overflow-y-auto">
                         {logs.map((log, index) => (
-                            <div key={index} className="mb-1 border-b border-gray-800/50 pb-0.5 last:border-0">
+                            <div key={index} className="mb-1 border-b border-gray-200 dark:border-gray-800/50 pb-0.5 last:border-0">
                                 {log}
                             </div>
                         ))}
                     </div>
                     <button 
                         onClick={copyLogs}
-                        className="absolute top-2 right-2 p-1.5 bg-gray-800 hover:bg-gray-700 rounded text-gray-400 hover:text-white transition-colors border border-gray-700"
+                        className="absolute top-2 right-2 p-1.5 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors border border-gray-200 dark:border-gray-700"
                         title="Copy logs"
                     >
                         {copied ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
@@ -433,45 +434,45 @@ const MonitoringModal: React.FC<MonitoringModalProps> = ({ node, onClose }) => {
                     {/* Horizon Metrics */}
                     {horizonMetrics && (
                         <div className="animate-in slide-in-from-bottom-2 duration-300">
-                            <h4 className="text-xs font-bold text-gray-400 uppercase mb-3">Horizon Metrics</h4>
-                            <div className={`p-4 rounded-lg border ${horizonMetrics.status === 'online' ? 'bg-purple-900/20 border-purple-800' : 'bg-red-900/20 border-red-800'}`}>
+                            <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-3">Horizon Metrics</h4>
+                            <div className={`p-4 rounded-lg border ${horizonMetrics.status === 'online' ? 'bg-purple-100 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800' : 'bg-red-100 dark:bg-red-900/20 border-red-200 dark:border-red-800'}`}>
                                 {horizonMetrics.status === 'online' ? (
                                     <div className="grid grid-cols-2 gap-4">
-                                        <div className="p-3 bg-gray-800/50 rounded-lg">
+                                        <div className="p-3 bg-white dark:bg-gray-800/50 rounded-lg border border-gray-100 dark:border-transparent">
                                             <div className="flex items-center mb-1">
-                                                <span className="text-[10px] uppercase text-gray-400 font-bold">Latency</span>
+                                                <span className="text-[10px] uppercase text-gray-500 dark:text-gray-400 font-bold">Latency</span>
                                                 <Tooltip text="Time taken for the node to respond" />
                                             </div>
-                                            <span className="text-2xl font-mono font-bold text-white">{horizonMetrics.latency_ms}<span className="text-sm text-gray-500 ml-1">ms</span></span>
+                                            <span className="text-2xl font-mono font-bold text-gray-900 dark:text-white">{horizonMetrics.latency_ms}<span className="text-sm text-gray-500 ml-1">ms</span></span>
                                         </div>
-                                        <div className="p-3 bg-gray-800/50 rounded-lg">
+                                        <div className="p-3 bg-white dark:bg-gray-800/50 rounded-lg border border-gray-100 dark:border-transparent">
                                             <div className="flex items-center mb-1">
-                                                <span className="text-[10px] uppercase text-gray-400 font-bold">Avg Close Time</span>
+                                                <span className="text-[10px] uppercase text-gray-500 dark:text-gray-400 font-bold">Avg Close Time</span>
                                                 <Tooltip text="Average ledger close time (last 6 ledgers)" />
                                             </div>
-                                            <span className="text-2xl font-mono font-bold text-white">{horizonMetrics.avg_ledger_close_time_s}<span className="text-sm text-gray-500 ml-1">s</span></span>
+                                            <span className="text-2xl font-mono font-bold text-gray-900 dark:text-white">{horizonMetrics.avg_ledger_close_time_s}<span className="text-sm text-gray-500 ml-1">s</span></span>
                                         </div>
                                         
                                         {horizonMetrics.latest_ledger && (
-                                            <div className="col-span-2 p-3 bg-gray-800/50 rounded-lg">
+                                            <div className="col-span-2 p-3 bg-white dark:bg-gray-800/50 rounded-lg border border-gray-100 dark:border-transparent">
                                                 <div className="flex justify-between items-center mb-2">
                                                     <div className="flex items-center">
-                                                        <span className="text-[10px] uppercase text-gray-400 font-bold">Latest Ledger</span>
+                                                        <span className="text-[10px] uppercase text-gray-500 dark:text-gray-400 font-bold">Latest Ledger</span>
                                                         <Tooltip text="Most recent ledger processed" />
                                                     </div>
-                                                    <span className="text-xs font-mono text-purple-400">#{horizonMetrics.latest_ledger.sequence}</span>
+                                                    <span className="text-xs font-mono text-purple-600 dark:text-purple-400">#{horizonMetrics.latest_ledger.sequence}</span>
                                                 </div>
                                                 <div className="grid grid-cols-3 gap-2 text-center">
                                                     <div>
-                                                        <span className="block text-lg font-bold text-white">{horizonMetrics.latest_ledger.tx_count}</span>
+                                                        <span className="block text-lg font-bold text-gray-900 dark:text-white">{horizonMetrics.latest_ledger.tx_count}</span>
                                                         <span className="text-[10px] text-gray-500 uppercase">TXs</span>
                                                     </div>
                                                     <div>
-                                                        <span className="block text-lg font-bold text-green-400">{horizonMetrics.latest_ledger.successful_tx_count}</span>
+                                                        <span className="block text-lg font-bold text-green-600 dark:text-green-400">{horizonMetrics.latest_ledger.successful_tx_count}</span>
                                                         <span className="text-[10px] text-gray-500 uppercase">Success</span>
                                                     </div>
                                                     <div>
-                                                        <span className="block text-lg font-bold text-red-400">{horizonMetrics.latest_ledger.failed_tx_count}</span>
+                                                        <span className="block text-lg font-bold text-red-600 dark:text-red-400">{horizonMetrics.latest_ledger.failed_tx_count}</span>
                                                         <span className="text-[10px] text-gray-500 uppercase">Failed</span>
                                                     </div>
                                                 </div>
@@ -494,32 +495,32 @@ const MonitoringModal: React.FC<MonitoringModalProps> = ({ node, onClose }) => {
                     {/* Horizon Test Results */}
                     {horizonResult && (
                         <div className="animate-in slide-in-from-bottom-2 duration-300">
-                            <h4 className="text-xs font-bold text-gray-400 uppercase mb-3">Horizon Test Results</h4>
-                            <div className={`p-4 rounded-lg border ${horizonResult.status === 'online' ? 'bg-green-900/20 border-green-800' : 'bg-red-900/20 border-red-800'}`}>
+                            <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-3">Horizon Test Results</h4>
+                            <div className={`p-4 rounded-lg border ${horizonResult.status === 'online' ? 'bg-green-100 dark:bg-green-900/20 border-green-200 dark:border-green-800' : 'bg-red-100 dark:bg-red-900/20 border-red-200 dark:border-red-800'}`}>
                                 <div className="flex items-center gap-3 mb-4">
                                     {horizonResult.status === 'online' ? <CheckCircle className="text-green-500" size={24} /> : <XCircle className="text-red-500" size={24} />}
                                     <div>
-                                        <h5 className={`font-bold ${horizonResult.status === 'online' ? 'text-green-400' : 'text-red-400'}`}>
+                                        <h5 className={`font-bold ${horizonResult.status === 'online' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                                             {horizonResult.status === 'online' ? 'Online & Syncing' : 'Offline / Unreachable'}
                                         </h5>
                                         {horizonResult.error && <p className="text-xs text-red-300 mt-1">{horizonResult.error}</p>}
                                     </div>
                                 </div>
                                 {horizonResult.status === 'online' && (
-                                    <div className="grid grid-cols-2 gap-y-4 gap-x-2 border-t border-green-800/30 pt-4">
+                                    <div className="grid grid-cols-2 gap-y-4 gap-x-2 border-t border-green-200 dark:border-green-800/30 pt-4">
                                         <div>
-                                            <div className="flex items-center gap-1.5 text-green-300/70 mb-1">
+                                            <div className="flex items-center gap-1.5 text-green-600/70 dark:text-green-300/70 mb-1">
                                                 <Database size={12} />
                                                 <span className="text-[10px] uppercase font-bold">Core Ledger</span>
                                             </div>
-                                            <span className="text-lg font-mono font-bold text-white">{horizonResult.core_latest_ledger}</span>
+                                            <span className="text-lg font-mono font-bold text-gray-900 dark:text-white">{horizonResult.core_latest_ledger}</span>
                                         </div>
                                         <div>
-                                            <div className="flex items-center gap-1.5 text-green-300/70 mb-1">
+                                            <div className="flex items-center gap-1.5 text-green-600/70 dark:text-green-300/70 mb-1">
                                                 <Clock size={12} />
                                                 <span className="text-[10px] uppercase font-bold">History Ledger</span>
                                             </div>
-                                            <span className="text-lg font-mono font-bold text-white">{horizonResult.history_latest_ledger}</span>
+                                            <span className="text-lg font-mono font-bold text-gray-900 dark:text-white">{horizonResult.history_latest_ledger}</span>
                                         </div>
                                     </div>
                                 )}
@@ -535,46 +536,46 @@ const MonitoringModal: React.FC<MonitoringModalProps> = ({ node, onClose }) => {
                     {/* Core Metrics */}
                     {coreMetrics && (
                         <div className="animate-in slide-in-from-bottom-2 duration-300">
-                            <h4 className="text-xs font-bold text-gray-400 uppercase mb-3">Core Metrics</h4>
-                            <div className={`p-4 rounded-lg border ${coreMetrics.status === 'online' ? 'bg-purple-900/20 border-purple-800' : 'bg-red-900/20 border-red-800'}`}>
+                            <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-3">Core Metrics</h4>
+                            <div className={`p-4 rounded-lg border ${coreMetrics.status === 'online' ? 'bg-purple-100 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800' : 'bg-red-100 dark:bg-red-900/20 border-red-200 dark:border-red-800'}`}>
                                 {coreMetrics.status === 'online' ? (
                                     <div className="grid grid-cols-2 gap-4">
-                                        <div className="p-3 bg-gray-800/50 rounded-lg">
+                                        <div className="p-3 bg-white dark:bg-gray-800/50 rounded-lg border border-gray-100 dark:border-transparent">
                                             <div className="flex items-center mb-1">
-                                                <span className="text-[10px] uppercase text-gray-400 font-bold">Latency</span>
+                                                <span className="text-[10px] uppercase text-gray-500 dark:text-gray-400 font-bold">Latency</span>
                                                 <Tooltip text="Ping time to Core port 11626" />
                                             </div>
-                                            <span className="text-2xl font-mono font-bold text-white">{coreMetrics.latency_ms}<span className="text-sm text-gray-500 ml-1">ms</span></span>
+                                            <span className="text-2xl font-mono font-bold text-gray-900 dark:text-white">{coreMetrics.latency_ms}<span className="text-sm text-gray-500 ml-1">ms</span></span>
                                         </div>
-                                        <div className="p-3 bg-gray-800/50 rounded-lg">
+                                        <div className="p-3 bg-white dark:bg-gray-800/50 rounded-lg border border-gray-100 dark:border-transparent">
                                             <div className="flex items-center mb-1">
-                                                <span className="text-[10px] uppercase text-gray-400 font-bold">Sync State</span>
+                                                <span className="text-[10px] uppercase text-gray-500 dark:text-gray-400 font-bold">Sync State</span>
                                                 <Tooltip text="Current synchronization state of the node" />
                                             </div>
-                                            <span className="text-lg font-mono font-bold text-white uppercase">{coreMetrics.state}</span>
+                                            <span className="text-lg font-mono font-bold text-gray-900 dark:text-white uppercase">{coreMetrics.state}</span>
                                         </div>
                                         
-                                        <div className="col-span-2 p-3 bg-gray-800/50 rounded-lg">
+                                        <div className="col-span-2 p-3 bg-white dark:bg-gray-800/50 rounded-lg border border-gray-100 dark:border-transparent">
                                             <div className="flex justify-between items-center mb-2">
                                                 <div className="flex items-center">
-                                                    <span className="text-[10px] uppercase text-gray-400 font-bold">Peers & Quorum</span>
+                                                    <span className="text-[10px] uppercase text-gray-500 dark:text-gray-400 font-bold">Peers & Quorum</span>
                                                     <Tooltip text="Network connectivity details" />
                                                 </div>
-                                                <div className="flex items-center gap-1 text-xs text-blue-400">
+                                                <div className="flex items-center gap-1 text-xs text-blue-600 dark:text-blue-400">
                                                     <Network size={12} />
                                                     {coreMetrics.peers.authenticated} Peers
                                                 </div>
                                             </div>
                                             <div className="grid grid-cols-2 gap-2 text-center">
-                                                <div className="bg-black/20 p-2 rounded">
+                                                <div className="bg-gray-100 dark:bg-black/20 p-2 rounded">
                                                     <span className="block text-xs text-gray-500 mb-1">Latest Ledger</span>
-                                                    <span className="block text-lg font-bold text-white">{coreMetrics.ledger.num}</span>
-                                                    <span className="text-[10px] text-gray-600">Age: {coreMetrics.ledger.age}s</span>
+                                                    <span className="block text-lg font-bold text-gray-900 dark:text-white">{coreMetrics.ledger.num}</span>
+                                                    <span className="text-[10px] text-gray-500 dark:text-gray-400">Age: {coreMetrics.ledger.age}s</span>
                                                 </div>
-                                                <div className="bg-black/20 p-2 rounded">
+                                                <div className="bg-gray-100 dark:bg-black/20 p-2 rounded">
                                                     <span className="block text-xs text-gray-500 mb-1">Base Fee</span>
-                                                    <span className="block text-lg font-bold text-white">{coreMetrics.ledger.baseFee}</span>
-                                                    <span className="text-[10px] text-gray-600">Stroops</span>
+                                                    <span className="block text-lg font-bold text-gray-900 dark:text-white">{coreMetrics.ledger.baseFee}</span>
+                                                    <span className="text-[10px] text-gray-500 dark:text-gray-400">Stroops</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -595,39 +596,39 @@ const MonitoringModal: React.FC<MonitoringModalProps> = ({ node, onClose }) => {
                     {/* Core Test Results */}
                     {coreResult && (
                         <div className="animate-in slide-in-from-bottom-2 duration-300">
-                            <h4 className="text-xs font-bold text-gray-400 uppercase mb-3">Core Connection Results</h4>
-                            <div className={`p-4 rounded-lg border ${coreResult.status === 'online' ? 'bg-green-900/20 border-green-800' : 'bg-red-900/20 border-red-800'}`}>
+                            <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-3">Core Connection Results</h4>
+                            <div className={`p-4 rounded-lg border ${coreResult.status === 'online' ? 'bg-green-100 dark:bg-green-900/20 border-green-200 dark:border-green-800' : 'bg-red-100 dark:bg-red-900/20 border-red-200 dark:border-red-800'}`}>
                                 <div className="flex items-center gap-3 mb-4">
                                     {coreResult.status === 'online' ? <CheckCircle className="text-green-500" size={24} /> : <XCircle className="text-red-500" size={24} />}
                                     <div>
-                                        <h5 className={`font-bold ${coreResult.status === 'online' ? 'text-green-400' : 'text-red-400'}`}>
+                                        <h5 className={`font-bold ${coreResult.status === 'online' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                                             {coreResult.status === 'online' ? 'Online & Reachable' : 'Offline / Unreachable'}
                                         </h5>
                                         {coreResult.error && <p className="text-xs text-red-300 mt-1">{coreResult.error}</p>}
                                     </div>
                                 </div>
                                 {coreResult.status === 'online' && (
-                                    <div className="grid grid-cols-2 gap-y-4 gap-x-2 border-t border-green-800/30 pt-4">
+                                    <div className="grid grid-cols-2 gap-y-4 gap-x-2 border-t border-green-200 dark:border-green-800/30 pt-4">
                                         <div>
-                                            <div className="flex items-center gap-1.5 text-green-300/70 mb-1">
+                                            <div className="flex items-center gap-1.5 text-green-600/70 dark:text-green-300/70 mb-1">
                                                 <Cpu size={12} />
                                                 <span className="text-[10px] uppercase font-bold">Protocol Ver</span>
                                             </div>
-                                            <span className="text-sm font-mono font-bold text-white">{coreResult.protocol_version}</span>
+                                            <span className="text-sm font-mono font-bold text-gray-900 dark:text-white">{coreResult.protocol_version}</span>
                                         </div>
                                         <div>
-                                            <div className="flex items-center gap-1.5 text-green-300/70 mb-1">
+                                            <div className="flex items-center gap-1.5 text-green-600/70 dark:text-green-300/70 mb-1">
                                                 <Activity size={12} />
                                                 <span className="text-[10px] uppercase font-bold">State</span>
                                             </div>
-                                            <span className="text-sm font-mono font-bold text-white">{coreResult.state}</span>
+                                            <span className="text-sm font-mono font-bold text-gray-900 dark:text-white">{coreResult.state}</span>
                                         </div>
                                         <div className="col-span-2">
-                                            <div className="flex items-center gap-1.5 text-green-300/70 mb-1">
+                                            <div className="flex items-center gap-1.5 text-green-600/70 dark:text-green-300/70 mb-1">
                                                 <Server size={12} />
                                                 <span className="text-[10px] uppercase font-bold">Build</span>
                                             </div>
-                                            <span className="text-xs font-mono text-gray-300 break-all">{coreResult.build}</span>
+                                            <span className="text-xs font-mono text-gray-600 dark:text-gray-300 break-all">{coreResult.build}</span>
                                         </div>
                                     </div>
                                 )}
@@ -638,7 +639,7 @@ const MonitoringModal: React.FC<MonitoringModalProps> = ({ node, onClose }) => {
             )}
 
             {error && !horizonResult && !coreResult && !horizonMetrics && !coreMetrics && (
-                <div className="p-4 bg-red-900/20 border border-red-800 rounded-lg text-red-200 text-sm flex items-center gap-2">
+                <div className="p-4 bg-red-100 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-600 dark:text-red-200 text-sm flex items-center gap-2">
                     <XCircle size={16} />
                     {error}
                 </div>

@@ -50,17 +50,17 @@ const EditNodeModal: React.FC<EditNodeModalProps> = ({ node, isOpen, onClose, on
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-      <div className="bg-gray-900 border border-gray-700 rounded-xl shadow-2xl w-full max-w-md overflow-hidden relative">
+      <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-2xl w-full max-w-md overflow-hidden relative">
         <button 
             onClick={onClose}
-            className="absolute top-4 right-4 text-gray-400 hover:text-white"
+            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-white"
         >
             <X size={20} />
         </button>
 
-        <div className="p-6 border-b border-gray-800 bg-gray-800/50">
-            <h3 className="text-xl font-bold text-white">Edit Node Configuration</h3>
-            <p className="text-sm text-gray-400 mt-1">ID: <span className="font-mono text-blue-400">#{formData.id}</span></p>
+        <div className="p-6 border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white">Edit Node Configuration</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">ID: <span className="font-mono text-blue-500 dark:text-blue-400">#{formData.id}</span></p>
         </div>
         
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
@@ -70,7 +70,7 @@ const EditNodeModal: React.FC<EditNodeModalProps> = ({ node, isOpen, onClose, on
                     name="hostname"
                     value={formData.hostname}
                     onChange={handleChange}
-                    className="w-full bg-gray-800 border border-gray-700 rounded p-3 text-white font-mono text-sm focus:border-blue-500 outline-none" 
+                    className="w-full bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-3 text-gray-900 dark:text-white font-mono text-sm focus:border-blue-500 outline-none" 
                 />
             </div>
             <div>
@@ -79,7 +79,7 @@ const EditNodeModal: React.FC<EditNodeModalProps> = ({ node, isOpen, onClose, on
                     name="ip_address"
                     value={formData.ip_address}
                     onChange={handleChange}
-                    className="w-full bg-gray-800 border border-gray-700 rounded p-3 text-white font-mono text-sm focus:border-blue-500 outline-none" 
+                    className="w-full bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-3 text-gray-900 dark:text-white font-mono text-sm focus:border-blue-500 outline-none" 
                 />
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -89,7 +89,7 @@ const EditNodeModal: React.FC<EditNodeModalProps> = ({ node, isOpen, onClose, on
                         name="role"
                         value={formData.role || 'none'}
                         onChange={handleChange}
-                        className="w-full bg-gray-800 border border-gray-700 rounded p-3 text-white text-sm focus:border-blue-500 outline-none appearance-none"
+                        className="w-full bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-3 text-gray-900 dark:text-white text-sm focus:border-blue-500 outline-none appearance-none"
                     >
                         <option value="none">None</option>
                         <option value="validator">Validator</option>
@@ -105,12 +105,12 @@ const EditNodeModal: React.FC<EditNodeModalProps> = ({ node, isOpen, onClose, on
                             name="ordem"
                             value={formData.ordem || 0}
                             onChange={handleChange}
-                            className="w-full bg-gray-800 border border-gray-700 rounded p-3 text-white font-mono text-sm focus:border-blue-500 outline-none text-center" 
+                            className="w-full bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-3 text-gray-900 dark:text-white font-mono text-sm focus:border-blue-500 outline-none text-center" 
                         />
                     </div>
             </div>
 
-            <div className="pt-6 border-t border-gray-800 flex gap-3">
+            <div className="pt-6 border-t border-gray-200 dark:border-gray-800 flex gap-3">
                 <button
                     type="button"
                     onClick={() => {
@@ -118,7 +118,7 @@ const EditNodeModal: React.FC<EditNodeModalProps> = ({ node, isOpen, onClose, on
                             onDelete(formData.id);
                         }
                     }}
-                    className="flex-1 bg-red-900/30 hover:bg-red-900/50 text-red-400 border border-red-900/50 font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+                    className="flex-1 bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-900/50 font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
                 >
                     <Trash2 size={18} />
                     Delete

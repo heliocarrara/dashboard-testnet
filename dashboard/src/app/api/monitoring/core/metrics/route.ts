@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import os from 'os';
 import net from 'net';
+import pool from '@/lib/db';
 
 function checkP2PConnection(host: string, port: number = 11625, timeout: number = 2000): Promise<boolean> {
   return new Promise((resolve) => {
@@ -89,6 +90,13 @@ export async function GET(request: Request) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
+    // Update last_seen in DB
+    try {
+      await pool.query('UPDATE testnet_node_identity SET last_seen = NOW() WHERE ip_address = $1', [ip]);
+    } catch (dbError) {
+      console.error('Failed to update node status in DB:', dbError);
+    }
+
     const data = await response.json();
     const info = data.info;
 
@@ -119,6 +127,13 @@ export async function GET(request: Request) {
         const p2pEnd = performance.now();
         
         if (isP2POnline) {
+            // Update last_seen in DB
+            try {
+                await pool.query('UPDATE testnet_node_identity SET last_seen = NOW() WHERE ip_address = $1', [ip]);
+            } catch (dbError) {
+                console.error('Failed to update node status in DB:', dbError);
+            }
+
             return NextResponse.json({
                 status: 'online_p2p',
                 latency_ms: Math.round(p2pEnd - p2pStart),

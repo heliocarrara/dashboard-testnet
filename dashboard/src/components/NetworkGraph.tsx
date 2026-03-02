@@ -86,24 +86,28 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes, selectedNodeId, onNo
     const isSelected = selectedNodeId === nodeIdForSelection;
     
     // Style logic
-    let bgColor = 'bg-gray-800';
-    let borderColor = 'border-gray-700';
+    let bgColor = 'bg-gray-200 dark:bg-gray-800';
+    let borderColor = 'border-gray-300 dark:border-gray-700';
     // Dynamic size based on screen width
     let size = isMobile ? 'w-12 h-12' : 'w-20 h-20';
-    let labelColor = 'text-gray-400';
+    let labelColor = 'text-gray-500 dark:text-gray-400';
+    let textColor = 'text-gray-800 dark:text-white';
     
     if (type === 'sdf') {
-        bgColor = 'bg-blue-900/10';
-        borderColor = 'border-blue-500/20 border-dashed';
+        bgColor = 'bg-blue-100 dark:bg-blue-900/10';
+        borderColor = 'border-blue-500/40 dark:border-blue-500/20 border-dashed';
         size = isMobile ? 'w-10 h-10' : 'w-14 h-14';
-        labelColor = 'text-blue-400';
+        labelColor = 'text-blue-600 dark:text-blue-400';
+        textColor = 'text-blue-700 dark:text-blue-300';
     } else if (assignedNode) {
         if (isOnline) {
             bgColor = type === 'validator' ? 'bg-green-500' : 'bg-purple-600';
             borderColor = type === 'validator' ? 'border-green-600' : 'border-purple-700';
+            textColor = 'text-white';
         } else {
             bgColor = 'bg-red-500';
             borderColor = 'border-red-600';
+            textColor = 'text-white';
         }
     }
 
@@ -139,26 +143,26 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes, selectedNodeId, onNo
         {/* Node Circle */}
         <div className={`
             ${size} rounded-full flex items-center justify-center border-4 shadow-lg transition-all duration-300 
-            ${isSelected ? 'ring-4 ring-white scale-110 z-30' : 'hover:scale-105'} 
+            ${isSelected ? 'ring-4 ring-white dark:ring-gray-300 scale-110 z-30' : 'hover:scale-105'} 
             ${bgColor} ${borderColor} relative
         `}>
             {type === 'sdf' ? (
-                <span className={`text-[10px] text-blue-300 font-bold opacity-70 ${isMobile ? 'text-[8px]' : ''}`}>SDF</span>
+                <span className={`text-[10px] ${textColor} font-bold opacity-70 ${isMobile ? 'text-[8px]' : ''}`}>SDF</span>
             ) : (
-                <span className={`${isMobile ? 'text-lg' : 'text-2xl'} font-bold text-white leading-none`}>{circleLabel}</span>
+                <span className={`${isMobile ? 'text-lg' : 'text-2xl'} font-bold ${textColor} leading-none`}>{circleLabel}</span>
             )}
 
             {/* Online Indicator */}
             {assignedNode && type !== 'sdf' && (
-                <div className={`absolute -top-1 -right-1 ${isMobile ? 'w-3 h-3' : 'w-4 h-4'} rounded-full border-2 border-gray-900 ${isOnline ? 'bg-green-400 animate-pulse' : 'bg-red-500'}`}></div>
+                <div className={`absolute -top-1 -right-1 ${isMobile ? 'w-3 h-3' : 'w-4 h-4'} rounded-full border-2 border-white dark:border-gray-900 ${isOnline ? 'bg-green-400 animate-pulse' : 'bg-red-500'}`}></div>
             )}
         </div>
 
         {/* Label */}
-        <div className={`mt-2 bg-gray-900/90 px-2 py-1 rounded text-center backdrop-blur-sm border border-gray-800 min-w-[90px] ${type === 'sdf' ? 'opacity-70' : ''} ${isMobile ? 'scale-75 origin-top' : ''}`}>
+        <div className={`mt-2 bg-white/90 dark:bg-gray-900/90 px-2 py-1 rounded text-center backdrop-blur-sm border border-gray-200 dark:border-gray-800 min-w-[90px] ${type === 'sdf' ? 'opacity-70' : ''} ${isMobile ? 'scale-75 origin-top' : ''}`}>
             <p className={`text-[9px] font-bold uppercase tracking-wider ${labelColor}`}>{title}</p>
             {assignedNode && (
-                <p className="text-[10px] text-white font-mono truncate max-w-[110px]">{assignedNode.hostname}</p>
+                <p className="text-[10px] text-gray-900 dark:text-white font-mono truncate max-w-[110px]">{assignedNode.hostname}</p>
             )}
         </div>
       </div>
@@ -253,33 +257,33 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes, selectedNodeId, onNo
   };
 
   return (
-    <div ref={containerRef} className="relative w-full h-full bg-gray-950 overflow-hidden">
+    <div ref={containerRef} className="relative w-full h-full bg-white dark:bg-gray-950 overflow-hidden">
       
       {/* Title Overlay */}
       <div className="absolute top-16 left-8 z-30 pointer-events-none">
-        <h2 className="text-xl font-bold text-white tracking-tight">Consensus Topology</h2>
+        <h2 className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">Consensus Topology</h2>
         <div className="flex items-center gap-2 mt-1">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-            <p className="text-xs text-green-400 font-mono">LIVE NETWORK</p>
+            <p className="text-xs text-green-600 dark:text-green-400 font-mono">LIVE NETWORK</p>
         </div>
-        <p className="text-[10px] text-gray-500 mt-2">Click nodes to see connections • Double-click for details</p>
+        <p className="text-[10px] text-gray-500 dark:text-gray-400 mt-2">Click nodes to see connections • Double-click for details</p>
       </div>
 
       {/* Unassigned List (Bottom Right Floating) - Adjusted position to not overlap with panel */}
       {unassigned.length > 0 && (
-          <div className="absolute bottom-32 right-4 bg-gray-900/90 p-4 rounded-lg border border-gray-700 shadow-xl z-30 max-w-xs backdrop-blur-md">
-             <h4 className="text-xs font-bold text-orange-400 uppercase mb-3 flex items-center gap-2">
+          <div className="absolute bottom-32 right-4 bg-white/90 dark:bg-gray-900/90 p-4 rounded-lg border border-gray-200 dark:border-gray-700 shadow-xl z-30 max-w-xs backdrop-blur-md">
+             <h4 className="text-xs font-bold text-orange-500 dark:text-orange-400 uppercase mb-3 flex items-center gap-2">
                 <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
                 New Nodes Detected
              </h4>
              <div className="space-y-2 max-h-32 overflow-y-auto pr-1 custom-scrollbar">
                  {unassigned.map(node => (
-                     <div key={node.id} className="flex justify-between items-center text-sm text-gray-300 border-b border-gray-800 pb-2 last:border-0 last:pb-0 cursor-pointer hover:bg-gray-800 p-1 rounded" onClick={(e) => handleNodeClick(node.id.toString(), e)}>
+                     <div key={node.id} className="flex justify-between items-center text-sm text-gray-600 dark:text-gray-300 border-b border-gray-100 dark:border-gray-800 pb-2 last:border-0 last:pb-0 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 p-1 rounded" onClick={(e) => handleNodeClick(node.id.toString(), e)}>
                          <div className="flex flex-col">
-                            <span className="font-bold text-white">{node.hostname}</span>
+                            <span className="font-bold text-gray-900 dark:text-white">{node.hostname}</span>
                             <span className="font-mono text-[10px] text-gray-500">{node.id}</span>
                          </div>
-                         <span className="text-[10px] bg-gray-800 px-2 py-0.5 rounded text-blue-300 border border-gray-700">{node.ip_address}</span>
+                         <span className="text-[10px] bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded text-blue-700 dark:text-blue-300 border border-gray-200 dark:border-gray-700">{node.ip_address}</span>
                      </div>
                  ))}
              </div>
@@ -300,13 +304,13 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes, selectedNodeId, onNo
                 onClick={() => onNodeSelect(null)}
             >
                 {/* Background Grid */}
-                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#4b5563 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] dark:bg-[radial-gradient(#4b5563_1px,transparent_1px)]" style={{ backgroundSize: '30px 30px' }}></div>
                 <div 
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-900/20 border-dashed pointer-events-none"
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-200 dark:border-blue-900/20 border-dashed pointer-events-none"
                     style={{ width: SDF_RADIUS * 2, height: SDF_RADIUS * 2 }}
                 ></div>
                 <div 
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full border border-green-900/20 pointer-events-none"
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full border border-green-200 dark:border-green-900/20 pointer-events-none"
                     style={{ width: VALIDATOR_RADIUS * 2, height: VALIDATOR_RADIUS * 2 }}
                 ></div>
 
@@ -386,10 +390,10 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes, selectedNodeId, onNo
                     return (
                         <div 
                             key={`v-placeholder-${idx}`}
-                            className="absolute w-20 h-20 rounded-full border-4 border-gray-800 bg-gray-900/50 flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2"
+                            className="absolute w-20 h-20 rounded-full border-4 border-gray-200 dark:border-gray-800 bg-gray-100/50 dark:bg-gray-900/50 flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2"
                             style={{ left: pos.x, top: pos.y }}
                         >
-                            <span className="text-gray-700 font-bold text-2xl">?</span>
+                            <span className="text-gray-400 dark:text-gray-700 font-bold text-2xl">?</span>
                         </div>
                     );
                 })}

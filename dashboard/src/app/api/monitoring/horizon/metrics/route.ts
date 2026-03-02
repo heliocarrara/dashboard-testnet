@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import os from 'os';
+import pool from '@/lib/db';
 
 function getLocalIpAddresses() {
   const interfaces = os.networkInterfaces();
@@ -58,6 +59,13 @@ export async function GET(request: Request) {
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    // Update last_seen in DB
+    try {
+      await pool.query('UPDATE testnet_node_identity SET last_seen = NOW() WHERE ip_address = $1', [ip]);
+    } catch (dbError) {
+      console.error('Failed to update node status in DB:', dbError);
     }
 
     const data = await response.json();

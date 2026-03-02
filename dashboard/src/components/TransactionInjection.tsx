@@ -68,35 +68,35 @@ const TransactionInjection: React.FC<TransactionInjectionProps> = ({ nodes }) =>
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-      <div className="bg-gray-900 border border-gray-700 rounded-xl shadow-2xl w-full max-w-md overflow-hidden relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+      <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-2xl w-full max-w-md overflow-hidden relative">
         <button 
             onClick={() => setIsOpen(false)}
-            className="absolute top-4 right-4 text-gray-400 hover:text-white"
+            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-white"
         >
             <X size={20} />
         </button>
 
-        <div className="p-6 border-b border-gray-800 bg-gray-800/50">
-            <h3 className="text-xl font-bold text-white flex items-center gap-2">
+        <div className="p-6 border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
                 <Zap className="text-red-500" />
                 Transaction Injection
             </h3>
-            <p className="text-sm text-gray-400 mt-1">Configure and launch network stress tests.</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Configure and launch network stress tests.</p>
         </div>
         
         <div className="p-6 space-y-6">
             
             {/* Target Node Selection */}
             <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase mb-2 flex items-center gap-2">
+                <label className="block text-xs font-bold text-gray-500 dark:text-gray-500 uppercase mb-2 flex items-center gap-2">
                     <Server size={12} />
                     Target Horizon Node
                 </label>
                 <select 
                     value={targetNodeIp}
                     onChange={(e) => setTargetNodeIp(e.target.value)}
-                    className="w-full bg-gray-800 border border-gray-700 rounded p-3 text-white text-sm focus:border-red-500 outline-none appearance-none"
+                    className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-3 text-gray-900 dark:text-white text-sm focus:border-red-500 outline-none appearance-none"
                 >
                     <option value="">Auto-detect / Default</option>
                     {horizonNodes.map(node => (
@@ -106,7 +106,7 @@ const TransactionInjection: React.FC<TransactionInjectionProps> = ({ nodes }) =>
                     ))}
                 </select>
                 {horizonNodes.length === 0 && (
-                    <p className="text-[10px] text-yellow-500 mt-1">
+                    <p className="text-[10px] text-yellow-600 dark:text-yellow-500 mt-1">
                         No online Horizon watchers detected. Test may fail if no default is configured.
                     </p>
                 )}
@@ -114,28 +114,28 @@ const TransactionInjection: React.FC<TransactionInjectionProps> = ({ nodes }) =>
 
             <div className="grid grid-cols-2 gap-4">
                 <div>
-                    <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Source Account</label>
-                    <input type="text" className="w-full bg-gray-800 border border-gray-700 rounded p-3 text-white font-mono text-sm focus:border-red-500 outline-none" placeholder="G..." disabled />
+                    <label className="block text-xs font-bold text-gray-500 dark:text-gray-500 uppercase mb-2">Source Account</label>
+                    <input type="text" className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-3 text-gray-900 dark:text-white font-mono text-sm focus:border-red-500 outline-none" placeholder="G..." disabled />
                 </div>
                 <div>
-                    <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Destination Account</label>
-                    <input type="text" className="w-full bg-gray-800 border border-gray-700 rounded p-3 text-white font-mono text-sm focus:border-red-500 outline-none" placeholder="G..." disabled />
+                    <label className="block text-xs font-bold text-gray-500 dark:text-gray-500 uppercase mb-2">Destination Account</label>
+                    <input type="text" className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-3 text-gray-900 dark:text-white font-mono text-sm focus:border-red-500 outline-none" placeholder="G..." disabled />
                 </div>
             </div>
 
             <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Batch Size (Tx)</label>
+                <label className="block text-xs font-bold text-gray-500 dark:text-gray-500 uppercase mb-2">Batch Size (Tx)</label>
                 <div className="flex items-center gap-4">
-                    <input type="number" className="w-24 bg-gray-800 border border-gray-700 rounded p-3 text-white font-bold focus:border-red-500 outline-none" defaultValue={100} />
-                    <span className="text-xs text-gray-500">Transactions per batch</span>
+                    <input type="number" className="w-24 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-3 text-gray-900 dark:text-white font-bold focus:border-red-500 outline-none" defaultValue={100} />
+                    <span className="text-xs text-gray-500 dark:text-gray-400">Transactions per batch</span>
                 </div>
             </div>
 
-            <div className="pt-4 border-t border-gray-800">
+            <div className="pt-4 border-t border-gray-200 dark:border-gray-800">
                 <button
                     onClick={handleInject}
                     disabled={loading}
-                    className="w-full bg-red-600 hover:bg-red-500 text-white font-bold py-3 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
+                    className="w-full bg-red-600 hover:bg-red-500 text-white font-bold py-3 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
                 >
                     {loading ? (
                         <>
@@ -147,7 +147,7 @@ const TransactionInjection: React.FC<TransactionInjectionProps> = ({ nodes }) =>
                     )}
                 </button>
                 {status && (
-                    <div className={`mt-4 p-3 rounded text-center text-sm font-medium ${status.includes('Failed') || status.includes('Error') ? 'bg-red-900/50 text-red-200' : 'bg-green-900/50 text-green-200'}`}>
+                    <div className={`mt-4 p-3 rounded text-center text-sm font-medium ${status.includes('Failed') || status.includes('Error') ? 'bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-200' : 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-200'}`}>
                         {status}
                     </div>
                 )}

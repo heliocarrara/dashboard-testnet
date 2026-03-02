@@ -328,20 +328,20 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
     });
 
     return (
-        <div className="h-full flex flex-col gap-6 p-6 overflow-y-auto custom-scrollbar">
+        <div className="h-full flex flex-col gap-6 p-6 overflow-y-auto custom-scrollbar bg-gray-50 dark:bg-transparent text-gray-900 dark:text-gray-100 transition-colors duration-300">
             
             {/* Header */}
             <div className="flex items-center justify-between shrink-0">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
-                        <ArrowRightLeft className="text-orange-400" />
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+                        <ArrowRightLeft className="text-orange-500 dark:text-orange-400" />
                         Transaction Manager
                     </h2>
-                    <p className="text-gray-400 text-sm">Manage transfers and generate network traffic</p>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm">Manage transfers and generate network traffic</p>
                 </div>
                 <button 
                     onClick={fetchAccounts}
-                    className="p-2 bg-gray-800 hover:bg-gray-700 rounded-lg text-gray-400 hover:text-white transition-colors"
+                    className="p-2 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors border border-gray-200 dark:border-gray-700 shadow-sm"
                 >
                     <RefreshCw size={20} className={loading ? "animate-spin" : ""} />
                 </button>
@@ -350,17 +350,17 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
             <div className="flex flex-col gap-6">
                 
                 {/* Control Tabs */}
-                <div className="flex gap-4 border-b border-gray-700 pb-2">
+                <div className="flex gap-4 border-b border-gray-200 dark:border-gray-700 pb-2">
                     <button 
                         onClick={() => setViewMode('generator')}
-                        className={`flex items-center gap-2 pb-2 px-4 border-b-2 transition-colors ${viewMode === 'generator' ? 'border-purple-500 text-purple-400 font-bold' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
+                        className={`flex items-center gap-2 pb-2 px-4 border-b-2 transition-colors ${viewMode === 'generator' ? 'border-purple-500 text-purple-600 dark:text-purple-400 font-bold' : 'border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'}`}
                     >
                         <Activity size={18} />
                         Traffic Generator
                     </button>
                     <button 
                         onClick={() => setViewMode('manual')}
-                        className={`flex items-center gap-2 pb-2 px-4 border-b-2 transition-colors ${viewMode === 'manual' ? 'border-blue-500 text-blue-400 font-bold' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
+                        className={`flex items-center gap-2 pb-2 px-4 border-b-2 transition-colors ${viewMode === 'manual' ? 'border-blue-500 text-blue-600 dark:text-blue-400 font-bold' : 'border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'}`}
                     >
                         <Send size={18} />
                         Manual Transfer
@@ -369,9 +369,9 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
 
                 {/* View Content */}
                 {viewMode === 'manual' ? (
-                    <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 flex flex-col gap-4 animate-in fade-in zoom-in duration-300">
-                        <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                            <Send size={20} className="text-blue-400" />
+                    <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 flex flex-col gap-4 animate-in fade-in zoom-in duration-300 shadow-sm">
+                        <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                            <Send size={20} className="text-blue-500 dark:text-blue-400" />
                             Manual Transfer
                         </h3>
                         
@@ -381,7 +381,7 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
                                 <select 
                                     value={sourceAccount}
                                     onChange={(e) => setSourceAccount(e.target.value)}
-                                    className="w-full bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500"
+                                    className="w-full bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white text-sm rounded-lg border border-gray-300 dark:border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500"
                                 >
                                     <option value="">Select Source Account</option>
                                     {accounts.map(acc => (
@@ -397,7 +397,7 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
                                 <div className="flex gap-2">
                                     <select 
                                         onChange={(e) => setDestinationAccount(e.target.value)}
-                                        className="w-1/3 bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500"
+                                        className="w-1/3 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white text-sm rounded-lg border border-gray-300 dark:border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500"
                                     >
                                         <option value="">Select DB Account</option>
                                         {accounts.map(acc => (
@@ -411,7 +411,7 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
                                         value={destinationAccount}
                                         onChange={(e) => setDestinationAccount(e.target.value)}
                                         placeholder="G..."
-                                        className="flex-1 bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500 font-mono"
+                                        className="flex-1 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white text-sm rounded-lg border border-gray-300 dark:border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500 font-mono"
                                     />
                                 </div>
                             </div>
@@ -423,7 +423,7 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
                                         type="number" 
                                         value={amount}
                                         onChange={(e) => setAmount(e.target.value)}
-                                        className="w-full bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500"
+                                        className="w-full bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white text-sm rounded-lg border border-gray-300 dark:border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500"
                                     />
                                 </div>
                                 <div>
@@ -431,7 +431,7 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
                                     <select 
                                         value={selectedNode}
                                         onChange={(e) => setSelectedNode(e.target.value)}
-                                        className="w-full bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500"
+                                        className="w-full bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white text-sm rounded-lg border border-gray-300 dark:border-gray-700 p-3 focus:ring-blue-500 focus:border-blue-500"
                                     >
                                         <option value="">Select Node</option>
                                         {horizonNodes.map(node => (
@@ -447,26 +447,26 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
                             <button 
                                 onClick={handleSendTransaction}
                                 disabled={txStatus.type === 'loading'}
-                                className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg"
                             >
                                 {txStatus.type === 'loading' ? <RefreshCw className="animate-spin" /> : <Send size={18} />}
                                 Send Transaction
                             </button>
 
                             {txStatus.message && (
-                                <div className={`p-3 rounded-lg text-sm border ${txStatus.type === 'success' ? 'bg-green-900/30 border-green-800 text-green-400' : txStatus.type === 'error' ? 'bg-red-900/30 border-red-800 text-red-400' : 'bg-blue-900/30 border-blue-800 text-blue-400'}`}>
+                                <div className={`p-3 rounded-lg text-sm border ${txStatus.type === 'success' ? 'bg-green-100 dark:bg-green-900/30 border-green-200 dark:border-green-800 text-green-700 dark:text-green-400' : txStatus.type === 'error' ? 'bg-red-100 dark:bg-red-900/30 border-red-200 dark:border-red-800 text-red-700 dark:text-red-400' : 'bg-blue-100 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-400'}`}>
                                     {txStatus.message}
                                 </div>
                             )}
                         </div>
                     </div>
                 ) : (
-                    <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 flex flex-col gap-4 animate-in fade-in zoom-in duration-300">
-                        <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                            <Activity size={20} className="text-purple-400" />
+                    <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 flex flex-col gap-4 animate-in fade-in zoom-in duration-300 shadow-sm">
+                        <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                            <Activity size={20} className="text-purple-500 dark:text-purple-400" />
                             Traffic Generator
                         </h3>
-                        <p className="text-gray-400 text-sm">Generate random transactions between existing accounts.</p>
+                        <p className="text-gray-500 dark:text-gray-400 text-sm">Generate random transactions between existing accounts.</p>
                         
                         <div className="flex items-center gap-4">
                             <div className="flex-1">
@@ -475,13 +475,13 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
                                     type="number" 
                                     value={genCount}
                                     onChange={(e) => setGenCount(parseInt(e.target.value))}
-                                    className="w-full bg-gray-900 text-white text-sm rounded-lg border border-gray-700 p-3"
+                                    className="w-full bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white text-sm rounded-lg border border-gray-300 dark:border-gray-700 p-3"
                                 />
                             </div>
                             <button 
                                 onClick={handleGenerateTraffic}
                                 disabled={isGenerating}
-                                className="mt-5 bg-purple-600 hover:bg-purple-500 text-white font-bold px-6 py-3 rounded-lg transition-colors flex items-center gap-2 disabled:opacity-50"
+                                className="mt-5 bg-purple-600 hover:bg-purple-500 text-white font-bold px-6 py-3 rounded-lg transition-colors flex items-center gap-2 disabled:opacity-50 shadow-md hover:shadow-lg"
                             >
                                 {isGenerating ? <RefreshCw className="animate-spin" /> : <Play size={18} />}
                                 Start
@@ -490,11 +490,11 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
 
                         {genProgress && (
                             <div className="space-y-2">
-                                <div className="flex justify-between text-xs text-gray-400">
+                                <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400">
                                     <span>Progress: {genProgress.current} / {genProgress.total}</span>
                                     <span>Success: {genProgress.success} | Fail: {genProgress.fail}</span>
                                 </div>
-                                <div className="w-full bg-gray-700 h-2 rounded-full overflow-hidden">
+                                <div className="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
                                     <div 
                                         className="bg-purple-500 h-full transition-all duration-300"
                                         style={{ width: `${(genProgress.current / genProgress.total) * 100}%` }}
@@ -510,17 +510,17 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
             <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 h-[400px]">
                 
                 {/* Transaction History Table */}
-                <div className="xl:col-span-2 bg-gray-800 rounded-xl border border-gray-700 flex flex-col overflow-hidden">
-                    <div className="p-4 border-b border-gray-700 flex justify-between items-center bg-gray-800">
-                        <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                            <Clock size={20} className="text-green-400" />
+                <div className="xl:col-span-2 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden shadow-sm">
+                    <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-gray-50 dark:bg-gray-800">
+                        <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                            <Clock size={20} className="text-green-500 dark:text-green-400" />
                             Transaction History
                         </h3>
                         <div className="flex gap-2">
                             <select 
                                 value={filterStatus} 
                                 onChange={(e) => setFilterStatus(e.target.value as any)}
-                                className="bg-gray-900 text-white text-xs rounded border border-gray-600 p-1"
+                                className="bg-white dark:bg-gray-900 text-gray-700 dark:text-white text-xs rounded border border-gray-300 dark:border-gray-600 p-1"
                             >
                                 <option value="all">All Status</option>
                                 <option value="success">Success</option>
@@ -529,20 +529,20 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
                             <select 
                                 value={filterType} 
                                 onChange={(e) => setFilterType(e.target.value as any)}
-                                className="bg-gray-900 text-white text-xs rounded border border-gray-600 p-1"
+                                className="bg-white dark:bg-gray-900 text-gray-700 dark:text-white text-xs rounded border border-gray-300 dark:border-gray-600 p-1"
                             >
                                 <option value="all">All Types</option>
                                 <option value="manual">Manual</option>
                                 <option value="auto">Auto</option>
                             </select>
-                            <button onClick={() => setTransactions([])} className="p-1 hover:bg-gray-700 rounded text-gray-400">
+                            <button onClick={() => setTransactions([])} className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded text-gray-500 dark:text-gray-400">
                                 <XCircle size={16} />
                             </button>
                         </div>
                     </div>
                     <div className="flex-1 overflow-auto custom-scrollbar">
-                        <table className="w-full text-left text-sm text-gray-400">
-                            <thead className="bg-gray-900/50 text-gray-200 sticky top-0">
+                        <table className="w-full text-left text-sm text-gray-600 dark:text-gray-400">
+                            <thead className="bg-gray-100 dark:bg-gray-900/50 text-gray-700 dark:text-gray-200 sticky top-0">
                                 <tr>
                                     <th className="p-3">Time</th>
                                     <th className="p-3">From - To</th>
@@ -551,7 +551,7 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
                                     <th className="p-3">Hash / Details</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-gray-700">
+                            <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                                 {filteredTransactions.length === 0 && (
                                     <tr>
                                         <td colSpan={5} className="p-8 text-center text-gray-500 italic">
@@ -560,43 +560,43 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
                                     </tr>
                                 )}
                                 {filteredTransactions.map(tx => (
-                                    <tr key={tx.id} className="hover:bg-gray-700/30 transition-colors">
+                                    <tr key={tx.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
                                         <td className="p-3 font-mono text-xs">{tx.timestamp.toLocaleTimeString()}</td>
                                         <td className="p-3">
                                             <div className="flex flex-col gap-1">
-                                                <div className="flex items-center gap-1 text-xs text-white" title={tx.source}>
+                                                <div className="flex items-center gap-1 text-xs text-gray-900 dark:text-white" title={tx.source}>
                                                     <span className="text-gray-500 text-[10px] w-8">From:</span>
                                                     {accounts.find(a => a.public_key === tx.source || a.name === tx.source)?.name || (tx.source.length > 20 ? tx.source.substring(0, 8) + '...' : tx.source)}
                                                 </div>
-                                                <div className="flex items-center gap-1 text-xs text-white" title={tx.destination}>
+                                                <div className="flex items-center gap-1 text-xs text-gray-900 dark:text-white" title={tx.destination}>
                                                     <span className="text-gray-500 text-[10px] w-8">To:</span>
                                                     {accounts.find(a => a.public_key === tx.destination || a.name === tx.destination)?.name || (tx.destination.length > 20 ? tx.destination.substring(0, 8) + '...' : tx.destination)}
                                                 </div>
                                             </div>
                                         </td>
-                                        <td className="p-3 text-white font-mono">{tx.amount} XLM</td>
+                                        <td className="p-3 text-gray-900 dark:text-white font-mono">{tx.amount} XLM</td>
                                         <td className="p-3">
                                             {tx.status === 'success' ? (
-                                                <span className="inline-flex items-center gap-1 text-green-400 text-xs bg-green-900/20 px-2 py-1 rounded-full">
+                                                <span className="inline-flex items-center gap-1 text-green-600 dark:text-green-400 text-xs bg-green-100 dark:bg-green-900/20 px-2 py-1 rounded-full">
                                                     <CheckCircle size={12} /> Success
                                                 </span>
                                             ) : tx.status === 'error' ? (
-                                                <span className="inline-flex items-center gap-1 text-red-400 text-xs bg-red-900/20 px-2 py-1 rounded-full">
+                                                <span className="inline-flex items-center gap-1 text-red-600 dark:text-red-400 text-xs bg-red-100 dark:bg-red-900/20 px-2 py-1 rounded-full">
                                                     <XCircle size={12} /> Error
                                                 </span>
                                             ) : (
-                                                <span className="inline-flex items-center gap-1 text-yellow-400 text-xs bg-yellow-900/20 px-2 py-1 rounded-full">
+                                                <span className="inline-flex items-center gap-1 text-yellow-600 dark:text-yellow-400 text-xs bg-yellow-100 dark:bg-yellow-900/20 px-2 py-1 rounded-full">
                                                     <Activity size={12} className="animate-spin" /> Pending
                                                 </span>
                                             )}
                                         </td>
                                         <td className="p-3 font-mono text-xs max-w-[200px] truncate" title={tx.hash || tx.message}>
                                             {tx.hash ? (
-                                                <a href={`https://testnet.stellarchain.io/transaction/${tx.hash}`} target="_blank" rel="noreferrer" className="text-blue-400 hover:underline flex items-center gap-1">
+                                                <a href={`https://testnet.stellarchain.io/transaction/${tx.hash}`} target="_blank" rel="noreferrer" className="text-blue-500 dark:text-blue-400 hover:underline flex items-center gap-1">
                                                     {tx.hash.substring(0, 12)}... <ExternalLink size={10} />
                                                 </a>
                                             ) : (
-                                                <span className="text-red-400">{tx.message}</span>
+                                                <span className="text-red-500 dark:text-red-400">{tx.message}</span>
                                             )}
                                         </td>
                                     </tr>
@@ -607,7 +607,7 @@ export default function TransactionsPanel({ nodes = [] }: TransactionsPanelProps
                 </div>
 
                 {/* Detailed Log Console */}
-                <div className="bg-gray-900 rounded-xl border border-gray-700 flex flex-col overflow-hidden">
+                <div className="bg-gray-900 rounded-xl border border-gray-700 flex flex-col overflow-hidden shadow-sm">
                     <div className="p-3 border-b border-gray-800 flex justify-between items-center bg-gray-900">
                         <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider flex items-center gap-2">
                             <Server size={14} className="text-green-400" />
