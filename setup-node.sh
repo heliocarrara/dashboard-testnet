@@ -130,11 +130,25 @@ if [ -z "$EXISTING" ]; then
     echo -e "${YELLOW}   -> Novo nó detectado. Gerando chaves...${NC}"
     
     KEYPAIR=$(docker run --rm --entrypoint /bin/bash "$IMAGE" -c "stellar-core gen-seed")
+    if [ $? -ne 0 ]; then
+        echo -e "${RED}❌ Erro crítico: Falha ao executar container Docker para gerar chaves.${NC}"
+        echo -e "${YELLOW}Verifique se o Docker está rodando e tem espaço em disco.${NC}"
+        exit 1
+    fi
+
     SECRET_SEED=$(echo "$KEYPAIR" | grep "Secret seed:" | awk '{print $3}')
     PUBLIC_KEY=$(echo "$KEYPAIR" | grep "Public:" | awk '{print $2}')
+
+    if [ -z "$SECRET_SEED" ] || [ -z "$PUBLIC_KEY" ]; then
+         echo -e "${RED}❌ Erro: Chaves geradas inválidas ou vazias.${NC}"
+         exit 1
+    fi
     
     # Register in DB
-    run_sql_cmd "INSERT INTO $TABLE_IDENTITY (hostname, ip_address, node_seed, public_key, role, quorum_group, status, config_status) VALUES ('$MY_HOSTNAME', '$MY_IP', '$SECRET_SEED', '$PUBLIC_KEY', 'none', 0, 'pending', 'unconfigured');" > /dev/null
+    if ! run_sql_cmd "INSERT INTO $TABLE_IDENTITY (hostname, ip_address, node_seed, public_key, role, quorum_group, status, config_status) VALUES ('$MY_HOSTNAME', '$MY_IP', '$SECRET_SEED', '$PUBLIC_KEY', 'none', 0, 'pending', 'unconfigured');" > /dev/null; then
+        echo -e "${RED}❌ Erro ao registrar nó no banco de dados.${NC}"
+        exit 1
+    fi
     
     echo -e "${GREEN}   -> Registrado no Dashboard! Aguardando configuração de Role...${NC}"
     EXISTING_ROLE="none"
@@ -301,6 +315,8 @@ services:
     volumes:
       # CORREÇÃO CRÍTICA DO DIRETÓRIO INTERNO:
       - $VOLUME_PATH:/opt/stellar
+      # Mapeamento de logs para o Zabbix:
+      - ./logs:/var/log/stellar-core
     # COMANDO DINÂMICO BASEADO NA ROLE DA MÁQUINA:
     command: ["--testnet", "--enable", "$SERVICES_TO_ENABLE"]
 EOF

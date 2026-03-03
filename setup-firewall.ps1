@@ -2,36 +2,47 @@
 # STELLAR NODE FIREWALL SETUP (Windows)
 # ==============================================================================
 # This script opens the necessary ports for the Stellar Node in Windows Firewall
-# Run as Administrator!
 # ==============================================================================
+
+# Check for Administrator privileges
+$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+if (-not $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+    Write-Host "⚠️  Script is not running as Administrator." -ForegroundColor Yellow
+    Write-Host "🔄 Restarting with elevated privileges..." -ForegroundColor Cyan
+    Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
+    exit
+}
 
 Write-Host "🛡️ Configuring Windows Firewall for Stellar Node..." -ForegroundColor Cyan
 
-# 1. Stellar P2P (11625)
-$p2pRule = Get-NetFirewallRule -DisplayName "Stellar Node P2P (11625)" -ErrorAction SilentlyContinue
-if ($p2pRule) {
-    Write-Host "✅ Port 11625 (P2P) is already open." -ForegroundColor Green
-} else {
-    New-NetFirewallRule -DisplayName "Stellar Node P2P (11625)" -Direction Inbound -LocalPort 11625 -Protocol TCP -Action Allow
-    Write-Host "✅ Port 11625 (P2P) opened successfully." -ForegroundColor Green
+# Function to create firewall rule safely
+function Add-StellarFirewallRule {
+    param (
+        [string]$Name,
+        [int]$Port
+    )
+    
+    $rule = Get-NetFirewallRule -DisplayName $Name -ErrorAction SilentlyContinue
+    if ($rule) {
+        Write-Host "✅ Port $Port ($Name) is already open." -ForegroundColor Green
+    } else {
+        try {
+            New-NetFirewallRule -DisplayName $Name -Direction Inbound -LocalPort $Port -Protocol TCP -Action Allow -ErrorAction Stop | Out-Null
+            Write-Host "✅ Port $Port ($Name) opened successfully." -ForegroundColor Green
+        } catch {
+            Write-Host "❌ Failed to open port $Port ($Name): $_" -ForegroundColor Red
+        }
+    }
 }
+
+# 1. Stellar P2P (11625)
+Add-StellarFirewallRule -Name "Stellar Node P2P (11625)" -Port 11625
 
 # 2. Stellar HTTP/RPC (11626)
-$httpRule = Get-NetFirewallRule -DisplayName "Stellar Node HTTP (11626)" -ErrorAction SilentlyContinue
-if ($httpRule) {
-    Write-Host "✅ Port 11626 (HTTP) is already open." -ForegroundColor Green
-} else {
-    New-NetFirewallRule -DisplayName "Stellar Node HTTP (11626)" -Direction Inbound -LocalPort 11626 -Protocol TCP -Action Allow
-    Write-Host "✅ Port 11626 (HTTP) opened successfully." -ForegroundColor Green
-}
+Add-StellarFirewallRule -Name "Stellar Node HTTP (11626)" -Port 11626
 
 # 3. Stellar Horizon (8000)
-$horizonRule = Get-NetFirewallRule -DisplayName "Stellar Horizon (8000)" -ErrorAction SilentlyContinue
-if ($horizonRule) {
-    Write-Host "✅ Port 8000 (Horizon) is already open." -ForegroundColor Green
-} else {
-    New-NetFirewallRule -DisplayName "Stellar Horizon (8000)" -Direction Inbound -LocalPort 8000 -Protocol TCP -Action Allow
-    Write-Host "✅ Port 8000 (Horizon) opened successfully." -ForegroundColor Green
-}
+Add-StellarFirewallRule -Name "Stellar Horizon (8000)" -Port 8000
 
 Write-Host "`n🎉 Firewall configuration complete!" -ForegroundColor Cyan
+Read-Host "Press Enter to exit..."
