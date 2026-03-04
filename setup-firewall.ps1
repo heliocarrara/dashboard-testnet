@@ -44,5 +44,8 @@ Add-StellarFirewallRule -Name "Stellar Node HTTP (11626)" -Port 11626
 # 3. Stellar Horizon (8000)
 Add-StellarFirewallRule -Name "Stellar Horizon (8000)" -Port 8000
 
+# 4. Custom Port (10050) - Requested for IP 200.129.247.55
+Add-StellarFirewallRule -Name "Custom Port (10050)" -Port 10050
+
 Write-Host "`n🎉 Firewall configuration complete!" -ForegroundColor Cyan
 Read-Host "Press Enter to exit..."

@@ -1,0 +1,653 @@
+2026-03-04T12:28:40.911 GDUEC [default INFO] Starting stellar-core v25.1.1
+2026-03-04T12:28:40.913 GDUEC [Database INFO] Connecting to: sqlite3:///opt/stellar/core/stellar.db
+2026-03-04T12:28:40.924 GDUEC [SCP INFO] LocalNode::LocalNode@GDUEC qSet: 59d361
+2026-03-04T12:28:40.925 GDUEC [Database INFO] DB schema is in current version
+2026-03-04T12:28:40.925 GDUEC [default INFO] Listening on 0.0.0.0:11626 for HTTP requests
+2026-03-04T12:28:40.925 GDUEC [Bucket INFO] BucketListDB enabled: pageSizeExponent: 14 indexCutOff: 20MB, persist indexes: true
+2026-03-04T12:28:40.926 GDUEC [default INFO] Connection effective settings:
+2026-03-04T12:28:40.926 GDUEC [default INFO] TARGET_PEER_CONNECTIONS: 8
+2026-03-04T12:28:40.926 GDUEC [default INFO] MAX_ADDITIONAL_PEER_CONNECTIONS: 64
+2026-03-04T12:28:40.926 GDUEC [default INFO] MAX_PENDING_CONNECTIONS: 500
+2026-03-04T12:28:40.926 GDUEC [default INFO] MAX_OUTBOUND_PENDING_CONNECTIONS: 56
+2026-03-04T12:28:40.926 GDUEC [default INFO] MAX_INBOUND_PENDING_CONNECTIONS: 444
+2026-03-04T12:28:40.926 GDUEC [default INFO] BACKGROUND_OVERLAY_PROCESSING=true
+2026-03-04T12:28:40.927 GDUEC [default INFO] PARALLEL_LEDGER_APPLY=true
+2026-03-04T12:28:40.927 GDUEC [History INFO] Archive 'sdf_testnet_1' has 'get' command only, will not be written
+2026-03-04T12:28:40.927 GDUEC [History INFO] Archive 'sdf_testnet_2' has 'get' command only, will not be written
+2026-03-04T12:28:40.927 GDUEC [History INFO] Archive 'sdf_testnet_3' has 'get' command only, will not be written
+2026-03-04T12:28:40.927 GDUEC [History WARNING] No writable archives configured, history will not be written.
+2026-03-04T12:28:40.927 GDUEC [Ledger INFO] Starting up application
+2026-03-04T12:28:40.927 GDUEC [Ledger INFO] Last closed ledger (LCL) hash is 3717cc2d58717d0d8a5612cf97b9c2e7c04d1eeb1b77151a59687fae75e4aab6
+2026-03-04T12:28:40.928 GDUEC [Ledger INFO] Loaded LCL header from database: [seq=1325251, hash=3717cc]
+2026-03-04T12:28:40.928 GDUEC [default INFO] Establishing 10-entry connection pool to: sqlite3:///opt/stellar/core/stellar.db
+2026-03-04T12:28:41.558 GDUEC [Ledger INFO] Assumed bucket-state for LCL: [seq=1325251, hash=3717cc]
+2026-03-04T12:28:41.559 GDUEC [default INFO] Launching 1 loading and 5 compiling background threads
+2026-03-04T12:28:41.865 GDUEC [default INFO] Compiled 1642 contracts (43833304 bytes of Wasm) in 306ms real time, 1478ms CPU time
+2026-03-04T12:28:44.350 GDUEC [Overlay INFO] Binding to endpoint 0.0.0.0:11625
+2026-03-04T12:28:44.357 GDUEC [History INFO] Downloading history archive state: .well-known/stellar-history.json
+2026-03-04T12:28:44.836 GDUEC [Process WARNING] process 12589 exited 23: curl -sf http://history.stellar.org/prd/core-testnet/core_testnet_001/.well-known/stellar-history.json -o buckets/tmp/history-401b66434c09368b/8c4b99c7373e8248-stellar-history.json
+2026-03-04T12:28:44.836 GDUEC [History WARNING] Could not download file: archive sdf_testnet_1 maybe missing file .well-known/stellar-history.json
+2026-03-04T12:28:44.837 GDUEC [History ERROR] Could not download .well-known/stellar-history.json file: corrupt archive sdf_testnet_1
+2026-03-04T12:28:44.837 GDUEC [History ERROR] Failed to obtain archive information: sdf_testnet_1
+2026-03-04T12:28:46.590 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 98.91.174.101:11625
+2026-03-04T12:28:46.591 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 44.204.146.210:11625
+2026-03-04T12:28:46.591 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 44.213.67.110:11625
+2026-03-04T12:28:46.591 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.175.126.219:11625
+2026-03-04T12:28:46.592 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.223.55.158:11625
+2026-03-04T12:28:46.593 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.21.151.231:11725
+2026-03-04T12:28:46.593 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-04T12:28:46.594 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-04T12:28:46.595 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:28:46.595 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:28:46.596 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-04T12:28:46.597 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-04T12:28:46.598 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-04T12:28:46.599 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-04T12:28:46.600 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11825
+2026-03-04T12:28:46.600 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 94.225.170.42:21662
+2026-03-04T12:28:46.601 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11625
+2026-03-04T12:28:46.601 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-04T12:28:46.602 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-04T12:28:46.603 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.139:11625
+2026-03-04T12:28:46.604 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-04T12:28:46.604 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11725
+2026-03-04T12:28:46.605 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 167.172.244.33:11625
+2026-03-04T12:28:46.605 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-04T12:28:46.606 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-04T12:28:46.607 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:28:46.607 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-04T12:28:46.608 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-04T12:28:46.608 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-04T12:28:46.609 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-04T12:28:46.610 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-04T12:28:46.610 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-04T12:28:46.611 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.159.184:11725
+2026-03-04T12:28:46.612 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 206.125.34.196:11725
+2026-03-04T12:28:46.612 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-04T12:28:46.613 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-04T12:28:46.614 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-04T12:28:46.615 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:28:46.617 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-04T12:28:46.618 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.71:11625
+2026-03-04T12:28:46.619 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-04T12:28:46.620 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-04T12:28:46.620 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-04T12:28:46.621 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-04T12:28:46.622 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-04T12:28:46.622 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-04T12:28:46.623 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-04T12:28:46.624 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-04T12:28:46.624 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.56:11625
+2026-03-04T12:28:46.625 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.227.52.150:30020
+2026-03-04T12:28:46.626 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.69:11625
+2026-03-04T12:28:46.627 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 24.252.206.200:11625
+2026-03-04T12:28:46.628 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.216.66:11825
+2026-03-04T12:28:46.628 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-04T12:28:46.629 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.69:11625
+2026-03-04T12:28:46.630 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-04T12:28:46.994 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.175.126.219:11625
+2026-03-04T12:28:46.994 GDUEC [Overlay INFO] Authenticated to 54.175.126.219:11625
+2026-03-04T12:28:46.995 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.223.55.158:11625
+2026-03-04T12:28:46.995 GDUEC [Overlay INFO] Authenticated to 13.223.55.158:11625
+2026-03-04T12:28:47.116 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.21.151.231:11725
+2026-03-04T12:28:47.116 GDUEC [Overlay INFO] Authenticated to 3.21.151.231:11725
+2026-03-04T12:28:47.117 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.206.213.41:30020
+2026-03-04T12:28:47.117 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.245.167.15:30020
+2026-03-04T12:28:49.632 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-04T12:28:49.633 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-04T12:28:49.634 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-04T12:28:49.635 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-04T12:28:49.637 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-04T12:28:49.638 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-04T12:28:49.639 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-04T12:28:49.640 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.236.21.197:30020
+2026-03-04T12:28:49.641 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11825
+2026-03-04T12:28:49.641 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:28:49.642 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-04T12:28:49.644 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-04T12:28:52.646 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.56:11625
+2026-03-04T12:28:52.647 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-04T12:28:52.650 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.216.66:11825
+2026-03-04T12:28:52.651 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.159.184:11725
+2026-03-04T12:28:52.652 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-04T12:28:52.653 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-04T12:28:52.654 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:28:52.655 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.69:11625
+2026-03-04T12:28:52.656 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-04T12:28:52.657 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:28:52.658 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-04T12:28:52.659 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.227.52.150:30020
+2026-03-04T12:28:52.659 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:28:52.660 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 167.172.244.33:11625
+2026-03-04T12:28:52.661 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:28:52.662 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-04T12:28:52.663 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-04T12:28:52.664 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-04T12:28:52.665 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-04T12:28:52.667 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-04T12:28:52.668 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-04T12:28:52.669 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-04T12:28:52.670 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-04T12:28:52.671 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-04T12:28:52.671 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-04T12:28:52.672 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.71:11625
+2026-03-04T12:28:52.673 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-04T12:28:52.674 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-04T12:28:52.674 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11625
+2026-03-04T12:28:52.675 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-04T12:28:52.676 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-04T12:28:52.676 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-04T12:28:52.677 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:28:52.678 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 206.125.34.196:11725
+2026-03-04T12:28:52.678 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 146.190.222.143:64202
+2026-03-04T12:28:52.679 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-04T12:28:52.680 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.69:11625
+2026-03-04T12:28:52.682 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-04T12:28:52.684 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-04T12:28:52.685 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-04T12:28:52.686 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-04T12:28:52.686 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-04T12:28:52.687 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-04T12:28:52.688 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-04T12:28:52.689 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-04T12:28:52.690 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-04T12:28:55.691 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-04T12:28:55.692 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:28:55.693 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.139:11625
+2026-03-04T12:28:55.694 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11725
+2026-03-04T12:28:55.694 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-04T12:28:55.695 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:28:55.696 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-04T12:28:55.698 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-04T12:28:55.700 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11825
+2026-03-04T12:28:55.701 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-04T12:28:55.702 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 167.172.244.33:11625
+2026-03-04T12:28:55.703 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-04T12:28:55.704 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-04T12:28:55.705 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-04T12:28:55.706 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-04T12:28:55.707 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-04T12:28:55.708 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 24.252.206.200:11625
+2026-03-04T12:28:55.709 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-04T12:28:58.714 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-04T12:28:58.716 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.159.184:11725
+2026-03-04T12:28:58.717 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-04T12:28:58.718 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-04T12:28:58.719 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.69:11625
+2026-03-04T12:28:58.719 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-04T12:28:58.720 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 167.172.244.33:11625
+2026-03-04T12:28:58.721 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-04T12:28:58.721 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11625
+2026-03-04T12:28:58.722 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11825
+2026-03-04T12:28:58.722 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-04T12:28:58.723 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:28:58.724 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-04T12:28:58.724 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-04T12:28:58.725 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-04T12:28:58.725 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-04T12:28:58.726 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-04T12:28:58.727 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-04T12:28:58.727 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-04T12:28:58.728 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-04T12:28:58.730 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:28:58.731 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.216.66:11825
+2026-03-04T12:28:58.734 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-04T12:28:58.735 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-04T12:28:58.736 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-04T12:28:58.737 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-04T12:28:58.737 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.69:11625
+2026-03-04T12:28:58.738 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-04T12:28:58.739 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 94.225.170.42:21662
+2026-03-04T12:28:58.740 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-04T12:28:58.740 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.236.21.197:30020
+2026-03-04T12:28:58.741 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.227.52.150:30020
+2026-03-04T12:28:58.742 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.71:11625
+2026-03-04T12:28:58.743 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:28:58.744 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.56:11625
+2026-03-04T12:28:58.744 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-04T12:28:58.745 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 146.190.222.143:64202
+2026-03-04T12:28:58.746 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-04T12:28:58.747 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-04T12:28:58.748 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:28:58.750 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-04T12:28:58.751 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-04T12:28:58.752 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-04T12:29:01.754 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-04T12:29:01.755 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-04T12:29:01.756 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-04T12:29:01.757 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-04T12:29:01.757 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-04T12:29:01.758 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-04T12:29:01.760 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-04T12:29:01.761 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11725
+2026-03-04T12:29:01.762 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:29:01.763 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:29:01.764 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 24.252.206.200:11625
+2026-03-04T12:29:01.765 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.139:11625
+2026-03-04T12:29:01.767 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:29:01.768 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-04T12:29:01.768 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-04T12:29:01.769 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:29:01.770 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-04T12:29:01.771 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-04T12:29:01.771 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11825
+2026-03-04T12:29:04.774 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.69:11625
+2026-03-04T12:29:04.776 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-04T12:29:04.777 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:29:04.778 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-04T12:29:04.779 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11625
+2026-03-04T12:29:04.780 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-04T12:29:04.781 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-04T12:29:04.782 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.71:11625
+2026-03-04T12:29:04.784 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:29:04.785 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-04T12:29:04.785 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-04T12:29:04.786 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-04T12:29:04.787 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-04T12:29:04.788 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-04T12:29:04.789 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-04T12:29:04.790 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-04T12:29:04.791 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-04T12:29:04.792 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-04T12:29:04.793 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-04T12:29:04.794 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-04T12:29:04.795 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-04T12:29:04.796 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:29:04.796 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11825
+2026-03-04T12:29:04.798 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-04T12:29:04.798 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-04T12:29:04.799 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-04T12:29:04.800 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.159.184:11725
+2026-03-04T12:29:04.800 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:29:04.801 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.56:11625
+2026-03-04T12:29:04.802 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 94.225.170.42:21662
+2026-03-04T12:29:04.802 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-04T12:29:04.803 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-04T12:29:04.803 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:29:04.804 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.236.21.197:30020
+2026-03-04T12:29:04.804 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-04T12:29:04.805 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-04T12:29:04.805 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.69:11625
+2026-03-04T12:29:04.806 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-04T12:29:04.806 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-04T12:29:04.807 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-04T12:29:04.807 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-04T12:29:04.808 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-04T12:29:07.806 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-04T12:29:07.807 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.227.52.150:30020
+2026-03-04T12:29:07.808 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-04T12:29:07.808 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-04T12:29:07.810 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-04T12:29:07.811 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-04T12:29:07.812 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-04T12:29:07.813 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-04T12:29:07.814 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:29:07.815 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 206.125.34.196:11725
+2026-03-04T12:29:07.815 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-04T12:29:07.816 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11825
+2026-03-04T12:29:07.816 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-04T12:29:07.817 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11725
+2026-03-04T12:29:07.817 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-04T12:29:07.818 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.216.66:11825
+2026-03-04T12:29:07.819 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 167.172.244.33:11625
+2026-03-04T12:29:07.819 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 24.252.206.200:11625
+2026-03-04T12:29:07.820 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 146.190.222.143:64202
+2026-03-04T12:29:07.820 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-04T12:29:07.821 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-04T12:29:10.824 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:29:10.825 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.71:11625
+2026-03-04T12:29:10.827 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.236.21.197:30020
+2026-03-04T12:29:10.828 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-04T12:29:10.830 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-04T12:29:10.831 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-04T12:29:10.831 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-04T12:29:10.832 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11625
+2026-03-04T12:29:10.833 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-04T12:29:10.833 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-04T12:29:10.834 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:29:10.835 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-04T12:29:10.835 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-04T12:29:10.836 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-04T12:29:10.836 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-04T12:29:10.837 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-04T12:29:10.837 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-04T12:29:10.838 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-04T12:29:10.839 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.69:11625
+2026-03-04T12:29:10.839 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-04T12:29:10.839 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-04T12:29:10.840 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-04T12:29:10.841 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-04T12:29:10.842 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-04T12:29:10.843 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-04T12:29:10.844 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:29:10.845 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-04T12:29:10.846 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.56:11625
+2026-03-04T12:29:10.847 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.69:11625
+2026-03-04T12:29:10.847 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-04T12:29:10.848 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-04T12:29:10.848 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-04T12:29:10.849 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-04T12:29:10.849 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.159.184:11725
+2026-03-04T12:29:10.850 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11825
+2026-03-04T12:29:10.851 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-04T12:29:10.852 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-04T12:29:10.852 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-04T12:29:13.854 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 167.172.244.33:11625
+2026-03-04T12:29:13.854 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:29:13.855 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-04T12:29:13.855 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-04T12:29:13.856 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-04T12:29:13.857 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 146.190.222.143:64202
+2026-03-04T12:29:13.857 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-04T12:29:13.859 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-04T12:29:13.859 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-04T12:29:13.860 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:29:13.861 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:29:13.862 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11825
+2026-03-04T12:29:13.863 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:29:13.863 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-04T12:29:13.864 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-04T12:29:13.865 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11725
+2026-03-04T12:29:13.865 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 94.225.170.42:21662
+2026-03-04T12:29:13.866 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:29:13.867 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-04T12:29:13.867 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-04T12:29:13.868 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 24.252.206.200:11625
+2026-03-04T12:29:13.869 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-04T12:29:16.872 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-04T12:29:16.873 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.69:11625
+2026-03-04T12:29:16.876 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-04T12:29:16.878 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.216.66:11825
+2026-03-04T12:29:16.880 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-04T12:29:16.881 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-04T12:29:16.881 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-04T12:29:16.882 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 206.125.34.196:11725
+2026-03-04T12:29:16.883 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-04T12:29:16.883 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.71:11625
+2026-03-04T12:29:16.884 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:29:16.885 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-04T12:29:16.885 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-04T12:29:16.886 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.227.52.150:30020
+2026-03-04T12:29:16.887 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.56:11625
+2026-03-04T12:29:16.887 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11625
+2026-03-04T12:29:16.888 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 167.172.244.33:11625
+2026-03-04T12:29:16.889 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-04T12:29:16.889 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-04T12:29:16.890 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-04T12:29:16.890 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-04T12:29:16.891 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-04T12:29:16.892 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.159.184:11725
+2026-03-04T12:29:16.896 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:29:16.897 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.69:11625
+2026-03-04T12:29:16.898 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-04T12:29:16.899 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-04T12:29:16.899 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-04T12:29:16.900 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-04T12:29:16.901 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-04T12:29:16.901 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-04T12:29:16.902 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-04T12:29:16.902 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-04T12:29:16.904 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:29:16.905 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-04T12:29:16.906 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-04T12:29:16.906 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11825
+2026-03-04T12:29:16.907 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-04T12:29:16.908 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-04T12:29:16.909 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-04T12:29:16.910 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-04T12:29:16.912 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:29:19.346 GDUEC [Herder WARNING] Lost track of consensus
+2026-03-04T12:29:19.346 GDUEC [Herder WARNING] Out of sync context: {
+   "queue" : null,
+   "scp" : null,
+   "you" : "GDUEC"
+}
+
+2026-03-04T12:29:19.914 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-04T12:29:19.914 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:29:19.915 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-04T12:29:19.915 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-04T12:29:19.916 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-04T12:29:19.917 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-04T12:29:19.917 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-04T12:29:19.918 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.236.21.197:30020
+2026-03-04T12:29:19.919 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 94.225.170.42:21662
+2026-03-04T12:29:19.919 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11725
+2026-03-04T12:29:19.920 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-04T12:29:19.921 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 167.172.244.33:11625
+2026-03-04T12:29:19.921 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-04T12:29:19.922 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-04T12:29:19.923 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:29:19.923 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-04T12:29:19.924 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-04T12:29:19.925 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-04T12:29:19.927 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-04T12:29:19.928 GDUEC [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-04T12:29:20.266 GDUEC [Herder INFO] Quorum information for 1325514 : {"cost":0,"lag_ms":null}
+
+2026-03-04T12:29:20.267 GDUEC [Herder WARNING] Ledger took 39.346260542 seconds, SCP information:{"maybe_dead_nodes":[],"node":"GDUEC","qset":{"agree":["sdf_testnet_2","sdf_testnet_1"],"cost":{"1325516":{"sdf_testnet_1":3600,"sdf_testnet_2":3608}},"delayed":null,"disagree":null,"fail_at":1,"fail_with":["sdf_testnet_2"],"hash":"59d361","lag_ms":null,"ledger":1325516,"missing":["sdf_testnet_3"],"phase":"EXTERNALIZE","value":{"t":2,"v":["sdf_testnet_2","sdf_testnet_3","sdf_testnet_1"]}}}
+
+2026-03-04T12:29:20.268 GDUEC [SCP FATAL] Exception: Cannot commit transaction. database or disk is full
+2026-03-04T12:29:20.269 GDUEC [SCP FATAL] SCP context (GDUEC): 
+2026-03-04T12:29:20.269 GDUEC [SCP FATAL] {
+   "ballotProtocol" : {
+      "ballot" : "(4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ])",
+      "heard" : false,
+      "phase" : "EXTERNALIZE",
+      "state" : "i: 1325516 | EXTERNALIZE | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p': (<null_ballot>) | h: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | c: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | M: 3"
+   },
+   "nomination" : {
+      "roundnumber" : 0,
+      "started" : false
+   },
+   "quorum_sets" : {
+      "59d361" : {
+         "t" : 2,
+         "v" : [ "sdf_testnet_2", "sdf_testnet_3", "sdf_testnet_1" ]
+      }
+   },
+   "statements" : [
+      [
+         1772627360,
+         "{ENV@sdf_testnet_2 |  i: 1325516 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@sdf_testnet_1 |  i: 1325516 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@GDUEC |  i: 1325516 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@GDUEC |  i: 1325516 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@GDUEC |  i: 1325516 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@GDUEC |  i: 1325516 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ]
+   ],
+   "validated" : false
+}
+
+2026-03-04T12:29:20.271 GDUEC [SCP FATAL] Exception processing SCP messages at 1325516, envelope: {ENV@GDUEC |  i: 1325516 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }
+2026-03-04T12:29:20.272 GDUEC [SCP FATAL] Please report this bug along with this log file if this was not expected
+2026-03-04T12:29:20.273 GDUEC [SCP FATAL] Exception: Cannot commit transaction. database or disk is full
+2026-03-04T12:29:20.273 GDUEC [SCP FATAL] SCP context (GDUEC): 
+2026-03-04T12:29:20.274 GDUEC [SCP FATAL] {
+   "ballotProtocol" : {
+      "ballot" : "(4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ])",
+      "heard" : false,
+      "phase" : "EXTERNALIZE",
+      "state" : "i: 1325516 | EXTERNALIZE | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p': (<null_ballot>) | h: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | c: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | M: 3"
+   },
+   "nomination" : {
+      "roundnumber" : 0,
+      "started" : false
+   },
+   "quorum_sets" : {
+      "59d361" : {
+         "t" : 2,
+         "v" : [ "sdf_testnet_2", "sdf_testnet_3", "sdf_testnet_1" ]
+      }
+   },
+   "statements" : [
+      [
+         1772627360,
+         "{ENV@sdf_testnet_2 |  i: 1325516 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@sdf_testnet_1 |  i: 1325516 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@GDUEC |  i: 1325516 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@GDUEC |  i: 1325516 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@GDUEC |  i: 1325516 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@GDUEC |  i: 1325516 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ]
+   ],
+   "validated" : false
+}
+
+2026-03-04T12:29:20.275 GDUEC [SCP FATAL] Exception processing SCP messages at 1325516, envelope: {ENV@GDUEC |  i: 1325516 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }
+2026-03-04T12:29:20.276 GDUEC [SCP FATAL] Please report this bug along with this log file if this was not expected
+2026-03-04T12:29:20.277 GDUEC [SCP FATAL] Exception: Cannot commit transaction. database or disk is full
+2026-03-04T12:29:20.277 GDUEC [SCP FATAL] SCP context (GDUEC): 
+2026-03-04T12:29:20.278 GDUEC [SCP FATAL] {
+   "ballotProtocol" : {
+      "ballot" : "(4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ])",
+      "heard" : false,
+      "phase" : "EXTERNALIZE",
+      "state" : "i: 1325516 | EXTERNALIZE | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p': (<null_ballot>) | h: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | c: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | M: 3"
+   },
+   "nomination" : {
+      "roundnumber" : 0,
+      "started" : false
+   },
+   "quorum_sets" : {
+      "59d361" : {
+         "t" : 2,
+         "v" : [ "sdf_testnet_2", "sdf_testnet_3", "sdf_testnet_1" ]
+      }
+   },
+   "statements" : [
+      [
+         1772627360,
+         "{ENV@sdf_testnet_2 |  i: 1325516 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@sdf_testnet_1 |  i: 1325516 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@GDUEC |  i: 1325516 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@GDUEC |  i: 1325516 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@GDUEC |  i: 1325516 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@GDUEC |  i: 1325516 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ]
+   ],
+   "validated" : false
+}
+
+2026-03-04T12:29:20.279 GDUEC [SCP FATAL] Exception processing SCP messages at 1325516, envelope: {ENV@GDUEC |  i: 1325516 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }
+2026-03-04T12:29:20.279 GDUEC [SCP FATAL] Please report this bug along with this log file if this was not expected
+2026-03-04T12:29:20.280 GDUEC [SCP FATAL] Exception: Cannot commit transaction. database or disk is full
+2026-03-04T12:29:20.283 GDUEC [SCP FATAL] SCP context (GDUEC): 
+2026-03-04T12:29:20.283 GDUEC [SCP FATAL] {
+   "ballotProtocol" : {
+      "ballot" : "(4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ])",
+      "heard" : false,
+      "phase" : "EXTERNALIZE",
+      "state" : "i: 1325516 | EXTERNALIZE | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p': (<null_ballot>) | h: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | c: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | M: 3"
+   },
+   "nomination" : {
+      "roundnumber" : 0,
+      "started" : false
+   },
+   "quorum_sets" : {
+      "59d361" : {
+         "t" : 2,
+         "v" : [ "sdf_testnet_2", "sdf_testnet_3", "sdf_testnet_1" ]
+      }
+   },
+   "statements" : [
+      [
+         1772627360,
+         "{ENV@sdf_testnet_2 |  i: 1325516 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@sdf_testnet_1 |  i: 1325516 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@GDUEC |  i: 1325516 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@GDUEC |  i: 1325516 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@GDUEC |  i: 1325516 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772627360,
+         "{ENV@GDUEC |  i: 1325516 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ]
+   ],
+   "validated" : false
+}
+
+2026-03-04T12:29:20.285 GDUEC [SCP FATAL] Exception processing SCP messages at 1325516, envelope: {ENV@sdf_testnet_1 |  i: 1325516 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 57b944, ct: 1772627359, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }
+2026-03-04T12:29:20.285 GDUEC [SCP FATAL] Please report this bug along with this log file if this was not expected

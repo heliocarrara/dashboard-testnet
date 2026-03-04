@@ -11,6 +11,7 @@ import NodeDetailsPanel from '@/components/NodeDetailsPanel';
 import AccountsPanel from '@/components/AccountsPanel';
 import TransactionsPanel from '../components/TransactionsPanel';
 import MonitoringModal from '@/components/MonitoringModal';
+import LabMap from '@/components/LabMap';
 
 interface Node {
   id: number;
@@ -36,7 +37,7 @@ export default function Home() {
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
   const [viewingDockerCompose, setViewingDockerCompose] = useState<Node | null>(null);
   const [composeTemplate, setComposeTemplate] = useState<{template: string, variables: Record<string, string>} | null>(null);
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'nodes' | 'settings' | 'accounts' | 'transactions'>('dashboard');
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'nodes' | 'settings' | 'accounts' | 'transactions' | 'lab-map'>('dashboard');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const fetchNodes = async () => {
@@ -194,10 +195,10 @@ export default function Home() {
              </button>
              <div>
                 <h1 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight flex items-center gap-2">
-                {activeTab === 'dashboard' ? 'Dashboard' : activeTab === 'nodes' ? 'Node Management' : 'System Settings'}
+                {activeTab === 'dashboard' ? 'Dashboard' : activeTab === 'nodes' ? 'Node Management' : activeTab === 'lab-map' ? 'Laboratory Map' : activeTab === 'accounts' ? 'Account Manager' : activeTab === 'transactions' ? 'Transaction Manager' : 'System Settings'}
              </h1>
              <p className="text-gray-500 dark:text-gray-400 text-xs">
-                 {activeTab === 'dashboard' ? 'Real-time Network Monitoring' : activeTab === 'nodes' ? 'Cluster Configuration & Inventory' : 'Platform Preferences'}
+                 {activeTab === 'dashboard' ? 'Real-time Network Monitoring' : activeTab === 'nodes' ? 'Cluster Configuration & Inventory' : activeTab === 'lab-map' ? 'Physical Layout Configuration' : activeTab === 'accounts' ? 'Manage Stellar Accounts' : activeTab === 'transactions' ? 'Generate Network Traffic' : 'Platform Preferences'}
              </p>
              </div>
           </div>
@@ -511,6 +512,10 @@ export default function Home() {
 
                 {activeTab === 'transactions' && (
                   <TransactionsPanel nodes={nodes} />
+                )}
+
+                {activeTab === 'lab-map' && (
+                  <LabMap nodes={nodes} />
                 )}
       </main>
     </div>

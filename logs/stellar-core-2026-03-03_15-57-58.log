@@ -1,0 +1,658 @@
+2026-03-03T15:57:58.149 GBVQ6 [default INFO] Starting stellar-core v25.1.1
+2026-03-03T15:57:58.151 GBVQ6 [Database INFO] Connecting to: sqlite3:///opt/stellar/core/stellar.db
+2026-03-03T15:57:58.158 GBVQ6 [SCP INFO] LocalNode::LocalNode@GBVQ6 qSet: 59d361
+2026-03-03T15:57:58.158 GBVQ6 [Database INFO] DB schema is in current version
+2026-03-03T15:57:58.158 GBVQ6 [default INFO] Listening on 0.0.0.0:11626 for HTTP requests
+2026-03-03T15:57:58.158 GBVQ6 [Bucket INFO] BucketListDB enabled: pageSizeExponent: 14 indexCutOff: 20MB, persist indexes: true
+2026-03-03T15:57:58.159 GBVQ6 [default INFO] Connection effective settings:
+2026-03-03T15:57:58.159 GBVQ6 [default INFO] TARGET_PEER_CONNECTIONS: 8
+2026-03-03T15:57:58.159 GBVQ6 [default INFO] MAX_ADDITIONAL_PEER_CONNECTIONS: 64
+2026-03-03T15:57:58.159 GBVQ6 [default INFO] MAX_PENDING_CONNECTIONS: 500
+2026-03-03T15:57:58.159 GBVQ6 [default INFO] MAX_OUTBOUND_PENDING_CONNECTIONS: 56
+2026-03-03T15:57:58.159 GBVQ6 [default INFO] MAX_INBOUND_PENDING_CONNECTIONS: 444
+2026-03-03T15:57:58.159 GBVQ6 [default INFO] BACKGROUND_OVERLAY_PROCESSING=true
+2026-03-03T15:57:58.159 GBVQ6 [default INFO] PARALLEL_LEDGER_APPLY=true
+2026-03-03T15:57:58.159 GBVQ6 [History INFO] Archive 'sdf_testnet_1' has 'get' command only, will not be written
+2026-03-03T15:57:58.159 GBVQ6 [History INFO] Archive 'sdf_testnet_2' has 'get' command only, will not be written
+2026-03-03T15:57:58.159 GBVQ6 [History INFO] Archive 'sdf_testnet_3' has 'get' command only, will not be written
+2026-03-03T15:57:58.159 GBVQ6 [History WARNING] No writable archives configured, history will not be written.
+2026-03-03T15:57:58.159 GBVQ6 [Ledger INFO] Starting up application
+2026-03-03T15:57:58.159 GBVQ6 [Ledger INFO] Last closed ledger (LCL) hash is bb5348e263dc812d4fc2ada832acadf77b38248092caeae806251a9d7fba4cbe
+2026-03-03T15:57:58.159 GBVQ6 [Ledger INFO] Loaded LCL header from database: [seq=1310157, hash=bb5348]
+2026-03-03T15:57:58.159 GBVQ6 [default INFO] Establishing 10-entry connection pool to: sqlite3:///opt/stellar/core/stellar.db
+2026-03-03T15:57:58.619 GBVQ6 [Ledger INFO] Assumed bucket-state for LCL: [seq=1310157, hash=bb5348]
+2026-03-03T15:57:58.619 GBVQ6 [default INFO] Launching 1 loading and 5 compiling background threads
+2026-03-03T15:57:58.851 GBVQ6 [default INFO] Compiled 1684 contracts (45055210 bytes of Wasm) in 232ms real time, 1120ms CPU time
+2026-03-03T15:58:00.718 GBVQ6 [Overlay INFO] Binding to endpoint 0.0.0.0:11625
+2026-03-03T15:58:00.723 GBVQ6 [History INFO] Downloading history archive state: .well-known/stellar-history.json
+2026-03-03T15:58:01.131 GBVQ6 [Process WARNING] process 31522 exited 23: curl -sf http://history.stellar.org/prd/core-testnet/core_testnet_001/.well-known/stellar-history.json -o buckets/tmp/history-ef912676b8cdd9e8/837e14d9f4154c7d-stellar-history.json
+2026-03-03T15:58:01.131 GBVQ6 [History WARNING] Could not download file: archive sdf_testnet_1 maybe missing file .well-known/stellar-history.json
+2026-03-03T15:58:01.132 GBVQ6 [History ERROR] Could not download .well-known/stellar-history.json file: corrupt archive sdf_testnet_1
+2026-03-03T15:58:01.133 GBVQ6 [History ERROR] Failed to obtain archive information: sdf_testnet_1
+2026-03-03T15:58:03.081 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 98.91.174.101:11625
+2026-03-03T15:58:03.081 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 44.204.146.210:11625
+2026-03-03T15:58:03.082 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 44.213.67.110:11625
+2026-03-03T15:58:03.082 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.228.195:11625
+2026-03-03T15:58:03.083 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 44.213.67.110:11625
+2026-03-03T15:58:03.084 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.232.157.194:11725
+2026-03-03T15:58:03.085 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-03T15:58:03.086 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T15:58:03.087 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-03T15:58:03.088 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T15:58:03.089 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-03T15:58:03.090 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-03T15:58:03.091 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-03T15:58:03.092 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-03T15:58:03.093 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-03T15:58:03.094 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-03T15:58:03.095 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-03T15:58:03.096 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-03T15:58:03.096 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-03T15:58:03.097 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-03T15:58:03.097 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T15:58:03.098 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-03T15:58:03.098 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-03T15:58:03.099 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-03T15:58:03.100 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T15:58:03.101 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-03T15:58:03.101 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-03T15:58:03.102 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-03T15:58:03.103 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-03T15:58:03.104 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-03T15:58:03.105 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-03T15:58:03.105 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-03T15:58:03.106 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.206.213.41:30020
+2026-03-03T15:58:03.107 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.245.167.15:30020
+2026-03-03T15:58:03.108 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-03T15:58:03.108 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-03T15:58:03.109 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-03T15:58:03.110 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-03T15:58:03.111 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-03T15:58:03.111 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-03T15:58:03.112 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-03T15:58:03.113 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-03T15:58:03.114 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T15:58:03.115 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-03T15:58:03.115 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T15:58:03.116 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-03T15:58:03.117 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-03T15:58:03.117 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T15:58:03.118 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-03T15:58:03.119 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-03T15:58:03.120 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-03T15:58:03.120 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-03T15:58:03.121 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-03T15:58:03.122 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-03T15:58:03.123 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T15:58:03.123 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-03T15:58:03.527 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 44.213.67.110:11625
+2026-03-03T15:58:03.528 GBVQ6 [Overlay INFO] Authenticated to 44.213.67.110:11625
+2026-03-03T15:58:03.748 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.228.195:11625
+2026-03-03T15:58:03.749 GBVQ6 [Overlay INFO] Authenticated to 64.23.228.195:11625
+2026-03-03T15:58:03.750 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:57286
+2026-03-03T15:58:03.751 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11825
+2026-03-03T15:58:03.752 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11625
+2026-03-03T15:58:03.752 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-03T15:58:03.950 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.232.157.194:11725
+2026-03-03T15:58:03.951 GBVQ6 [Overlay INFO] Authenticated to 172.232.157.194:11725
+2026-03-03T15:58:03.951 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.139:11825
+2026-03-03T15:58:03.952 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-03T15:58:03.953 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 77.48.24.203:11625
+2026-03-03T15:58:06.125 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T15:58:06.127 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T15:58:06.129 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T15:58:06.131 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T15:58:06.132 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T15:58:06.133 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T15:58:06.134 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T15:58:09.265 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T15:58:09.267 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-03T15:58:09.268 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-03T15:58:09.270 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.206.213.41:30020
+2026-03-03T15:58:09.272 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T15:58:09.273 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-03T15:58:09.274 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-03T15:58:09.275 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.245.167.15:30020
+2026-03-03T15:58:09.276 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-03T15:58:09.276 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-03T15:58:09.277 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-03T15:58:09.278 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-03T15:58:09.279 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-03T15:58:09.280 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T15:58:09.281 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-03T15:58:09.282 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-03T15:58:09.282 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T15:58:09.283 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-03T15:58:09.284 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-03T15:58:09.285 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-03T15:58:09.285 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T15:58:09.286 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-03T15:58:09.287 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-03T15:58:09.288 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-03T15:58:09.288 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-03T15:58:09.289 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-03T15:58:09.290 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-03T15:58:09.291 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-03T15:58:09.292 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-03T15:58:09.293 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-03T15:58:09.293 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-03T15:58:09.294 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-03T15:58:09.295 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-03T15:58:09.296 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-03T15:58:09.296 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-03T15:58:09.297 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T15:58:09.298 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-03T15:58:09.299 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-03T15:58:09.300 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-03T15:58:09.300 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-03T15:58:09.301 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T15:58:09.302 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-03T15:58:09.303 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T15:58:09.304 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-03T15:58:09.304 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-03T15:58:09.305 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-03T15:58:09.306 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-03T15:58:09.307 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-03T15:58:09.308 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-03T15:58:09.309 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-03T15:58:12.311 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T15:58:12.312 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T15:58:12.314 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T15:58:12.315 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T15:58:12.317 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T15:58:12.318 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T15:58:12.320 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T15:58:15.326 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-03T15:58:15.327 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-03T15:58:15.328 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-03T15:58:15.328 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-03T15:58:15.329 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-03T15:58:15.330 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-03T15:58:15.331 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-03T15:58:15.332 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-03T15:58:15.333 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-03T15:58:15.334 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-03T15:58:15.335 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.206.213.41:30020
+2026-03-03T15:58:15.336 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-03T15:58:15.337 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-03T15:58:15.337 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-03T15:58:15.338 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T15:58:15.338 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-03T15:58:15.339 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-03T15:58:15.340 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-03T15:58:15.341 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T15:58:15.341 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-03T15:58:15.342 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-03T15:58:15.343 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-03T15:58:15.343 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-03T15:58:15.344 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-03T15:58:15.344 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-03T15:58:15.345 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-03T15:58:15.345 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T15:58:15.346 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T15:58:15.346 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-03T15:58:15.347 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-03T15:58:15.347 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-03T15:58:15.348 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T15:58:15.348 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-03T15:58:15.349 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-03T15:58:15.349 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-03T15:58:15.350 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-03T15:58:15.350 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-03T15:58:15.350 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.245.167.15:30020
+2026-03-03T15:58:15.351 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-03T15:58:15.352 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-03T15:58:15.352 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-03T15:58:15.353 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-03T15:58:15.354 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-03T15:58:15.354 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-03T15:58:15.355 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T15:58:15.356 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-03T15:58:15.356 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-03T15:58:15.357 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-03T15:58:15.357 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T15:58:15.357 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T15:58:18.361 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T15:58:18.364 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T15:58:18.366 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T15:58:18.367 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T15:58:18.368 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T15:58:18.369 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T15:58:18.370 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T15:58:21.375 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-03T15:58:21.376 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-03T15:58:21.377 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-03T15:58:21.378 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-03T15:58:21.378 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-03T15:58:21.379 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-03T15:58:21.379 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-03T15:58:21.380 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T15:58:21.380 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-03T15:58:21.381 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-03T15:58:21.381 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-03T15:58:21.382 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-03T15:58:21.383 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-03T15:58:21.383 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T15:58:21.384 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T15:58:21.385 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-03T15:58:21.385 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-03T15:58:21.386 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-03T15:58:21.386 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-03T15:58:21.387 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-03T15:58:21.387 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-03T15:58:21.388 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-03T15:58:21.389 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T15:58:21.389 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-03T15:58:21.390 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-03T15:58:21.390 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-03T15:58:21.391 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-03T15:58:21.391 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T15:58:21.392 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-03T15:58:21.393 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-03T15:58:21.393 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-03T15:58:21.394 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T15:58:21.394 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-03T15:58:21.395 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-03T15:58:21.395 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.206.213.41:30020
+2026-03-03T15:58:21.396 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-03T15:58:21.396 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-03T15:58:21.397 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-03T15:58:21.397 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-03T15:58:21.398 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-03T15:58:21.399 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.245.167.15:30020
+2026-03-03T15:58:21.399 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-03T15:58:21.400 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-03T15:58:21.400 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T15:58:21.401 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-03T15:58:21.401 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-03T15:58:21.402 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-03T15:58:21.402 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-03T15:58:21.402 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T15:58:21.403 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-03T15:58:24.406 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T15:58:24.408 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T15:58:24.410 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T15:58:24.412 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T15:58:24.413 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T15:58:24.414 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T15:58:24.415 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T15:58:27.423 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-03T15:58:27.424 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-03T15:58:27.425 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-03T15:58:27.426 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.245.167.15:30020
+2026-03-03T15:58:27.427 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-03T15:58:27.428 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-03T15:58:27.428 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-03T15:58:27.429 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-03T15:58:27.430 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-03T15:58:27.430 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-03T15:58:27.431 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-03T15:58:27.431 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T15:58:27.432 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T15:58:27.433 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-03T15:58:27.433 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-03T15:58:27.434 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T15:58:27.434 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-03T15:58:27.435 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-03T15:58:27.435 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T15:58:27.436 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-03T15:58:27.436 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-03T15:58:27.437 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-03T15:58:27.437 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.206.213.41:30020
+2026-03-03T15:58:27.438 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-03T15:58:27.438 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-03T15:58:27.439 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-03T15:58:27.440 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-03T15:58:27.440 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-03T15:58:27.441 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-03T15:58:27.441 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T15:58:27.442 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-03T15:58:27.442 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-03T15:58:27.443 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T15:58:27.443 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T15:58:27.444 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-03T15:58:27.444 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-03T15:58:27.445 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-03T15:58:27.445 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-03T15:58:27.446 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-03T15:58:27.446 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-03T15:58:27.446 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-03T15:58:27.447 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-03T15:58:27.448 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T15:58:27.449 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-03T15:58:27.449 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-03T15:58:27.450 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-03T15:58:27.451 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-03T15:58:27.451 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-03T15:58:27.452 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-03T15:58:27.453 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-03T15:58:28.841 GBVQ6 [Overlay INFO] Authenticated to 172.18.0.1:11625
+2026-03-03T15:58:30.455 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.70.103.6:11625
+2026-03-03T15:58:30.457 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 16.58.222.208:11725
+2026-03-03T15:58:30.459 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 204.16.247.107:11625
+2026-03-03T15:58:30.460 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 98.91.174.101:11625
+2026-03-03T15:58:30.462 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.139:11625
+2026-03-03T15:58:30.463 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T15:58:30.464 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T15:58:30.465 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T15:58:30.466 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T15:58:30.467 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T15:58:30.468 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T15:58:30.469 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T15:58:30.470 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T15:58:30.902 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.70.103.6:11625
+2026-03-03T15:58:30.903 GBVQ6 [Overlay INFO] Authenticated to 52.70.103.6:11625
+2026-03-03T15:58:30.905 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 98.91.174.101:11625
+2026-03-03T15:58:30.907 GBVQ6 [Overlay INFO] Authenticated to 98.91.174.101:11625
+2026-03-03T15:58:30.948 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 204.16.247.107:11625
+2026-03-03T15:58:30.948 GBVQ6 [Overlay INFO] Authenticated to 204.16.247.107:11625
+2026-03-03T15:58:30.949 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.236.21.197:30020
+2026-03-03T15:58:30.950 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 16.58.222.208:11725
+2026-03-03T15:58:30.950 GBVQ6 [Overlay INFO] Authenticated to 16.58.222.208:11725
+2026-03-03T15:58:30.950 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.139:11825
+2026-03-03T15:58:31.163 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.139:11625
+2026-03-03T15:58:31.164 GBVQ6 [Overlay INFO] Authenticated to 200.129.247.139:11625
+2026-03-03T15:58:31.166 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11725
+2026-03-03T15:58:31.167 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 163.114.159.81:11625
+2026-03-03T15:58:31.168 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 24.122.230.221:11625
+2026-03-03T15:58:31.169 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 77.48.24.203:11625
+2026-03-03T15:58:31.170 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 86.124.95.206:11825
+2026-03-03T15:58:31.170 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.184.26.179:11725
+2026-03-03T15:58:31.171 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 77.48.24.153:11625
+2026-03-03T15:58:31.171 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 44.251.238.143:11725
+2026-03-03T15:58:31.172 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11726
+2026-03-03T15:58:31.172 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.240.229.200:11726
+2026-03-03T15:58:31.172 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.71:11725
+2026-03-03T15:58:33.475 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-03T15:58:33.476 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T15:58:33.477 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.206.213.41:30020
+2026-03-03T15:58:33.478 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-03T15:58:33.479 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-03T15:58:33.480 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.245.167.15:30020
+2026-03-03T15:58:33.481 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-03T15:58:33.482 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-03T15:58:33.483 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-03T15:58:33.484 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-03T15:58:33.484 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-03T15:58:33.485 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T15:58:33.486 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-03T15:58:33.486 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T15:58:33.487 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-03T15:58:33.488 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-03T15:58:33.489 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-03T15:58:33.489 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-03T15:58:33.490 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T15:58:33.490 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T15:58:33.491 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-03T15:58:33.491 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-03T15:58:33.492 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-03T15:58:33.492 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-03T15:58:33.493 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-03T15:58:33.493 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-03T15:58:33.494 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-03T15:58:33.494 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-03T15:58:33.495 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-03T15:58:33.495 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-03T15:58:33.496 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-03T15:58:33.496 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-03T15:58:33.497 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-03T15:58:33.497 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-03T15:58:33.498 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-03T15:58:33.499 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-03T15:58:33.499 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-03T15:58:33.500 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-03T15:58:33.500 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T15:58:33.501 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-03T15:58:33.501 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T15:58:33.502 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-03T15:58:33.502 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-03T15:58:33.502 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-03T15:58:33.503 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-03T15:58:33.503 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-03T15:58:33.504 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-03T15:58:33.504 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T15:58:33.504 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-03T15:58:33.505 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-03T15:58:35.847 GBVQ6 [Herder WARNING] Lost track of consensus
+2026-03-03T15:58:35.847 GBVQ6 [Herder WARNING] Out of sync context: {
+   "queue" : null,
+   "scp" : null,
+   "you" : "GBVQ6"
+}
+
+2026-03-03T15:58:36.507 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T15:58:36.508 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T15:58:36.509 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T15:58:36.510 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T15:58:36.511 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T15:58:36.512 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T15:58:36.512 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T15:58:36.513 GBVQ6 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T15:58:38.015 GBVQ6 [Herder INFO] Quorum information for 1310762 : {"cost":0,"lag_ms":null}
+
+2026-03-03T15:58:38.015 GBVQ6 [Herder WARNING] Ledger took 39.588439847 seconds, SCP information:{"maybe_dead_nodes":[],"node":"GBVQ6","qset":{"agree":["sdf_testnet_2","sdf_testnet_1"],"cost":{"1310764":{"sdf_testnet_1":6120,"sdf_testnet_2":6112}},"delayed":null,"disagree":null,"fail_at":1,"fail_with":["sdf_testnet_2"],"hash":"59d361","lag_ms":null,"ledger":1310764,"missing":["sdf_testnet_3"],"phase":"EXTERNALIZE","value":{"t":2,"v":["sdf_testnet_2","sdf_testnet_3","sdf_testnet_1"]}}}
+
+2026-03-03T15:58:38.017 GBVQ6 [SCP FATAL] Exception: Cannot commit transaction. database or disk is full
+2026-03-03T15:58:38.017 GBVQ6 [SCP FATAL] SCP context (GBVQ6): 
+2026-03-03T15:58:38.018 GBVQ6 [SCP FATAL] {
+   "ballotProtocol" : {
+      "ballot" : "(4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ])",
+      "heard" : false,
+      "phase" : "EXTERNALIZE",
+      "state" : "i: 1310764 | EXTERNALIZE | b: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p': (<null_ballot>) | h: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | c: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | M: 3"
+   },
+   "nomination" : {
+      "roundnumber" : 0,
+      "started" : false
+   },
+   "quorum_sets" : {
+      "59d361" : {
+         "t" : 2,
+         "v" : [ "sdf_testnet_2", "sdf_testnet_3", "sdf_testnet_1" ]
+      }
+   },
+   "statements" : [
+      [
+         1772553518,
+         "{ENV@sdf_testnet_1 |  i: 1310764 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@sdf_testnet_2 |  i: 1310764 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@GBVQ6 |  i: 1310764 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@GBVQ6 |  i: 1310764 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@GBVQ6 |  i: 1310764 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@GBVQ6 |  i: 1310764 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ]
+   ],
+   "validated" : false
+}
+
+2026-03-03T15:58:38.019 GBVQ6 [SCP FATAL] Exception processing SCP messages at 1310764, envelope: {ENV@GBVQ6 |  i: 1310764 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }
+2026-03-03T15:58:38.020 GBVQ6 [SCP FATAL] Please report this bug along with this log file if this was not expected
+2026-03-03T15:58:38.020 GBVQ6 [SCP FATAL] Exception: Cannot commit transaction. database or disk is full
+2026-03-03T15:58:38.021 GBVQ6 [SCP FATAL] SCP context (GBVQ6): 
+2026-03-03T15:58:38.021 GBVQ6 [SCP FATAL] {
+   "ballotProtocol" : {
+      "ballot" : "(4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ])",
+      "heard" : false,
+      "phase" : "EXTERNALIZE",
+      "state" : "i: 1310764 | EXTERNALIZE | b: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p': (<null_ballot>) | h: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | c: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | M: 3"
+   },
+   "nomination" : {
+      "roundnumber" : 0,
+      "started" : false
+   },
+   "quorum_sets" : {
+      "59d361" : {
+         "t" : 2,
+         "v" : [ "sdf_testnet_2", "sdf_testnet_3", "sdf_testnet_1" ]
+      }
+   },
+   "statements" : [
+      [
+         1772553518,
+         "{ENV@sdf_testnet_1 |  i: 1310764 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@sdf_testnet_2 |  i: 1310764 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@GBVQ6 |  i: 1310764 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@GBVQ6 |  i: 1310764 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@GBVQ6 |  i: 1310764 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@GBVQ6 |  i: 1310764 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ]
+   ],
+   "validated" : false
+}
+
+2026-03-03T15:58:38.022 GBVQ6 [SCP FATAL] Exception processing SCP messages at 1310764, envelope: {ENV@GBVQ6 |  i: 1310764 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }
+2026-03-03T15:58:38.023 GBVQ6 [SCP FATAL] Please report this bug along with this log file if this was not expected
+2026-03-03T15:58:38.023 GBVQ6 [SCP FATAL] Exception: Cannot commit transaction. database or disk is full
+2026-03-03T15:58:38.023 GBVQ6 [SCP FATAL] SCP context (GBVQ6): 
+2026-03-03T15:58:38.024 GBVQ6 [SCP FATAL] {
+   "ballotProtocol" : {
+      "ballot" : "(4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ])",
+      "heard" : false,
+      "phase" : "EXTERNALIZE",
+      "state" : "i: 1310764 | EXTERNALIZE | b: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p': (<null_ballot>) | h: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | c: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | M: 3"
+   },
+   "nomination" : {
+      "roundnumber" : 0,
+      "started" : false
+   },
+   "quorum_sets" : {
+      "59d361" : {
+         "t" : 2,
+         "v" : [ "sdf_testnet_2", "sdf_testnet_3", "sdf_testnet_1" ]
+      }
+   },
+   "statements" : [
+      [
+         1772553518,
+         "{ENV@sdf_testnet_1 |  i: 1310764 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@sdf_testnet_2 |  i: 1310764 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@GBVQ6 |  i: 1310764 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@GBVQ6 |  i: 1310764 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@GBVQ6 |  i: 1310764 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@GBVQ6 |  i: 1310764 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ]
+   ],
+   "validated" : false
+}
+
+2026-03-03T15:58:38.025 GBVQ6 [SCP FATAL] Exception processing SCP messages at 1310764, envelope: {ENV@GBVQ6 |  i: 1310764 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }
+2026-03-03T15:58:38.025 GBVQ6 [SCP FATAL] Please report this bug along with this log file if this was not expected
+2026-03-03T15:58:38.025 GBVQ6 [SCP FATAL] Exception: Cannot commit transaction. database or disk is full
+2026-03-03T15:58:38.025 GBVQ6 [SCP FATAL] SCP context (GBVQ6): 
+2026-03-03T15:58:38.026 GBVQ6 [SCP FATAL] {
+   "ballotProtocol" : {
+      "ballot" : "(4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ])",
+      "heard" : false,
+      "phase" : "EXTERNALIZE",
+      "state" : "i: 1310764 | EXTERNALIZE | b: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p': (<null_ballot>) | h: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | c: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | M: 3"
+   },
+   "nomination" : {
+      "roundnumber" : 0,
+      "started" : false
+   },
+   "quorum_sets" : {
+      "59d361" : {
+         "t" : 2,
+         "v" : [ "sdf_testnet_2", "sdf_testnet_3", "sdf_testnet_1" ]
+      }
+   },
+   "statements" : [
+      [
+         1772553518,
+         "{ENV@sdf_testnet_1 |  i: 1310764 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@sdf_testnet_2 |  i: 1310764 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@GBVQ6 |  i: 1310764 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@GBVQ6 |  i: 1310764 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@GBVQ6 |  i: 1310764 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772553518,
+         "{ENV@GBVQ6 |  i: 1310764 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ]
+   ],
+   "validated" : false
+}
+
+2026-03-03T15:58:38.027 GBVQ6 [SCP FATAL] Exception processing SCP messages at 1310764, envelope: {ENV@sdf_testnet_2 |  i: 1310764 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: ff47a6, ct: 1772553517, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }
+2026-03-03T15:58:38.027 GBVQ6 [SCP FATAL] Please report this bug along with this log file if this was not expected

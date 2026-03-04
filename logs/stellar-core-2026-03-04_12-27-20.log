@@ -1,0 +1,654 @@
+2026-03-04T12:27:20.846 GAVZZ [default INFO] Starting stellar-core v25.1.1
+2026-03-04T12:27:20.848 GAVZZ [Database INFO] Connecting to: sqlite3:///opt/stellar/core/stellar.db
+2026-03-04T12:27:20.858 GAVZZ [SCP INFO] LocalNode::LocalNode@GAVZZ qSet: 59d361
+2026-03-04T12:27:20.858 GAVZZ [Database INFO] DB schema is in current version
+2026-03-04T12:27:20.858 GAVZZ [default INFO] Listening on 0.0.0.0:11626 for HTTP requests
+2026-03-04T12:27:20.858 GAVZZ [Bucket INFO] BucketListDB enabled: pageSizeExponent: 14 indexCutOff: 20MB, persist indexes: true
+2026-03-04T12:27:20.859 GAVZZ [default INFO] Connection effective settings:
+2026-03-04T12:27:20.859 GAVZZ [default INFO] TARGET_PEER_CONNECTIONS: 8
+2026-03-04T12:27:20.859 GAVZZ [default INFO] MAX_ADDITIONAL_PEER_CONNECTIONS: 64
+2026-03-04T12:27:20.859 GAVZZ [default INFO] MAX_PENDING_CONNECTIONS: 500
+2026-03-04T12:27:20.859 GAVZZ [default INFO] MAX_OUTBOUND_PENDING_CONNECTIONS: 56
+2026-03-04T12:27:20.859 GAVZZ [default INFO] MAX_INBOUND_PENDING_CONNECTIONS: 444
+2026-03-04T12:27:20.859 GAVZZ [default INFO] BACKGROUND_OVERLAY_PROCESSING=true
+2026-03-04T12:27:20.859 GAVZZ [default INFO] PARALLEL_LEDGER_APPLY=true
+2026-03-04T12:27:20.859 GAVZZ [History INFO] Archive 'sdf_testnet_1' has 'get' command only, will not be written
+2026-03-04T12:27:20.859 GAVZZ [History INFO] Archive 'sdf_testnet_2' has 'get' command only, will not be written
+2026-03-04T12:27:20.859 GAVZZ [History INFO] Archive 'sdf_testnet_3' has 'get' command only, will not be written
+2026-03-04T12:27:20.859 GAVZZ [History WARNING] No writable archives configured, history will not be written.
+2026-03-04T12:27:20.860 GAVZZ [Ledger INFO] Starting up application
+2026-03-04T12:27:20.860 GAVZZ [Ledger INFO] Last closed ledger (LCL) hash is 3717cc2d58717d0d8a5612cf97b9c2e7c04d1eeb1b77151a59687fae75e4aab6
+2026-03-04T12:27:20.860 GAVZZ [Ledger INFO] Loaded LCL header from database: [seq=1325251, hash=3717cc]
+2026-03-04T12:27:20.860 GAVZZ [default INFO] Establishing 10-entry connection pool to: sqlite3:///opt/stellar/core/stellar.db
+2026-03-04T12:27:21.595 GAVZZ [Ledger INFO] Assumed bucket-state for LCL: [seq=1325251, hash=3717cc]
+2026-03-04T12:27:21.596 GAVZZ [default INFO] Launching 1 loading and 5 compiling background threads
+2026-03-04T12:27:21.913 GAVZZ [default INFO] Compiled 1642 contracts (43833304 bytes of Wasm) in 317ms real time, 1530ms CPU time
+2026-03-04T12:27:24.615 GAVZZ [Overlay INFO] Binding to endpoint 0.0.0.0:11625
+2026-03-04T12:27:24.625 GAVZZ [History INFO] Downloading history archive state: .well-known/stellar-history.json
+2026-03-04T12:27:25.152 GAVZZ [Process WARNING] process 12144 exited 23: curl -sf http://history.stellar.org/prd/core-testnet/core_testnet_001/.well-known/stellar-history.json -o buckets/tmp/history-f8a95a33e382f020/72911caf07fbe4d2-stellar-history.json
+2026-03-04T12:27:25.152 GAVZZ [History WARNING] Could not download file: archive sdf_testnet_1 maybe missing file .well-known/stellar-history.json
+2026-03-04T12:27:25.152 GAVZZ [History ERROR] Could not download .well-known/stellar-history.json file: corrupt archive sdf_testnet_1
+2026-03-04T12:27:25.154 GAVZZ [History ERROR] Failed to obtain archive information: sdf_testnet_1
+2026-03-04T12:27:26.862 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 98.91.174.101:11625
+2026-03-04T12:27:26.863 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 44.204.146.210:11625
+2026-03-04T12:27:26.864 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 44.213.67.110:11625
+2026-03-04T12:27:26.865 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.21.2.102:11625
+2026-03-04T12:27:26.866 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 204.16.247.107:11625
+2026-03-04T12:27:26.866 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.243.92.125:30020
+2026-03-04T12:27:26.867 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-04T12:27:26.868 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 146.190.222.143:64202
+2026-03-04T12:27:26.869 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-04T12:27:26.869 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-04T12:27:26.870 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-04T12:27:26.871 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-04T12:27:26.871 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 206.125.34.196:11725
+2026-03-04T12:27:26.872 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-04T12:27:26.872 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:27:26.873 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-04T12:27:26.874 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-04T12:27:26.874 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-04T12:27:26.875 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-04T12:27:26.875 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-04T12:27:26.876 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-04T12:27:26.876 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.216.66:11825
+2026-03-04T12:27:26.877 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.159.184:11725
+2026-03-04T12:27:26.878 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:27:26.880 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 167.172.244.33:11625
+2026-03-04T12:27:26.881 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-04T12:27:26.882 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-04T12:27:26.883 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:27:26.883 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-04T12:27:26.884 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11825
+2026-03-04T12:27:26.885 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-04T12:27:26.886 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-04T12:27:26.886 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-04T12:27:26.887 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-04T12:27:26.888 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-04T12:27:26.889 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-04T12:27:26.889 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-04T12:27:26.890 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-04T12:27:26.891 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-04T12:27:26.891 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-04T12:27:26.892 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-04T12:27:26.893 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-04T12:27:26.893 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-04T12:27:26.894 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11725
+2026-03-04T12:27:26.895 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:27:26.896 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.227.52.150:30020
+2026-03-04T12:27:26.897 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 94.225.170.42:21662
+2026-03-04T12:27:26.898 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-04T12:27:26.899 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11625
+2026-03-04T12:27:26.900 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-04T12:27:26.901 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.69:11625
+2026-03-04T12:27:26.901 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-04T12:27:26.902 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:27:26.903 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-04T12:27:26.904 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-04T12:27:26.904 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11825
+2026-03-04T12:27:27.314 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 204.16.247.107:11625
+2026-03-04T12:27:27.314 GAVZZ [Overlay INFO] Authenticated to 204.16.247.107:11625
+2026-03-04T12:27:27.548 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.243.92.125:30020
+2026-03-04T12:27:27.548 GAVZZ [Overlay INFO] Authenticated to 34.243.92.125:30020
+2026-03-04T12:27:27.687 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.21.2.102:11625
+2026-03-04T12:27:27.688 GAVZZ [Overlay INFO] Authenticated to 65.21.2.102:11625
+2026-03-04T12:27:29.906 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-04T12:27:29.907 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-04T12:27:29.908 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.139:11625
+2026-03-04T12:27:29.909 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-04T12:27:29.910 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-04T12:27:29.911 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-04T12:27:29.912 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-04T12:27:29.914 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-04T12:27:29.915 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.71:11625
+2026-03-04T12:27:29.917 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.69:11625
+2026-03-04T12:27:29.917 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-04T12:27:29.918 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.236.21.197:30020
+2026-03-04T12:27:29.919 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 24.252.206.200:11625
+2026-03-04T12:27:29.919 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-04T12:27:32.921 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.69:11625
+2026-03-04T12:27:32.921 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-04T12:27:32.922 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-04T12:27:32.923 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 206.125.34.196:11725
+2026-03-04T12:27:32.924 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-04T12:27:32.924 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-04T12:27:32.925 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-04T12:27:32.926 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11725
+2026-03-04T12:27:32.926 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.216.66:11825
+2026-03-04T12:27:32.927 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-04T12:27:32.929 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:27:32.930 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-04T12:27:32.932 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-04T12:27:32.933 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.56:11625
+2026-03-04T12:27:32.934 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-04T12:27:32.935 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:27:32.935 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-04T12:27:32.936 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-04T12:27:32.937 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 167.172.244.33:11625
+2026-03-04T12:27:32.938 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-04T12:27:32.938 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11825
+2026-03-04T12:27:32.939 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-04T12:27:32.940 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-04T12:27:32.941 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:27:32.941 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-04T12:27:32.942 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-04T12:27:32.943 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-04T12:27:32.944 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:27:32.946 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11625
+2026-03-04T12:27:32.947 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-04T12:27:32.948 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-04T12:27:32.950 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-04T12:27:32.951 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11825
+2026-03-04T12:27:32.952 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-04T12:27:32.953 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-04T12:27:32.953 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-04T12:27:32.954 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.159.184:11725
+2026-03-04T12:27:32.955 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-04T12:27:32.956 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-04T12:27:32.957 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 94.225.170.42:21662
+2026-03-04T12:27:32.958 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 146.190.222.143:64202
+2026-03-04T12:27:32.958 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.227.52.150:30020
+2026-03-04T12:27:35.960 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-04T12:27:35.961 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-04T12:27:35.963 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:27:35.964 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.69:11625
+2026-03-04T12:27:35.965 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-04T12:27:35.965 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-04T12:27:35.966 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:27:35.966 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-04T12:27:35.967 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:27:35.968 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-04T12:27:35.969 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 24.252.206.200:11625
+2026-03-04T12:27:35.970 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-04T12:27:35.970 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-04T12:27:35.971 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-04T12:27:35.972 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-04T12:27:35.973 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-04T12:27:35.973 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-04T12:27:35.974 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.236.21.197:30020
+2026-03-04T12:27:35.975 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-04T12:27:35.976 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:27:35.977 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-04T12:27:38.980 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-04T12:27:38.981 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-04T12:27:38.981 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-04T12:27:38.982 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-04T12:27:38.983 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-04T12:27:38.984 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-04T12:27:38.984 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11625
+2026-03-04T12:27:38.985 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-04T12:27:38.985 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-04T12:27:38.986 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-04T12:27:38.987 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 94.225.170.42:21662
+2026-03-04T12:27:38.987 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11825
+2026-03-04T12:27:38.988 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.56:11625
+2026-03-04T12:27:38.988 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-04T12:27:38.989 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-04T12:27:38.989 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-04T12:27:38.990 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:27:38.991 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.71:11625
+2026-03-04T12:27:38.992 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-04T12:27:38.994 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-04T12:27:38.996 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.227.52.150:30020
+2026-03-04T12:27:38.997 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.159.184:11725
+2026-03-04T12:27:38.998 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-04T12:27:38.998 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-04T12:27:38.999 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.216.66:11825
+2026-03-04T12:27:38.999 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-04T12:27:39.000 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-04T12:27:39.000 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-04T12:27:39.001 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-04T12:27:39.002 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-04T12:27:39.003 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11725
+2026-03-04T12:27:39.003 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-04T12:27:39.004 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:27:39.004 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.139:11625
+2026-03-04T12:27:39.005 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-04T12:27:39.006 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-04T12:27:39.006 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-04T12:27:39.007 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:27:39.007 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-04T12:27:39.008 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 206.125.34.196:11725
+2026-03-04T12:27:42.013 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-04T12:27:42.014 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:27:42.014 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-04T12:27:42.015 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 167.172.244.33:11625
+2026-03-04T12:27:42.016 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-04T12:27:42.016 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-04T12:27:42.017 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-04T12:27:42.018 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:27:42.018 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.69:11625
+2026-03-04T12:27:42.019 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-04T12:27:42.020 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:27:42.021 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-04T12:27:42.021 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-04T12:27:42.022 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-04T12:27:42.023 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-04T12:27:42.023 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-04T12:27:42.024 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 24.252.206.200:11625
+2026-03-04T12:27:42.025 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-04T12:27:42.027 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-04T12:27:42.028 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-04T12:27:42.029 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-04T12:27:45.033 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-04T12:27:45.033 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.227.52.150:30020
+2026-03-04T12:27:45.034 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:27:45.035 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-04T12:27:45.035 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 206.125.34.196:11725
+2026-03-04T12:27:45.036 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-04T12:27:45.036 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-04T12:27:45.037 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.236.21.197:30020
+2026-03-04T12:27:45.037 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11825
+2026-03-04T12:27:45.038 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-04T12:27:45.038 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-04T12:27:45.039 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-04T12:27:45.040 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.216.66:11825
+2026-03-04T12:27:45.041 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:27:45.042 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-04T12:27:45.043 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-04T12:27:45.045 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:27:45.046 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.139:11625
+2026-03-04T12:27:45.047 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11725
+2026-03-04T12:27:45.047 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-04T12:27:45.048 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-04T12:27:45.048 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11825
+2026-03-04T12:27:45.049 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-04T12:27:45.050 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-04T12:27:45.050 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-04T12:27:45.051 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:27:45.051 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-04T12:27:45.052 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-04T12:27:45.053 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11625
+2026-03-04T12:27:45.053 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-04T12:27:45.054 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-04T12:27:45.055 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:27:45.056 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.69:11625
+2026-03-04T12:27:45.056 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-04T12:27:45.057 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 167.172.244.33:11625
+2026-03-04T12:27:45.058 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-04T12:27:45.059 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-04T12:27:45.060 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-04T12:27:45.061 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.56:11625
+2026-03-04T12:27:48.064 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-04T12:27:48.065 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 167.172.244.33:11625
+2026-03-04T12:27:48.065 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:27:48.066 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 94.225.170.42:21662
+2026-03-04T12:27:48.067 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 146.190.222.143:64202
+2026-03-04T12:27:48.067 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-04T12:27:48.068 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 24.252.206.200:11625
+2026-03-04T12:27:48.069 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-04T12:27:48.069 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-04T12:27:48.070 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-04T12:27:48.071 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:27:48.071 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-04T12:27:48.072 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-04T12:27:48.073 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-04T12:27:48.073 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-04T12:27:48.074 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-04T12:27:48.076 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-04T12:27:48.077 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-04T12:27:48.078 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-04T12:27:48.079 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-04T12:27:48.080 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:27:48.081 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.71:11625
+2026-03-04T12:27:48.082 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:27:48.082 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:27:51.085 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-04T12:27:51.086 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:27:51.087 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-04T12:27:51.087 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-04T12:27:51.088 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-04T12:27:51.089 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-04T12:27:51.090 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:27:51.091 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-04T12:27:51.091 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.216.66:11825
+2026-03-04T12:27:51.092 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-04T12:27:51.094 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-04T12:27:51.095 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-04T12:27:51.095 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-04T12:27:51.096 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11725
+2026-03-04T12:27:51.097 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.227.52.150:30020
+2026-03-04T12:27:51.097 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.69:11625
+2026-03-04T12:27:51.098 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11625
+2026-03-04T12:27:51.098 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-04T12:27:51.099 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.159.184:11725
+2026-03-04T12:27:51.100 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-04T12:27:51.100 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:27:51.101 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-04T12:27:51.101 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-04T12:27:51.102 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11825
+2026-03-04T12:27:51.102 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-04T12:27:51.103 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-04T12:27:51.103 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-04T12:27:51.104 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-04T12:27:51.104 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-04T12:27:51.105 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-04T12:27:51.105 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-04T12:27:51.106 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-04T12:27:51.106 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-04T12:27:51.107 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.236.21.197:30020
+2026-03-04T12:27:51.108 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-04T12:27:51.109 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 206.125.34.196:11725
+2026-03-04T12:27:51.110 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.139:11625
+2026-03-04T12:27:51.111 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:27:51.112 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-04T12:27:54.114 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:27:54.115 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-04T12:27:54.115 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-04T12:27:54.116 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-04T12:27:54.117 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-04T12:27:54.117 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:27:54.118 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-04T12:27:54.119 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-04T12:27:54.119 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-04T12:27:54.120 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-04T12:27:54.121 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11825
+2026-03-04T12:27:54.121 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-04T12:27:54.122 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-04T12:27:54.122 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-04T12:27:54.123 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-04T12:27:54.123 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-04T12:27:54.124 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:27:54.125 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:27:54.125 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-04T12:27:54.127 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:27:54.127 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 94.225.170.42:21662
+2026-03-04T12:27:54.128 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 24.252.206.200:11625
+2026-03-04T12:27:54.129 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-04T12:27:57.131 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.56:11625
+2026-03-04T12:27:57.132 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-04T12:27:57.132 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-04T12:27:57.133 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-04T12:27:57.134 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-04T12:27:57.135 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-04T12:27:57.135 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-04T12:27:57.135 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-04T12:27:57.136 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 167.172.244.33:11625
+2026-03-04T12:27:57.136 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-04T12:27:57.137 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.159.184:11725
+2026-03-04T12:27:57.137 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-04T12:27:57.138 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-04T12:27:57.139 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-04T12:27:57.139 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-04T12:27:57.140 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:27:57.141 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.139:11625
+2026-03-04T12:27:57.143 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-04T12:27:57.144 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-04T12:27:57.145 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.69:11625
+2026-03-04T12:27:57.146 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:27:57.147 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.236.21.197:30020
+2026-03-04T12:27:57.148 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:27:57.148 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.71:11625
+2026-03-04T12:27:57.149 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-04T12:27:57.149 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-04T12:27:57.150 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-04T12:27:57.150 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.216.66:11825
+2026-03-04T12:27:57.151 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-04T12:27:57.151 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:27:57.152 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-04T12:27:57.153 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-04T12:27:57.153 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.69:11625
+2026-03-04T12:27:57.153 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 146.190.222.143:64202
+2026-03-04T12:27:57.154 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-04T12:27:57.155 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-04T12:27:57.156 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 206.125.34.196:11725
+2026-03-04T12:27:57.156 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11825
+2026-03-04T12:27:57.157 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11725
+2026-03-04T12:27:57.158 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.227.52.150:30020
+2026-03-04T12:27:59.612 GAVZZ [Herder WARNING] Lost track of consensus
+2026-03-04T12:27:59.612 GAVZZ [Herder WARNING] Out of sync context: {
+   "queue" : null,
+   "scp" : null,
+   "you" : "GAVZZ"
+}
+
+2026-03-04T12:28:00.162 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-04T12:28:00.165 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-04T12:28:00.168 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 167.172.244.33:11625
+2026-03-04T12:28:00.171 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-04T12:28:00.175 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 94.225.170.42:21662
+2026-03-04T12:28:00.179 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-04T12:28:00.181 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-04T12:28:00.183 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:28:00.185 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-04T12:28:00.187 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-04T12:28:00.188 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:28:00.191 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:28:00.194 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-04T12:28:00.197 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-04T12:28:00.199 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-04T12:28:00.201 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:28:00.203 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-04T12:28:00.204 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-04T12:28:00.206 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-04T12:28:00.207 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-04T12:28:00.211 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-04T12:28:00.213 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-04T12:28:00.215 GAVZZ [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-04T12:28:00.225 GAVZZ [Herder INFO] Quorum information for 1325498 : {"cost":0,"lag_ms":null}
+
+2026-03-04T12:28:00.227 GAVZZ [Herder WARNING] Ledger took 39.371601206 seconds, SCP information:{"maybe_dead_nodes":[],"node":"GAVZZ","qset":{"agree":["sdf_testnet_2","sdf_testnet_1"],"cost":{"1325500":{"sdf_testnet_1":1632,"sdf_testnet_2":1632}},"delayed":null,"disagree":null,"fail_at":1,"fail_with":["sdf_testnet_2"],"hash":"59d361","lag_ms":null,"ledger":1325500,"missing":["sdf_testnet_3"],"phase":"EXTERNALIZE","value":{"t":2,"v":["sdf_testnet_2","sdf_testnet_3","sdf_testnet_1"]}}}
+
+2026-03-04T12:28:00.228 GAVZZ [SCP FATAL] Exception: Cannot commit transaction. database or disk is full
+2026-03-04T12:28:00.228 GAVZZ [SCP FATAL] SCP context (GAVZZ): 
+2026-03-04T12:28:00.229 GAVZZ [SCP FATAL] {
+   "ballotProtocol" : {
+      "ballot" : "(4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ])",
+      "heard" : false,
+      "phase" : "EXTERNALIZE",
+      "state" : "i: 1325500 | EXTERNALIZE | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p': (<null_ballot>) | h: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | c: (1,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | M: 3"
+   },
+   "nomination" : {
+      "roundnumber" : 0,
+      "started" : false
+   },
+   "quorum_sets" : {
+      "59d361" : {
+         "t" : 2,
+         "v" : [ "sdf_testnet_2", "sdf_testnet_3", "sdf_testnet_1" ]
+      }
+   },
+   "statements" : [
+      [
+         1772627280,
+         "{ENV@sdf_testnet_1 |  i: 1325500 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@sdf_testnet_2 |  i: 1325500 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@GAVZZ |  i: 1325500 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@GAVZZ |  i: 1325500 | PREPARE | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 4294967295 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@GAVZZ |  i: 1325500 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@GAVZZ |  i: 1325500 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | h.n: 4294967295 | (lastD): 59d361 }",
+         false
+      ]
+   ],
+   "validated" : false
+}
+
+2026-03-04T12:28:00.229 GAVZZ [SCP FATAL] Exception processing SCP messages at 1325500, envelope: {ENV@GAVZZ |  i: 1325500 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }
+2026-03-04T12:28:00.229 GAVZZ [SCP FATAL] Please report this bug along with this log file if this was not expected
+2026-03-04T12:28:00.230 GAVZZ [SCP FATAL] Exception: Cannot commit transaction. database or disk is full
+2026-03-04T12:28:00.230 GAVZZ [SCP FATAL] SCP context (GAVZZ): 
+2026-03-04T12:28:00.231 GAVZZ [SCP FATAL] {
+   "ballotProtocol" : {
+      "ballot" : "(4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ])",
+      "heard" : false,
+      "phase" : "EXTERNALIZE",
+      "state" : "i: 1325500 | EXTERNALIZE | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p': (<null_ballot>) | h: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | c: (1,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | M: 3"
+   },
+   "nomination" : {
+      "roundnumber" : 0,
+      "started" : false
+   },
+   "quorum_sets" : {
+      "59d361" : {
+         "t" : 2,
+         "v" : [ "sdf_testnet_2", "sdf_testnet_3", "sdf_testnet_1" ]
+      }
+   },
+   "statements" : [
+      [
+         1772627280,
+         "{ENV@sdf_testnet_1 |  i: 1325500 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@sdf_testnet_2 |  i: 1325500 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@GAVZZ |  i: 1325500 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@GAVZZ |  i: 1325500 | PREPARE | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 4294967295 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@GAVZZ |  i: 1325500 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@GAVZZ |  i: 1325500 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | h.n: 4294967295 | (lastD): 59d361 }",
+         false
+      ]
+   ],
+   "validated" : false
+}
+
+2026-03-04T12:28:00.231 GAVZZ [SCP FATAL] Exception processing SCP messages at 1325500, envelope: {ENV@GAVZZ |  i: 1325500 | PREPARE | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 4294967295 | h.n: 4294967295 }
+2026-03-04T12:28:00.232 GAVZZ [SCP FATAL] Please report this bug along with this log file if this was not expected
+2026-03-04T12:28:00.232 GAVZZ [SCP FATAL] Exception: Cannot commit transaction. database or disk is full
+2026-03-04T12:28:00.232 GAVZZ [SCP FATAL] SCP context (GAVZZ): 
+2026-03-04T12:28:00.233 GAVZZ [SCP FATAL] {
+   "ballotProtocol" : {
+      "ballot" : "(4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ])",
+      "heard" : false,
+      "phase" : "EXTERNALIZE",
+      "state" : "i: 1325500 | EXTERNALIZE | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p': (<null_ballot>) | h: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | c: (1,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | M: 3"
+   },
+   "nomination" : {
+      "roundnumber" : 0,
+      "started" : false
+   },
+   "quorum_sets" : {
+      "59d361" : {
+         "t" : 2,
+         "v" : [ "sdf_testnet_2", "sdf_testnet_3", "sdf_testnet_1" ]
+      }
+   },
+   "statements" : [
+      [
+         1772627280,
+         "{ENV@sdf_testnet_1 |  i: 1325500 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@sdf_testnet_2 |  i: 1325500 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@GAVZZ |  i: 1325500 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@GAVZZ |  i: 1325500 | PREPARE | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 4294967295 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@GAVZZ |  i: 1325500 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@GAVZZ |  i: 1325500 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | h.n: 4294967295 | (lastD): 59d361 }",
+         false
+      ]
+   ],
+   "validated" : false
+}
+
+2026-03-04T12:28:00.233 GAVZZ [SCP FATAL] Exception processing SCP messages at 1325500, envelope: {ENV@GAVZZ |  i: 1325500 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }
+2026-03-04T12:28:00.234 GAVZZ [SCP FATAL] Please report this bug along with this log file if this was not expected
+2026-03-04T12:28:00.234 GAVZZ [SCP FATAL] Exception: Cannot commit transaction. database or disk is full
+2026-03-04T12:28:00.234 GAVZZ [SCP FATAL] SCP context (GAVZZ): 
+2026-03-04T12:28:00.234 GAVZZ [SCP FATAL] {
+   "ballotProtocol" : {
+      "ballot" : "(4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ])",
+      "heard" : false,
+      "phase" : "EXTERNALIZE",
+      "state" : "i: 1325500 | EXTERNALIZE | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p': (<null_ballot>) | h: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | c: (1,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | M: 3"
+   },
+   "nomination" : {
+      "roundnumber" : 0,
+      "started" : false
+   },
+   "quorum_sets" : {
+      "59d361" : {
+         "t" : 2,
+         "v" : [ "sdf_testnet_2", "sdf_testnet_3", "sdf_testnet_1" ]
+      }
+   },
+   "statements" : [
+      [
+         1772627280,
+         "{ENV@sdf_testnet_1 |  i: 1325500 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@sdf_testnet_2 |  i: 1325500 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@GAVZZ |  i: 1325500 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@GAVZZ |  i: 1325500 | PREPARE | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 4294967295 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@GAVZZ |  i: 1325500 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772627280,
+         "{ENV@GAVZZ |  i: 1325500 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | h.n: 4294967295 | (lastD): 59d361 }",
+         false
+      ]
+   ],
+   "validated" : false
+}
+
+2026-03-04T12:28:00.235 GAVZZ [SCP FATAL] Exception processing SCP messages at 1325500, envelope: {ENV@sdf_testnet_2 |  i: 1325500 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 6902fa, ct: 1772627279, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }
+2026-03-04T12:28:00.235 GAVZZ [SCP FATAL] Please report this bug along with this log file if this was not expected

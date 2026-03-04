@@ -1,12 +1,12 @@
 'use client';
 
 import React from 'react';
-import { Activity, LayoutGrid, Server, Settings, X, Wallet, ArrowRightLeft } from 'lucide-react';
+import { Activity, LayoutGrid, Server, Settings, X, Wallet, ArrowRightLeft, Map } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 
 interface NavbarProps {
-    activeTab: 'dashboard' | 'nodes' | 'settings' | 'accounts' | 'transactions';
-    onTabChange: (tab: 'dashboard' | 'nodes' | 'settings' | 'accounts' | 'transactions') => void;
+    activeTab: 'dashboard' | 'nodes' | 'settings' | 'accounts' | 'transactions' | 'lab-map';
+    onTabChange: (tab: 'dashboard' | 'nodes' | 'settings' | 'accounts' | 'transactions' | 'lab-map') => void;
     isOpen?: boolean;
     onClose?: () => void;
 }
@@ -73,6 +73,13 @@ export default function Navbar({ activeTab, onTabChange, isOpen = false, onClose
         >
             <ArrowRightLeft size={20} className={activeTab === 'transactions' ? "text-orange-500 dark:text-orange-400" : ""} />
             <span className="font-medium">Transactions</span>
+        </button>
+        <button 
+            onClick={() => onTabChange('lab-map')}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${activeTab === 'lab-map' ? 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700' : 'text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-white'}`}
+        >
+            <Map size={20} className={activeTab === 'lab-map' ? "text-indigo-500 dark:text-indigo-400" : ""} />
+            <span className="font-medium">Lab Map</span>
         </button>
         <button 
             onClick={() => onTabChange('settings')}

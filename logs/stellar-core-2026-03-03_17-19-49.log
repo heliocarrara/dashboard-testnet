@@ -1,0 +1,706 @@
+2026-03-03T17:19:49.126 GARDD [default INFO] Starting stellar-core v25.1.1
+2026-03-03T17:19:49.127 GARDD [Database INFO] Connecting to: sqlite3:///opt/stellar/core/stellar.db
+2026-03-03T17:19:49.135 GARDD [SCP INFO] LocalNode::LocalNode@GARDD qSet: 59d361
+2026-03-03T17:19:49.135 GARDD [Database INFO] DB schema is in current version
+2026-03-03T17:19:49.135 GARDD [default INFO] Listening on 0.0.0.0:11626 for HTTP requests
+2026-03-03T17:19:49.135 GARDD [Bucket INFO] BucketListDB enabled: pageSizeExponent: 14 indexCutOff: 20MB, persist indexes: true
+2026-03-03T17:19:49.136 GARDD [default INFO] Connection effective settings:
+2026-03-03T17:19:49.136 GARDD [default INFO] TARGET_PEER_CONNECTIONS: 8
+2026-03-03T17:19:49.136 GARDD [default INFO] MAX_ADDITIONAL_PEER_CONNECTIONS: 64
+2026-03-03T17:19:49.136 GARDD [default INFO] MAX_PENDING_CONNECTIONS: 500
+2026-03-03T17:19:49.136 GARDD [default INFO] MAX_OUTBOUND_PENDING_CONNECTIONS: 56
+2026-03-03T17:19:49.136 GARDD [default INFO] MAX_INBOUND_PENDING_CONNECTIONS: 444
+2026-03-03T17:19:49.136 GARDD [default INFO] BACKGROUND_OVERLAY_PROCESSING=true
+2026-03-03T17:19:49.137 GARDD [default INFO] PARALLEL_LEDGER_APPLY=true
+2026-03-03T17:19:49.137 GARDD [History INFO] Archive 'sdf_testnet_1' has 'get' command only, will not be written
+2026-03-03T17:19:49.137 GARDD [History INFO] Archive 'sdf_testnet_2' has 'get' command only, will not be written
+2026-03-03T17:19:49.137 GARDD [History INFO] Archive 'sdf_testnet_3' has 'get' command only, will not be written
+2026-03-03T17:19:49.137 GARDD [History WARNING] No writable archives configured, history will not be written.
+2026-03-03T17:19:49.137 GARDD [Ledger INFO] Starting up application
+2026-03-03T17:19:49.137 GARDD [Ledger INFO] Last closed ledger (LCL) hash is bb5348e263dc812d4fc2ada832acadf77b38248092caeae806251a9d7fba4cbe
+2026-03-03T17:19:49.137 GARDD [Ledger INFO] Loaded LCL header from database: [seq=1310157, hash=bb5348]
+2026-03-03T17:19:49.137 GARDD [default INFO] Establishing 10-entry connection pool to: sqlite3:///opt/stellar/core/stellar.db
+2026-03-03T17:19:49.601 GARDD [Ledger INFO] Assumed bucket-state for LCL: [seq=1310157, hash=bb5348]
+2026-03-03T17:19:49.602 GARDD [default INFO] Launching 1 loading and 5 compiling background threads
+2026-03-03T17:19:49.833 GARDD [default INFO] Compiled 1684 contracts (45055210 bytes of Wasm) in 231ms real time, 1109ms CPU time
+2026-03-03T17:19:51.752 GARDD [Overlay INFO] Binding to endpoint 0.0.0.0:11625
+2026-03-03T17:19:51.757 GARDD [History INFO] Downloading history archive state: .well-known/stellar-history.json
+2026-03-03T17:19:52.109 GARDD [Process WARNING] process 78808 exited 23: curl -sf http://history.stellar.org/prd/core-testnet/core_testnet_001/.well-known/stellar-history.json -o buckets/tmp/history-3486e6bde9d0cbcc/915dd94b94bf2f9c-stellar-history.json
+2026-03-03T17:19:52.109 GARDD [History WARNING] Could not download file: archive sdf_testnet_1 maybe missing file .well-known/stellar-history.json
+2026-03-03T17:19:52.109 GARDD [History ERROR] Could not download .well-known/stellar-history.json file: corrupt archive sdf_testnet_1
+2026-03-03T17:19:52.110 GARDD [History ERROR] Failed to obtain archive information: sdf_testnet_1
+2026-03-03T17:19:54.057 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 98.91.174.101:11625
+2026-03-03T17:19:54.058 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 44.204.146.210:11625
+2026-03-03T17:19:54.058 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 44.213.67.110:11625
+2026-03-03T17:19:54.059 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.119:11625
+2026-03-03T17:19:54.060 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.71:11625
+2026-03-03T17:19:54.060 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.223.55.158:11625
+2026-03-03T17:19:54.061 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-03T17:19:54.062 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-03T17:19:54.063 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-03T17:19:54.064 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-03T17:19:54.065 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-03T17:19:54.067 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-03T17:19:54.068 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-03T17:19:54.069 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-03T17:19:54.069 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-03T17:19:54.070 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-03T17:19:54.071 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-03T17:19:54.071 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-03T17:19:54.072 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T17:19:54.073 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-03T17:19:54.073 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T17:19:54.074 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-03T17:19:54.075 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-03T17:19:54.076 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-03T17:19:54.076 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-03T17:19:54.077 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-03T17:19:54.078 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T17:19:54.079 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-03T17:19:54.080 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-03T17:19:54.081 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-03T17:19:54.081 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-03T17:19:54.082 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-03T17:19:54.083 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-03T17:19:54.084 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T17:19:54.085 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.206.213.41:30020
+2026-03-03T17:19:54.085 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-03T17:19:54.086 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T17:19:54.087 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-03T17:19:54.088 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-03T17:19:54.089 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-03T17:19:54.090 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T17:19:54.090 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-03T17:19:54.091 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-03T17:19:54.092 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-03T17:19:54.092 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-03T17:19:54.093 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-03T17:19:54.094 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-03T17:19:54.095 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T17:19:54.095 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-03T17:19:54.096 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-03T17:19:54.097 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T17:19:54.097 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-03T17:19:54.098 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-03T17:19:54.099 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-03T17:19:54.100 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.245.167.15:30020
+2026-03-03T17:19:54.100 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-03T17:19:54.461 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.223.55.158:11625
+2026-03-03T17:19:54.462 GARDD [Overlay INFO] Authenticated to 13.223.55.158:11625
+2026-03-03T17:19:54.462 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11725
+2026-03-03T17:19:54.463 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11625
+2026-03-03T17:19:54.463 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 146.190.222.143:21116
+2026-03-03T17:19:54.463 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:57286
+2026-03-03T17:19:54.463 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-03T17:19:54.464 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.56:11625
+2026-03-03T17:19:54.464 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.13.210.160:36616
+2026-03-03T17:19:57.102 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 16.58.222.208:11725
+2026-03-03T17:19:57.104 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.174.103:11725
+2026-03-03T17:19:57.107 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T17:19:57.109 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T17:19:57.111 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T17:19:57.112 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T17:19:57.114 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T17:19:57.116 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T17:19:57.117 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T17:19:57.118 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T17:19:57.342 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.71:11625
+2026-03-03T17:19:57.342 GARDD [Overlay INFO] Authenticated to 200.129.247.71:11625
+2026-03-03T17:19:57.343 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-03T17:19:57.345 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11625
+2026-03-03T17:19:57.345 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11825
+2026-03-03T17:19:57.346 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-03T17:19:57.555 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.174.103:11725
+2026-03-03T17:19:57.556 GARDD [Overlay INFO] Authenticated to 18.189.174.103:11725
+2026-03-03T17:19:57.558 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 206.125.34.196:11725
+2026-03-03T17:19:57.558 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-03T17:19:57.559 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11825
+2026-03-03T17:19:57.559 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.71:11725
+2026-03-03T17:19:57.560 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 16.58.222.208:11725
+2026-03-03T17:19:57.560 GARDD [Overlay INFO] Authenticated to 16.58.222.208:11725
+2026-03-03T17:19:58.516 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.119:11625
+2026-03-03T17:19:58.517 GARDD [Overlay INFO] Authenticated to 200.129.247.119:11625
+2026-03-03T17:19:58.519 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-03T17:19:58.520 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-03T17:19:58.521 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11825
+2026-03-03T17:19:58.522 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.56:11625
+2026-03-03T17:19:58.522 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 212.126.35.132:11825
+2026-03-03T17:19:58.523 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11625
+2026-03-03T17:19:58.523 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 206.125.34.196:11725
+2026-03-03T17:19:58.524 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11625
+2026-03-03T17:19:58.524 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 94.225.170.42:16167
+2026-03-03T17:19:58.524 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.13.210.160:36616
+2026-03-03T17:20:00.120 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-03T17:20:00.122 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-03T17:20:00.124 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-03T17:20:00.125 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-03T17:20:00.128 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-03T17:20:00.130 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T17:20:00.132 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.245.167.15:30020
+2026-03-03T17:20:00.133 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-03T17:20:00.135 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T17:20:00.136 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-03T17:20:00.137 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-03T17:20:00.138 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-03T17:20:00.139 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-03T17:20:00.140 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-03T17:20:00.141 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-03T17:20:00.142 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-03T17:20:00.143 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-03T17:20:00.143 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-03T17:20:00.144 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-03T17:20:00.145 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-03T17:20:00.146 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-03T17:20:00.147 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-03T17:20:00.148 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-03T17:20:00.149 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T17:20:00.150 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-03T17:20:00.150 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-03T17:20:00.151 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.206.213.41:30020
+2026-03-03T17:20:00.152 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T17:20:00.153 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-03T17:20:00.154 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-03T17:20:00.155 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-03T17:20:00.155 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-03T17:20:00.156 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T17:20:00.157 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-03T17:20:00.158 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-03T17:20:00.159 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T17:20:00.159 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-03T17:20:00.160 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-03T17:20:00.161 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-03T17:20:00.162 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-03T17:20:00.163 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-03T17:20:00.164 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-03T17:20:00.165 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-03T17:20:00.166 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T17:20:00.167 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-03T17:20:00.168 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-03T17:20:00.168 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T17:20:00.169 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-03T17:20:00.170 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-03T17:20:00.171 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-03T17:20:01.537 GARDD [Overlay INFO] Authenticated to 172.18.0.1:11625
+2026-03-03T17:20:03.173 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 63.35.223.172:30020
+2026-03-03T17:20:03.175 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.21.151.231:11725
+2026-03-03T17:20:03.176 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.108.55.207:11625
+2026-03-03T17:20:03.178 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T17:20:03.178 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T17:20:03.179 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T17:20:03.179 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T17:20:03.180 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T17:20:03.181 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T17:20:03.181 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T17:20:03.182 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T17:20:03.612 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.21.151.231:11725
+2026-03-03T17:20:03.613 GARDD [Overlay INFO] Authenticated to 3.21.151.231:11725
+2026-03-03T17:20:03.614 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11625
+2026-03-03T17:20:03.845 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 63.35.223.172:30020
+2026-03-03T17:20:03.845 GARDD [Overlay INFO] Authenticated to 63.35.223.172:30020
+2026-03-03T17:20:03.847 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-03T17:20:06.185 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.89.159.61:11625
+2026-03-03T17:20:06.186 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-03T17:20:06.186 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-03T17:20:06.187 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-03T17:20:06.187 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-03T17:20:06.188 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-03T17:20:06.189 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T17:20:06.190 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-03T17:20:06.191 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-03T17:20:06.191 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-03T17:20:06.192 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-03T17:20:06.193 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-03T17:20:06.193 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-03T17:20:06.194 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-03T17:20:06.194 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-03T17:20:06.194 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-03T17:20:06.195 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-03T17:20:06.195 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-03T17:20:06.196 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-03T17:20:06.196 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-03T17:20:06.197 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-03T17:20:06.198 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T17:20:06.199 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.206.213.41:30020
+2026-03-03T17:20:06.199 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-03T17:20:06.200 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T17:20:06.201 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-03T17:20:06.202 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-03T17:20:06.202 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-03T17:20:06.203 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-03T17:20:06.204 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-03T17:20:06.204 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T17:20:06.205 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T17:20:06.206 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-03T17:20:06.206 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-03T17:20:06.207 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-03T17:20:06.208 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-03T17:20:06.209 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-03T17:20:06.209 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.245.167.15:30020
+2026-03-03T17:20:06.210 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-03T17:20:06.211 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-03T17:20:06.211 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-03T17:20:06.212 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-03T17:20:06.213 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-03T17:20:06.213 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-03T17:20:06.214 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-03T17:20:06.214 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-03T17:20:06.215 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T17:20:06.215 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T17:20:06.216 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-03T17:20:06.217 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-03T17:20:06.217 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T17:20:06.584 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.89.159.61:11625
+2026-03-03T17:20:06.585 GARDD [Overlay INFO] Authenticated to 3.89.159.61:11625
+2026-03-03T17:20:08.063 GARDD [Overlay INFO] Authenticated to 172.18.0.1:11625
+2026-03-03T17:20:09.220 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T17:20:09.222 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T17:20:09.223 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T17:20:09.224 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T17:20:09.226 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T17:20:09.227 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T17:20:09.228 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T17:20:09.229 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T17:20:12.232 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T17:20:12.232 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-03T17:20:12.233 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-03T17:20:12.233 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-03T17:20:12.234 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T17:20:12.234 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-03T17:20:12.235 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-03T17:20:12.235 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-03T17:20:12.236 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-03T17:20:12.237 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T17:20:12.237 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-03T17:20:12.238 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-03T17:20:12.239 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-03T17:20:12.239 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T17:20:12.240 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-03T17:20:12.241 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-03T17:20:12.241 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-03T17:20:12.242 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-03T17:20:12.243 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-03T17:20:12.243 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-03T17:20:12.244 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-03T17:20:12.245 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-03T17:20:12.246 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-03T17:20:12.246 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-03T17:20:12.247 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T17:20:12.248 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-03T17:20:12.248 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-03T17:20:12.249 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.206.213.41:30020
+2026-03-03T17:20:12.250 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.245.167.15:30020
+2026-03-03T17:20:12.250 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-03T17:20:12.251 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-03T17:20:12.251 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-03T17:20:12.252 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-03T17:20:12.252 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-03T17:20:12.253 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-03T17:20:12.254 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-03T17:20:12.254 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T17:20:12.255 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-03T17:20:12.256 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-03T17:20:12.256 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-03T17:20:12.257 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-03T17:20:12.258 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T17:20:12.258 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-03T17:20:12.259 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-03T17:20:12.260 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-03T17:20:12.260 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-03T17:20:12.261 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-03T17:20:12.261 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-03T17:20:12.262 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T17:20:12.262 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-03T17:20:13.765 GARDD [Overlay INFO] Dropping peer 172.18.0.1:11625, reason error reading message header: End of file
+2026-03-03T17:20:15.265 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T17:20:15.266 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T17:20:15.268 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T17:20:15.269 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T17:20:15.271 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T17:20:15.272 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T17:20:15.273 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T17:20:15.275 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T17:20:18.278 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-03T17:20:18.279 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T17:20:18.279 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-03T17:20:18.280 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-03T17:20:18.281 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-03T17:20:18.282 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-03T17:20:18.283 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-03T17:20:18.284 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-03T17:20:18.284 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-03T17:20:18.285 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-03T17:20:18.286 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-03T17:20:18.287 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-03T17:20:18.287 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-03T17:20:18.288 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-03T17:20:18.289 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-03T17:20:18.290 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-03T17:20:18.290 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-03T17:20:18.291 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-03T17:20:18.291 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-03T17:20:18.292 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-03T17:20:18.292 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-03T17:20:18.293 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T17:20:18.293 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-03T17:20:18.294 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T17:20:18.295 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T17:20:18.295 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T17:20:18.296 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-03T17:20:18.296 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-03T17:20:18.297 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-03T17:20:18.297 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.245.167.15:30020
+2026-03-03T17:20:18.298 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-03T17:20:18.298 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-03T17:20:18.299 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T17:20:18.299 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-03T17:20:18.300 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-03T17:20:18.300 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-03T17:20:18.301 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T17:20:18.301 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-03T17:20:18.302 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-03T17:20:18.302 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-03T17:20:18.303 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-03T17:20:18.303 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-03T17:20:18.303 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-03T17:20:18.304 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-03T17:20:18.304 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-03T17:20:18.305 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-03T17:20:18.305 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T17:20:18.306 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-03T17:20:18.306 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.206.213.41:30020
+2026-03-03T17:20:18.307 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-03T17:20:21.342 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T17:20:21.343 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T17:20:21.345 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T17:20:21.346 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T17:20:21.348 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T17:20:21.349 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T17:20:21.351 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T17:20:21.352 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T17:20:24.358 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T17:20:24.360 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-03T17:20:24.361 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.174.219.130:30400
+2026-03-03T17:20:24.362 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-03T17:20:24.363 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-03T17:20:24.364 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T17:20:24.364 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.212.206.26:30020
+2026-03-03T17:20:24.365 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-03T17:20:24.366 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-03T17:20:24.367 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.82:11625
+2026-03-03T17:20:24.367 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.252.66:11725
+2026-03-03T17:20:24.368 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.18.193.104:11725
+2026-03-03T17:20:24.368 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-03T17:20:24.369 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-03T17:20:24.370 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-03T17:20:24.370 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-03T17:20:24.371 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-03T17:20:24.372 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T17:20:24.372 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.206.213.41:30020
+2026-03-03T17:20:24.373 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.215.181.212:30020
+2026-03-03T17:20:24.373 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T17:20:24.374 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T17:20:24.374 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-03T17:20:24.375 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-03T17:20:24.375 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-03T17:20:24.375 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-03T17:20:24.376 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T17:20:24.376 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-03T17:20:24.377 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T17:20:24.378 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-03T17:20:24.378 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-03T17:20:24.378 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-03T17:20:24.379 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-03T17:20:24.379 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-03T17:20:24.380 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T17:20:24.380 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-03T17:20:24.381 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-03T17:20:24.382 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.245.167.15:30020
+2026-03-03T17:20:24.382 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-03T17:20:24.383 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-03T17:20:24.384 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 85.21.8.7:11625
+2026-03-03T17:20:24.385 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.90.248.176:30020
+2026-03-03T17:20:24.386 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-03T17:20:24.386 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 135.181.229.215:11628
+2026-03-03T17:20:24.387 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-03T17:20:24.388 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-03T17:20:24.389 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-03T17:20:24.389 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-03T17:20:24.390 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-03T17:20:24.390 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-03T17:20:26.784 GARDD [Herder WARNING] Lost track of consensus
+2026-03-03T17:20:26.784 GARDD [Herder WARNING] Out of sync context: {
+   "queue" : null,
+   "scp" : null,
+   "you" : "GARDD"
+}
+
+2026-03-03T17:20:27.393 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-03T17:20:27.394 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.114:11625
+2026-03-03T17:20:27.396 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11625
+2026-03-03T17:20:27.397 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11625
+2026-03-03T17:20:27.398 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-03T17:20:27.399 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-03T17:20:27.401 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11725
+2026-03-03T17:20:27.401 GARDD [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-03T17:20:28.941 GARDD [Herder INFO] Quorum information for 1311743 : {"cost":0,"lag_ms":null}
+
+2026-03-03T17:20:28.941 GARDD [Herder WARNING] Ledger took 39.773981082 seconds, SCP information:{"maybe_dead_nodes":[],"node":"GARDD","qset":{"agree":["sdf_testnet_2","sdf_testnet_3","sdf_testnet_1"],"cost":{"1311745":{"sdf_testnet_1":5220,"sdf_testnet_2":10276,"sdf_testnet_3":15324}},"delayed":null,"disagree":null,"fail_at":2,"fail_with":["sdf_testnet_2","sdf_testnet_3"],"hash":"59d361","lag_ms":null,"ledger":1311745,"missing":null,"phase":"EXTERNALIZE","value":{"t":2,"v":["sdf_testnet_2","sdf_testnet_3","sdf_testnet_1"]}}}
+
+2026-03-03T17:20:28.943 GARDD [SCP FATAL] Exception: Cannot commit transaction. database or disk is full
+2026-03-03T17:20:28.943 GARDD [SCP FATAL] SCP context (GARDD): 
+2026-03-03T17:20:28.944 GARDD [SCP FATAL] {
+   "ballotProtocol" : {
+      "ballot" : "(4294967295,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ])",
+      "heard" : false,
+      "phase" : "EXTERNALIZE",
+      "state" : "i: 1311745 | EXTERNALIZE | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p': (<null_ballot>) | h: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | c: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | M: 4"
+   },
+   "nomination" : {
+      "roundnumber" : 0,
+      "started" : false
+   },
+   "quorum_sets" : {
+      "59d361" : {
+         "t" : 2,
+         "v" : [ "sdf_testnet_2", "sdf_testnet_3", "sdf_testnet_1" ]
+      }
+   },
+   "statements" : [
+      [
+         1772558428,
+         "{ENV@sdf_testnet_2 |  i: 1311745 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@sdf_testnet_3 |  i: 1311745 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@GARDD |  i: 1311745 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@GARDD |  i: 1311745 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@GARDD |  i: 1311745 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@sdf_testnet_1 |  i: 1311745 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@sdf_testnet_3 |  i: 1311745 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@sdf_testnet_3 |  i: 1311745 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@sdf_testnet_2 |  i: 1311745 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@GARDD |  i: 1311745 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@GARDD |  i: 1311745 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@GARDD |  i: 1311745 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ]
+   ],
+   "validated" : false
+}
+
+2026-03-03T17:20:28.946 GARDD [SCP FATAL] Exception processing SCP messages at 1311745, envelope: {ENV@GARDD |  i: 1311745 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }
+2026-03-03T17:20:28.947 GARDD [SCP FATAL] Please report this bug along with this log file if this was not expected
+2026-03-03T17:20:28.947 GARDD [SCP FATAL] Exception: Cannot commit transaction. database or disk is full
+2026-03-03T17:20:28.948 GARDD [SCP FATAL] SCP context (GARDD): 
+2026-03-03T17:20:28.948 GARDD [SCP FATAL] {
+   "ballotProtocol" : {
+      "ballot" : "(4294967295,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ])",
+      "heard" : false,
+      "phase" : "EXTERNALIZE",
+      "state" : "i: 1311745 | EXTERNALIZE | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p': (<null_ballot>) | h: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | c: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | M: 4"
+   },
+   "nomination" : {
+      "roundnumber" : 0,
+      "started" : false
+   },
+   "quorum_sets" : {
+      "59d361" : {
+         "t" : 2,
+         "v" : [ "sdf_testnet_2", "sdf_testnet_3", "sdf_testnet_1" ]
+      }
+   },
+   "statements" : [
+      [
+         1772558428,
+         "{ENV@sdf_testnet_2 |  i: 1311745 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@sdf_testnet_3 |  i: 1311745 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@GARDD |  i: 1311745 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@GARDD |  i: 1311745 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@GARDD |  i: 1311745 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@sdf_testnet_1 |  i: 1311745 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@sdf_testnet_3 |  i: 1311745 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@sdf_testnet_3 |  i: 1311745 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@sdf_testnet_2 |  i: 1311745 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@GARDD |  i: 1311745 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@GARDD |  i: 1311745 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@GARDD |  i: 1311745 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ]
+   ],
+   "validated" : false
+}
+
+2026-03-03T17:20:28.949 GARDD [SCP FATAL] Exception processing SCP messages at 1311745, envelope: {ENV@GARDD |  i: 1311745 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 1 }
+2026-03-03T17:20:28.949 GARDD [SCP FATAL] Please report this bug along with this log file if this was not expected
+2026-03-03T17:20:28.950 GARDD [SCP FATAL] Exception: Cannot commit transaction. database or disk is full
+2026-03-03T17:20:28.950 GARDD [SCP FATAL] SCP context (GARDD): 
+2026-03-03T17:20:28.950 GARDD [SCP FATAL] {
+   "ballotProtocol" : {
+      "ballot" : "(4294967295,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ])",
+      "heard" : false,
+      "phase" : "EXTERNALIZE",
+      "state" : "i: 1311745 | EXTERNALIZE | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p': (<null_ballot>) | h: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | c: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | M: 4"
+   },
+   "nomination" : {
+      "roundnumber" : 0,
+      "started" : false
+   },
+   "quorum_sets" : {
+      "59d361" : {
+         "t" : 2,
+         "v" : [ "sdf_testnet_2", "sdf_testnet_3", "sdf_testnet_1" ]
+      }
+   },
+   "statements" : [
+      [
+         1772558428,
+         "{ENV@sdf_testnet_2 |  i: 1311745 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@sdf_testnet_3 |  i: 1311745 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@GARDD |  i: 1311745 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@GARDD |  i: 1311745 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@GARDD |  i: 1311745 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@sdf_testnet_1 |  i: 1311745 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@sdf_testnet_3 |  i: 1311745 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@sdf_testnet_3 |  i: 1311745 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@sdf_testnet_2 |  i: 1311745 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@GARDD |  i: 1311745 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 1 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@GARDD |  i: 1311745 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772558428,
+         "{ENV@GARDD |  i: 1311745 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ]
+   ],
+   "validated" : false
+}
+
+2026-03-03T17:20:28.951 GARDD [SCP FATAL] Exception processing SCP messages at 1311745, envelope: {ENV@sdf_testnet_2 |  i: 1311745 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 70aaa4, ct: 1772558428, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }
+2026-03-03T17:20:28.952 GARDD [SCP FATAL] Please report this bug along with this log file if this was not expected

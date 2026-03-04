@@ -1,0 +1,975 @@
+2026-03-04T12:13:33.057 GDZV3 [default INFO] Starting stellar-core v25.1.1
+2026-03-04T12:13:33.059 GDZV3 [Database INFO] Connecting to: sqlite3:///opt/stellar/core/stellar.db
+2026-03-04T12:13:33.075 GDZV3 [SCP INFO] LocalNode::LocalNode@GDZV3 qSet: 59d361
+2026-03-04T12:13:33.076 GDZV3 [Database INFO] DB schema is in current version
+2026-03-04T12:13:33.076 GDZV3 [default INFO] Listening on 0.0.0.0:11626 for HTTP requests
+2026-03-04T12:13:33.076 GDZV3 [Bucket INFO] BucketListDB enabled: pageSizeExponent: 14 indexCutOff: 20MB, persist indexes: true
+2026-03-04T12:13:33.077 GDZV3 [default INFO] Connection effective settings:
+2026-03-04T12:13:33.077 GDZV3 [default INFO] TARGET_PEER_CONNECTIONS: 8
+2026-03-04T12:13:33.077 GDZV3 [default INFO] MAX_ADDITIONAL_PEER_CONNECTIONS: 64
+2026-03-04T12:13:33.077 GDZV3 [default INFO] MAX_PENDING_CONNECTIONS: 500
+2026-03-04T12:13:33.077 GDZV3 [default INFO] MAX_OUTBOUND_PENDING_CONNECTIONS: 56
+2026-03-04T12:13:33.077 GDZV3 [default INFO] MAX_INBOUND_PENDING_CONNECTIONS: 444
+2026-03-04T12:13:33.077 GDZV3 [default INFO] BACKGROUND_OVERLAY_PROCESSING=true
+2026-03-04T12:13:33.077 GDZV3 [default INFO] PARALLEL_LEDGER_APPLY=true
+2026-03-04T12:13:33.077 GDZV3 [History INFO] Archive 'sdf_testnet_1' has 'get' command only, will not be written
+2026-03-04T12:13:33.077 GDZV3 [History INFO] Archive 'sdf_testnet_2' has 'get' command only, will not be written
+2026-03-04T12:13:33.077 GDZV3 [History INFO] Archive 'sdf_testnet_3' has 'get' command only, will not be written
+2026-03-04T12:13:33.077 GDZV3 [History WARNING] No writable archives configured, history will not be written.
+2026-03-04T12:13:33.077 GDZV3 [Ledger INFO] Starting up application
+2026-03-04T12:13:33.077 GDZV3 [Ledger INFO] Last closed ledger (LCL) hash is 3717cc2d58717d0d8a5612cf97b9c2e7c04d1eeb1b77151a59687fae75e4aab6
+2026-03-04T12:13:33.078 GDZV3 [Ledger INFO] Loaded LCL header from database: [seq=1325251, hash=3717cc]
+2026-03-04T12:13:33.078 GDZV3 [default INFO] Establishing 10-entry connection pool to: sqlite3:///opt/stellar/core/stellar.db
+2026-03-04T12:13:33.651 GDZV3 [Ledger INFO] Assumed bucket-state for LCL: [seq=1325251, hash=3717cc]
+2026-03-04T12:13:33.652 GDZV3 [default INFO] Launching 1 loading and 5 compiling background threads
+2026-03-04T12:13:33.938 GDZV3 [default INFO] Compiled 1642 contracts (43833304 bytes of Wasm) in 286ms real time, 1382ms CPU time
+2026-03-04T12:13:36.269 GDZV3 [Overlay INFO] Binding to endpoint 0.0.0.0:11625
+2026-03-04T12:13:36.274 GDZV3 [History INFO] Downloading history archive state: .well-known/stellar-history.json
+2026-03-04T12:13:36.652 GDZV3 [Process WARNING] process 7472 exited 23: curl -sf http://history.stellar.org/prd/core-testnet/core_testnet_001/.well-known/stellar-history.json -o buckets/tmp/history-6947b8ecfffe90b7/cb767af3f9af818b-stellar-history.json
+2026-03-04T12:13:36.652 GDZV3 [History WARNING] Could not download file: archive sdf_testnet_1 maybe missing file .well-known/stellar-history.json
+2026-03-04T12:13:36.652 GDZV3 [History ERROR] Could not download .well-known/stellar-history.json file: corrupt archive sdf_testnet_1
+2026-03-04T12:13:36.652 GDZV3 [History ERROR] Failed to obtain archive information: sdf_testnet_1
+2026-03-04T12:13:38.522 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 98.91.174.101:11625
+2026-03-04T12:13:38.523 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 44.204.146.210:11625
+2026-03-04T12:13:38.524 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 44.213.67.110:11625
+2026-03-04T12:13:38.525 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 141.98.219.41:11625
+2026-03-04T12:13:38.526 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.220.162.149:11725
+2026-03-04T12:13:38.527 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.174.103:11725
+2026-03-04T12:13:38.529 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-04T12:13:38.530 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-04T12:13:38.531 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-04T12:13:38.532 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.69:11625
+2026-03-04T12:13:38.532 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-04T12:13:38.534 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.236.21.197:30020
+2026-03-04T12:13:38.534 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-04T12:13:38.535 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-04T12:13:38.535 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-04T12:13:38.536 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-04T12:13:38.536 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 146.190.222.143:64202
+2026-03-04T12:13:38.537 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-04T12:13:38.537 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.159.184:11725
+2026-03-04T12:13:38.538 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11725
+2026-03-04T12:13:38.538 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-04T12:13:38.539 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-04T12:13:38.539 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:13:38.540 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:13:38.541 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-04T12:13:38.541 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-04T12:13:38.542 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.69:11625
+2026-03-04T12:13:38.542 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-04T12:13:38.543 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-04T12:13:38.544 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-04T12:13:38.545 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-04T12:13:38.545 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-04T12:13:38.546 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.56:11625
+2026-03-04T12:13:38.547 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:13:38.548 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-04T12:13:38.549 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.216.66:11825
+2026-03-04T12:13:38.550 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-04T12:13:38.551 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-04T12:13:38.552 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.227.52.150:30020
+2026-03-04T12:13:38.552 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-04T12:13:38.553 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-04T12:13:38.554 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11825
+2026-03-04T12:13:38.554 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 206.125.34.196:11725
+2026-03-04T12:13:38.555 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-04T12:13:38.556 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 24.252.206.200:11625
+2026-03-04T12:13:38.557 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:13:38.557 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11625
+2026-03-04T12:13:38.558 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-04T12:13:38.559 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-04T12:13:38.559 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-04T12:13:38.560 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 94.225.170.42:21662
+2026-03-04T12:13:38.561 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.139:11625
+2026-03-04T12:13:38.561 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-04T12:13:38.562 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-04T12:13:38.562 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-04T12:13:38.563 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:13:38.964 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.220.162.149:11725
+2026-03-04T12:13:38.964 GDZV3 [Overlay INFO] Authenticated to 18.220.162.149:11725
+2026-03-04T12:13:38.965 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.221.18.144:30020
+2026-03-04T12:13:38.967 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.245.167.15:30020
+2026-03-04T12:13:38.975 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 141.98.219.41:11625
+2026-03-04T12:13:38.976 GDZV3 [Overlay INFO] Authenticated to 141.98.219.41:11625
+2026-03-04T12:13:38.977 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.206.213.41:30020
+2026-03-04T12:13:38.978 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.140:11625
+2026-03-04T12:13:38.979 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.189.174.103:11725
+2026-03-04T12:13:38.979 GDZV3 [Overlay INFO] Authenticated to 18.189.174.103:11725
+2026-03-04T12:13:38.980 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.69:11725
+2026-03-04T12:13:41.565 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:13:41.568 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-04T12:13:41.570 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:13:41.572 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:13:41.574 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:13:41.575 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-04T12:13:41.576 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-04T12:13:41.577 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:13:44.580 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-04T12:13:44.581 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-04T12:13:44.583 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-04T12:13:44.584 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-04T12:13:44.585 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:13:44.587 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-04T12:13:44.589 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-04T12:13:44.591 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-04T12:13:44.592 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-04T12:13:44.594 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-04T12:13:44.595 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.159.184:11725
+2026-03-04T12:13:44.596 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11625
+2026-03-04T12:13:44.597 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 146.190.222.143:64202
+2026-03-04T12:13:44.598 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-04T12:13:44.599 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 24.252.206.200:11625
+2026-03-04T12:13:44.600 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-04T12:13:44.600 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-04T12:13:44.601 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.56:11625
+2026-03-04T12:13:44.602 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-04T12:13:44.603 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11825
+2026-03-04T12:13:44.604 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-04T12:13:44.605 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:13:44.605 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-04T12:13:44.607 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-04T12:13:44.608 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11725
+2026-03-04T12:13:44.610 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-04T12:13:44.611 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.69:11625
+2026-03-04T12:13:44.612 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 206.125.34.196:11725
+2026-03-04T12:13:44.612 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-04T12:13:44.613 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-04T12:13:44.614 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:13:44.615 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-04T12:13:44.615 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.69:11625
+2026-03-04T12:13:44.616 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-04T12:13:44.617 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-04T12:13:44.618 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-04T12:13:44.619 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 94.225.170.42:21662
+2026-03-04T12:13:44.619 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.227.52.150:30020
+2026-03-04T12:13:44.620 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.236.21.197:30020
+2026-03-04T12:13:44.621 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-04T12:13:44.622 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-04T12:13:44.623 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:13:44.623 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-04T12:13:44.624 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-04T12:13:44.625 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-04T12:13:44.626 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-04T12:13:44.627 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.216.66:11825
+2026-03-04T12:13:44.628 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:13:44.629 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-04T12:13:44.630 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.139:11625
+2026-03-04T12:13:47.633 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:13:47.635 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:13:47.637 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:13:47.638 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-04T12:13:47.640 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:13:47.642 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-04T12:13:47.643 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:13:47.644 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-04T12:13:50.654 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-04T12:13:50.655 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11625
+2026-03-04T12:13:50.656 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-04T12:13:50.657 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-04T12:13:50.658 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-04T12:13:50.660 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11825
+2026-03-04T12:13:50.661 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.216.66:11825
+2026-03-04T12:13:50.662 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-04T12:13:50.663 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 24.252.206.200:11625
+2026-03-04T12:13:50.665 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-04T12:13:50.666 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.139:11625
+2026-03-04T12:13:50.666 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-04T12:13:50.667 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-04T12:13:50.668 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-04T12:13:50.668 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.227.52.150:30020
+2026-03-04T12:13:50.669 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:13:50.669 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:13:50.669 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.159.184:11725
+2026-03-04T12:13:50.670 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-04T12:13:50.671 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 206.125.34.196:11725
+2026-03-04T12:13:50.671 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-04T12:13:50.672 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-04T12:13:50.672 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-04T12:13:50.673 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-04T12:13:50.674 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-04T12:13:50.675 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-04T12:13:50.676 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.69:11625
+2026-03-04T12:13:50.676 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-04T12:13:50.677 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-04T12:13:50.677 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.236.21.197:30020
+2026-03-04T12:13:50.678 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-04T12:13:50.678 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-04T12:13:50.679 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-04T12:13:50.679 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 146.190.222.143:64202
+2026-03-04T12:13:50.679 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.69:11625
+2026-03-04T12:13:50.680 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:13:50.681 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-04T12:13:50.682 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-04T12:13:50.682 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:13:50.683 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11725
+2026-03-04T12:13:50.684 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-04T12:13:50.684 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 94.225.170.42:21662
+2026-03-04T12:13:50.685 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-04T12:13:50.686 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.56:11625
+2026-03-04T12:13:50.686 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-04T12:13:50.687 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:13:50.687 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-04T12:13:50.688 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-04T12:13:50.689 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-04T12:13:50.689 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-04T12:13:53.692 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:13:53.694 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:13:53.696 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-04T12:13:53.697 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-04T12:13:53.698 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:13:53.699 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:13:53.701 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:13:53.702 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-04T12:13:56.708 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-04T12:13:56.709 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-04T12:13:56.710 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-04T12:13:56.710 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 24.252.206.200:11625
+2026-03-04T12:13:56.711 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-04T12:13:56.711 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-04T12:13:56.712 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:13:56.712 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-04T12:13:56.713 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-04T12:13:56.714 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 94.225.170.42:21662
+2026-03-04T12:13:56.714 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 146.190.222.143:64202
+2026-03-04T12:13:56.715 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-04T12:13:56.716 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-04T12:13:56.716 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-04T12:13:56.717 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-04T12:13:56.720 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-04T12:13:56.722 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.69:11625
+2026-03-04T12:13:56.723 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-04T12:13:56.724 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.227.52.150:30020
+2026-03-04T12:13:56.725 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-04T12:13:56.726 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:13:56.727 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11825
+2026-03-04T12:13:56.727 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-04T12:13:56.728 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-04T12:13:56.729 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-04T12:13:56.730 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:13:56.731 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.216.66:11825
+2026-03-04T12:13:56.731 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-04T12:13:56.732 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-04T12:13:56.733 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-04T12:13:56.734 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-04T12:13:56.735 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-04T12:13:56.735 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:13:56.736 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-04T12:13:56.737 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-04T12:13:56.737 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-04T12:13:56.738 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-04T12:13:56.739 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.139:11625
+2026-03-04T12:13:56.740 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.56:11625
+2026-03-04T12:13:56.740 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11725
+2026-03-04T12:13:56.741 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-04T12:13:56.742 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 206.125.34.196:11725
+2026-03-04T12:13:56.742 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11625
+2026-03-04T12:13:56.743 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-04T12:13:56.744 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.69:11625
+2026-03-04T12:13:56.745 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.159.184:11725
+2026-03-04T12:13:56.745 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.236.21.197:30020
+2026-03-04T12:13:56.746 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:13:56.747 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-04T12:13:56.747 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-04T12:13:59.750 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:13:59.752 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:13:59.753 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-04T12:13:59.755 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:13:59.756 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:13:59.758 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-04T12:13:59.759 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:13:59.761 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-04T12:14:02.765 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-04T12:14:02.765 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-04T12:14:02.766 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-04T12:14:02.766 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.139:11625
+2026-03-04T12:14:02.767 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-04T12:14:02.767 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-04T12:14:02.768 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 206.125.34.196:11725
+2026-03-04T12:14:02.768 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-04T12:14:02.769 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-04T12:14:02.769 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-04T12:14:02.770 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 24.252.206.200:11625
+2026-03-04T12:14:02.770 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-04T12:14:02.771 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.159.184:11725
+2026-03-04T12:14:02.771 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:14:02.772 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11725
+2026-03-04T12:14:02.772 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-04T12:14:02.773 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.216.66:11825
+2026-03-04T12:14:02.773 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-04T12:14:02.774 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:14:02.774 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-04T12:14:02.775 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-04T12:14:02.775 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.69:11625
+2026-03-04T12:14:02.776 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-04T12:14:02.776 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-04T12:14:02.776 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.227.52.150:30020
+2026-03-04T12:14:02.777 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-04T12:14:02.778 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 146.190.222.143:64202
+2026-03-04T12:14:02.778 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-04T12:14:02.779 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:14:02.779 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-04T12:14:02.780 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-04T12:14:02.780 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.69:11625
+2026-03-04T12:14:02.781 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-04T12:14:02.782 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-04T12:14:02.782 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11625
+2026-03-04T12:14:02.783 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-04T12:14:02.783 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11825
+2026-03-04T12:14:02.784 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-04T12:14:02.784 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-04T12:14:02.785 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-04T12:14:02.786 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:14:02.786 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:14:02.787 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-04T12:14:02.788 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 94.225.170.42:21662
+2026-03-04T12:14:02.788 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.56:11625
+2026-03-04T12:14:02.789 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-04T12:14:02.790 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-04T12:14:02.791 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-04T12:14:02.792 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-04T12:14:02.792 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.236.21.197:30020
+2026-03-04T12:14:05.795 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:14:05.796 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.235.16.197:30020
+2026-03-04T12:14:05.797 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.32.131:30400
+2026-03-04T12:14:05.798 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.145:11625
+2026-03-04T12:14:05.799 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:14:05.800 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:14:05.801 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:14:05.801 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:14:08.806 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 172.18.0.1:11825
+2026-03-04T12:14:08.806 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.147.147.12:11725
+2026-03-04T12:14:08.807 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.91.18:11625
+2026-03-04T12:14:08.808 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.52.233:30400
+2026-03-04T12:14:08.809 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.134.225.19:11725
+2026-03-04T12:14:08.809 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.56:11625
+2026-03-04T12:14:08.810 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 94.225.170.42:21662
+2026-03-04T12:14:08.810 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.55:11625
+2026-03-04T12:14:08.811 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.150.21.71:11725
+2026-03-04T12:14:08.812 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.163.22.184:30020
+2026-03-04T12:14:08.812 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 160.155.38.109:11625
+2026-03-04T12:14:08.813 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.95.1.43:30400
+2026-03-04T12:14:08.813 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.139.142:30020
+2026-03-04T12:14:08.814 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 146.190.222.143:64202
+2026-03-04T12:14:08.815 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.91.122.95:11725
+2026-03-04T12:14:08.816 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 206.125.34.196:11725
+2026-03-04T12:14:08.816 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 216.169.132.69:11625
+2026-03-04T12:14:08.817 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.110:11825
+2026-03-04T12:14:08.817 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 35.175.229.79:30400
+2026-03-04T12:14:08.818 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.139:11625
+2026-03-04T12:14:08.818 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 65.109.51.179:11625
+2026-03-04T12:14:08.819 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.67.122.127:11625
+2026-03-04T12:14:08.819 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.42:11625
+2026-03-04T12:14:08.819 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 185.255.131.210:11625
+2026-03-04T12:14:08.820 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 173.244.202.69:11725
+2026-03-04T12:14:08.820 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.51.16:30020
+2026-03-04T12:14:08.821 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.227.52.150:30020
+2026-03-04T12:14:08.821 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.138:11625
+2026-03-04T12:14:08.822 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 198.199.88.228:11625
+2026-03-04T12:14:08.822 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 13.217.88.18:8009
+2026-03-04T12:14:08.822 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.229.162.244:30020
+2026-03-04T12:14:08.823 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.238.110.19:30400
+2026-03-04T12:14:08.823 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 34.241.153.42:30020
+2026-03-04T12:14:08.824 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 148.113.140.57:11625
+2026-03-04T12:14:08.824 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 54.236.21.197:30020
+2026-03-04T12:14:08.825 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.159.184:11725
+2026-03-04T12:14:08.825 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 147.92.216.66:11825
+2026-03-04T12:14:08.825 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 188.245.186.123:11625
+2026-03-04T12:14:08.826 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 64.23.179.161:11625
+2026-03-04T12:14:08.826 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.255.82.225:30020
+2026-03-04T12:14:08.827 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 52.91.130.193:30020
+2026-03-04T12:14:08.827 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 24.252.206.200:11625
+2026-03-04T12:14:08.827 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.102:11625
+2026-03-04T12:14:08.828 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 174.138.52.29:11625
+2026-03-04T12:14:08.828 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 91.242.214.69:11625
+2026-03-04T12:14:08.829 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 3.249.87.23:30020
+2026-03-04T12:14:08.829 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 184.72.81.138:30020
+2026-03-04T12:14:08.830 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 18.201.241.124:30020
+2026-03-04T12:14:08.831 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 50.16.48.217:30020
+2026-03-04T12:14:08.831 GDZV3 [Overlay ERROR] PeerManager::store error: sqlite3_statement_backend::loadOne: database or disk is full on 200.129.247.69:11625
+2026-03-04T12:14:11.264 GDZV3 [Herder WARNING] Lost track of consensus
+2026-03-04T12:14:11.268 GDZV3 [Herder WARNING] Out of sync context: {
+   "queue" : {
+      "1325312" : {
+         "pending" : [
+            "{ENV@sdf_testnet_1 |  i: 1325312 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325312 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325312 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_1 |  i: 1325312 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325312 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_2 |  i: 1325312 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} }"
+         ]
+      },
+      "1325316" : {
+         "pending" : [
+            "{ENV@sdf_testnet_1 |  i: 1325316 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 362fe2, ct: 1772626358, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325316 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 362fe2, ct: 1772626358, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325316 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 362fe2, ct: 1772626358, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_1 |  i: 1325316 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: 362fe2, ct: 1772626358, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: 362fe2, ct: 1772626358, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325316 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: 362fe2, ct: 1772626358, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: 362fe2, ct: 1772626358, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_2 |  i: 1325316 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: 362fe2, ct: 1772626358, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: 362fe2, ct: 1772626358, upgrades: [ ] ]'} }"
+         ]
+      },
+      "1325317" : {
+         "pending" : [
+            "{ENV@sdf_testnet_1 |  i: 1325317 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: ccb7d8, ct: 1772626363, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325317 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: ccb7d8, ct: 1772626363, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325317 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: ccb7d8, ct: 1772626363, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_1 |  i: 1325317 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_2 txH: ccb7d8, ct: 1772626363, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_2 txH: ccb7d8, ct: 1772626363, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325317 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_2 txH: ccb7d8, ct: 1772626363, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_2 txH: ccb7d8, ct: 1772626363, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_2 |  i: 1325317 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_2 txH: ccb7d8, ct: 1772626363, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_2 txH: ccb7d8, ct: 1772626363, upgrades: [ ] ]'} }"
+         ]
+      },
+      "1325318" : {
+         "pending" : [
+            "{ENV@sdf_testnet_1 |  i: 1325318 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: cbdb6c, ct: 1772626368, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325318 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: cbdb6c, ct: 1772626368, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325318 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: cbdb6c, ct: 1772626368, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_1 |  i: 1325318 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: cbdb6c, ct: 1772626368, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: cbdb6c, ct: 1772626368, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325318 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: cbdb6c, ct: 1772626368, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: cbdb6c, ct: 1772626368, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_2 |  i: 1325318 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: cbdb6c, ct: 1772626368, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: cbdb6c, ct: 1772626368, upgrades: [ ] ]'} }"
+         ]
+      },
+      "1325319" : {
+         "pending" : [
+            "{ENV@sdf_testnet_1 |  i: 1325319 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: 58781d, ct: 1772626373, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325319 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: 58781d, ct: 1772626373, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325319 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: 58781d, ct: 1772626373, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_1 |  i: 1325319 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: 58781d, ct: 1772626373, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: 58781d, ct: 1772626373, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325319 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: 58781d, ct: 1772626373, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: 58781d, ct: 1772626373, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_2 |  i: 1325319 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: 58781d, ct: 1772626373, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: 58781d, ct: 1772626373, upgrades: [ ] ]'} }"
+         ]
+      },
+      "1325320" : {
+         "pending" : [
+            "{ENV@sdf_testnet_1 |  i: 1325320 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: 539f82, ct: 1772626378, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325320 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: 539f82, ct: 1772626378, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325320 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: 539f82, ct: 1772626378, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_1 |  i: 1325320 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_2 txH: 539f82, ct: 1772626378, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_2 txH: 539f82, ct: 1772626378, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325320 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_2 txH: 539f82, ct: 1772626378, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_2 txH: 539f82, ct: 1772626378, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_2 |  i: 1325320 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_2 txH: 539f82, ct: 1772626378, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_2 txH: 539f82, ct: 1772626378, upgrades: [ ] ]'} }"
+         ]
+      },
+      "1325321" : {
+         "pending" : [
+            "{ENV@sdf_testnet_1 |  i: 1325321 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: 3d81dc, ct: 1772626383, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325321 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: 3d81dc, ct: 1772626383, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325321 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: 3d81dc, ct: 1772626383, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_1 |  i: 1325321 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: 3d81dc, ct: 1772626383, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: 3d81dc, ct: 1772626383, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325321 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: 3d81dc, ct: 1772626383, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: 3d81dc, ct: 1772626383, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_2 |  i: 1325321 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: 3d81dc, ct: 1772626383, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: 3d81dc, ct: 1772626383, upgrades: [ ] ]'} }"
+         ]
+      },
+      "1325322" : {
+         "pending" : [
+            "{ENV@sdf_testnet_1 |  i: 1325322 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: afd808, ct: 1772626388, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325322 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: afd808, ct: 1772626388, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325322 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: afd808, ct: 1772626388, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_1 |  i: 1325322 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: afd808, ct: 1772626388, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: afd808, ct: 1772626388, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325322 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: afd808, ct: 1772626388, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: afd808, ct: 1772626388, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_2 |  i: 1325322 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: afd808, ct: 1772626388, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: afd808, ct: 1772626388, upgrades: [ ] ]'} }"
+         ]
+      },
+      "1325323" : {
+         "pending" : [
+            "{ENV@sdf_testnet_1 |  i: 1325323 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: db404e, ct: 1772626393, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325323 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: db404e, ct: 1772626393, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325323 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: db404e, ct: 1772626393, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_1 |  i: 1325323 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: db404e, ct: 1772626393, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: db404e, ct: 1772626393, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325323 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: db404e, ct: 1772626393, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: db404e, ct: 1772626393, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_2 |  i: 1325323 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: db404e, ct: 1772626393, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: db404e, ct: 1772626393, upgrades: [ ] ]'} }"
+         ]
+      },
+      "1325324" : {
+         "pending" : [
+            "{ENV@sdf_testnet_1 |  i: 1325324 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: d6cf41, ct: 1772626398, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325324 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: d6cf41, ct: 1772626398, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325324 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: d6cf41, ct: 1772626398, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_1 |  i: 1325324 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: d6cf41, ct: 1772626398, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: d6cf41, ct: 1772626398, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325324 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: d6cf41, ct: 1772626398, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: d6cf41, ct: 1772626398, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_2 |  i: 1325324 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: d6cf41, ct: 1772626398, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: d6cf41, ct: 1772626398, upgrades: [ ] ]'} }"
+         ]
+      },
+      "1325325" : {
+         "pending" : [
+            "{ENV@sdf_testnet_1 |  i: 1325325 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: 2b32ac, ct: 1772626403, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325325 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: 2b32ac, ct: 1772626403, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325325 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: 2b32ac, ct: 1772626403, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_1 |  i: 1325325 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: 2b32ac, ct: 1772626403, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: 2b32ac, ct: 1772626403, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325325 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: 2b32ac, ct: 1772626403, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: 2b32ac, ct: 1772626403, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_2 |  i: 1325325 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: 2b32ac, ct: 1772626403, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: 2b32ac, ct: 1772626403, upgrades: [ ] ]'} }"
+         ]
+      },
+      "1325326" : {
+         "pending" : [
+            "{ENV@sdf_testnet_1 |  i: 1325326 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: aa1ace, ct: 1772626408, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325326 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: aa1ace, ct: 1772626408, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325326 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: aa1ace, ct: 1772626408, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_1 |  i: 1325326 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_2 txH: aa1ace, ct: 1772626408, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_2 txH: aa1ace, ct: 1772626408, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325326 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_2 txH: aa1ace, ct: 1772626408, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_2 txH: aa1ace, ct: 1772626408, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_2 |  i: 1325326 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_2 txH: aa1ace, ct: 1772626408, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_2 txH: aa1ace, ct: 1772626408, upgrades: [ ] ]'} }"
+         ]
+      },
+      "1325327" : {
+         "pending" : [
+            "{ENV@sdf_testnet_1 |  i: 1325327 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: 09ae56, ct: 1772626413, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325327 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: 09ae56, ct: 1772626413, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325327 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: 09ae56, ct: 1772626413, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_1 |  i: 1325327 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_2 txH: 09ae56, ct: 1772626413, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_2 txH: 09ae56, ct: 1772626413, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325327 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_2 txH: 09ae56, ct: 1772626413, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_2 txH: 09ae56, ct: 1772626413, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_2 |  i: 1325327 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_2 txH: 09ae56, ct: 1772626413, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_2 txH: 09ae56, ct: 1772626413, upgrades: [ ] ]'} }"
+         ]
+      },
+      "1325328" : {
+         "pending" : [
+            "{ENV@sdf_testnet_2 |  i: 1325328 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_1 |  i: 1325328 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325328 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_3 |  i: 1325328 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_1 |  i: 1325328 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_3 |  i: 1325328 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_1 |  i: 1325328 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_2 |  i: 1325328 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_3 |  i: 1325328 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_2 |  i: 1325328 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_1 |  i: 1325328 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_3 |  i: 1325328 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_2 |  i: 1325328 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_1 |  i: 1325328 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_3 |  i: 1325328 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_2 |  i: 1325328 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_1 |  i: 1325328 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_2 |  i: 1325328 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325328 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: c6e79d, ct: 1772626418, upgrades: [ ] ]'} | Y: {} }"
+         ]
+      },
+      "1325329" : {
+         "pending" : [
+            "{ENV@sdf_testnet_1 |  i: 1325329 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325329 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325329 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_1 |  i: 1325329 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_3 |  i: 1325329 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_1 |  i: 1325329 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_3 |  i: 1325329 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_2 |  i: 1325329 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_1 |  i: 1325329 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_3 |  i: 1325329 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_2 |  i: 1325329 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_3 |  i: 1325329 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_1 |  i: 1325329 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_3 |  i: 1325329 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_2 |  i: 1325329 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_2 |  i: 1325329 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_1 |  i: 1325329 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325329 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]'} | Y: {} }",
+            "{ENV@sdf_testnet_2 |  i: 1325329 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: bae60d, ct: 1772626423, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }"
+         ]
+      },
+      "1325330" : {
+         "pending" : [
+            "{ENV@sdf_testnet_3 |  i: 1325330 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_1 |  i: 1325330 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_1 |  i: 1325330 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325330 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325330 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_1 |  i: 1325330 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_3 |  i: 1325330 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_2 |  i: 1325330 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_2 |  i: 1325330 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_1 |  i: 1325330 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_1 |  i: 1325330 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_2 |  i: 1325330 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_3 |  i: 1325330 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_1 |  i: 1325330 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_2 |  i: 1325330 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_3 |  i: 1325330 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_2 |  i: 1325330 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325330 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_1 |  i: 1325330 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: eb1407, ct: 1772626428, upgrades: [ ] ]'} | Y: {} }"
+         ]
+      },
+      "1325331" : {
+         "pending" : [
+            "{ENV@sdf_testnet_3 |  i: 1325331 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_1 |  i: 1325331 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_1 |  i: 1325331 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325331 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325331 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325331 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_1 |  i: 1325331 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_2 |  i: 1325331 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_3 |  i: 1325331 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_1 |  i: 1325331 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_3 |  i: 1325331 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_2 |  i: 1325331 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_3 |  i: 1325331 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_1 |  i: 1325331 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_2 |  i: 1325331 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_3 |  i: 1325331 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_1 |  i: 1325331 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_2 |  i: 1325331 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325331 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: de6333, ct: 1772626433, upgrades: [ ] ]'} | Y: {} }"
+         ]
+      },
+      "1325332" : {
+         "pending" : [
+            "{ENV@sdf_testnet_3 |  i: 1325332 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_1 |  i: 1325332 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325332 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325332 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325332 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_2 |  i: 1325332 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_1 |  i: 1325332 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_3 |  i: 1325332 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_1 |  i: 1325332 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_1 |  i: 1325332 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_2 |  i: 1325332 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_3 |  i: 1325332 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_3 |  i: 1325332 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_1 |  i: 1325332 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_2 |  i: 1325332 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_3 |  i: 1325332 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_2 |  i: 1325332 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_1 |  i: 1325332 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325332 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: 1d95f6, ct: 1772626438, upgrades: [ ] ]'} | Y: {} }"
+         ]
+      },
+      "1325333" : {
+         "pending" : [
+            "{ENV@sdf_testnet_1 |  i: 1325333 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_3 |  i: 1325333 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325333 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_1 |  i: 1325333 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325333 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_2 |  i: 1325333 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_2 |  i: 1325333 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_3 |  i: 1325333 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_1 |  i: 1325333 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_1 |  i: 1325333 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_3 |  i: 1325333 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_2 |  i: 1325333 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_3 |  i: 1325333 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_1 |  i: 1325333 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_2 |  i: 1325333 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_3 |  i: 1325333 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_1 |  i: 1325333 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_2 |  i: 1325333 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325333 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_3 txH: d3d792, ct: 1772626443, upgrades: [ ] ]'} | Y: {} }"
+         ]
+      },
+      "1325334" : {
+         "pending" : [
+            "{ENV@sdf_testnet_3 |  i: 1325334 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_1 |  i: 1325334 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_2 |  i: 1325334 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_3 |  i: 1325334 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_1 |  i: 1325334 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+            "{ENV@sdf_testnet_2 |  i: 1325334 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_3 |  i: 1325334 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_1 |  i: 1325334 | CONFIRM | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | p.n: 1 | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_2 |  i: 1325334 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 1 | h.n: 1 }",
+            "{ENV@sdf_testnet_2 |  i: 1325334 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_1 |  i: 1325334 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_3 |  i: 1325334 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | p: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_2 |  i: 1325334 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_1 |  i: 1325334 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_3 |  i: 1325334 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_2 |  i: 1325334 | PREPARE | D: 59d361 | b: (1,[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]) | p: (<null_ballot>) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+            "{ENV@sdf_testnet_1 |  i: 1325334 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_3 |  i: 1325334 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]'} }",
+            "{ENV@sdf_testnet_2 |  i: 1325334 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_2 txH: a5facb, ct: 1772626448, upgrades: [ ] ]'} | Y: {} }"
+         ]
+      }
+   },
+   "scp" : null,
+   "you" : "GDZV3"
+}
+
+2026-03-04T12:14:11.273 GDZV3 [Herder INFO] Quorum information for 1325310 : {"cost":0,"lag_ms":null}
+
+2026-03-04T12:14:11.274 GDZV3 [Herder WARNING] Ledger took 38.203282234 seconds, SCP information:{"maybe_dead_nodes":[],"node":"GDZV3","qset":{"agree":["sdf_testnet_2","sdf_testnet_3","sdf_testnet_1"],"cost":{"1325312":{"sdf_testnet_1":2268,"sdf_testnet_2":2268,"sdf_testnet_3":2268}},"delayed":null,"disagree":null,"fail_at":1,"fail_with":["sdf_testnet_2"],"hash":"59d361","lag_ms":null,"ledger":1325312,"missing":null,"phase":"EXTERNALIZE","value":{"t":2,"v":["sdf_testnet_2","sdf_testnet_3","sdf_testnet_1"]}}}
+
+2026-03-04T12:14:11.275 GDZV3 [SCP FATAL] Exception: Cannot commit transaction. database or disk is full
+2026-03-04T12:14:11.275 GDZV3 [SCP FATAL] SCP context (GDZV3): 
+2026-03-04T12:14:11.275 GDZV3 [SCP FATAL] {
+   "ballotProtocol" : {
+      "ballot" : "(4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ])",
+      "heard" : false,
+      "phase" : "EXTERNALIZE",
+      "state" : "i: 1325312 | EXTERNALIZE | b: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p': (<null_ballot>) | h: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | M: 3"
+   },
+   "nomination" : {
+      "roundnumber" : 0,
+      "started" : false
+   },
+   "quorum_sets" : {
+      "59d361" : {
+         "t" : 2,
+         "v" : [ "sdf_testnet_2", "sdf_testnet_3", "sdf_testnet_1" ]
+      }
+   },
+   "statements" : [
+      [
+         1772626451,
+         "{ENV@sdf_testnet_2 |  i: 1325312 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@sdf_testnet_3 |  i: 1325312 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@sdf_testnet_1 |  i: 1325312 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@sdf_testnet_2 |  i: 1325312 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@sdf_testnet_3 |  i: 1325312 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@GDZV3 |  i: 1325312 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@GDZV3 |  i: 1325312 | PREPARE | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 4294967295 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@GDZV3 |  i: 1325312 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@GDZV3 |  i: 1325312 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | h.n: 4294967295 | (lastD): 59d361 }",
+         false
+      ]
+   ],
+   "validated" : false
+}
+
+2026-03-04T12:14:11.276 GDZV3 [SCP FATAL] Exception processing SCP messages at 1325312, envelope: {ENV@GDZV3 |  i: 1325312 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }
+2026-03-04T12:14:11.277 GDZV3 [SCP FATAL] Please report this bug along with this log file if this was not expected
+2026-03-04T12:14:11.278 GDZV3 [SCP FATAL] Exception: Cannot commit transaction. database or disk is full
+2026-03-04T12:14:11.278 GDZV3 [SCP FATAL] SCP context (GDZV3): 
+2026-03-04T12:14:11.279 GDZV3 [SCP FATAL] {
+   "ballotProtocol" : {
+      "ballot" : "(4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ])",
+      "heard" : false,
+      "phase" : "EXTERNALIZE",
+      "state" : "i: 1325312 | EXTERNALIZE | b: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p': (<null_ballot>) | h: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | M: 3"
+   },
+   "nomination" : {
+      "roundnumber" : 0,
+      "started" : false
+   },
+   "quorum_sets" : {
+      "59d361" : {
+         "t" : 2,
+         "v" : [ "sdf_testnet_2", "sdf_testnet_3", "sdf_testnet_1" ]
+      }
+   },
+   "statements" : [
+      [
+         1772626451,
+         "{ENV@sdf_testnet_2 |  i: 1325312 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@sdf_testnet_3 |  i: 1325312 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@sdf_testnet_1 |  i: 1325312 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@sdf_testnet_2 |  i: 1325312 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@sdf_testnet_3 |  i: 1325312 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@GDZV3 |  i: 1325312 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@GDZV3 |  i: 1325312 | PREPARE | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 4294967295 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@GDZV3 |  i: 1325312 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@GDZV3 |  i: 1325312 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | h.n: 4294967295 | (lastD): 59d361 }",
+         false
+      ]
+   ],
+   "validated" : false
+}
+
+2026-03-04T12:14:11.279 GDZV3 [SCP FATAL] Exception processing SCP messages at 1325312, envelope: {ENV@GDZV3 |  i: 1325312 | PREPARE | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 4294967295 | h.n: 4294967295 }
+2026-03-04T12:14:11.279 GDZV3 [SCP FATAL] Please report this bug along with this log file if this was not expected
+2026-03-04T12:14:11.279 GDZV3 [SCP FATAL] Exception: Cannot commit transaction. database or disk is full
+2026-03-04T12:14:11.280 GDZV3 [SCP FATAL] SCP context (GDZV3): 
+2026-03-04T12:14:11.280 GDZV3 [SCP FATAL] {
+   "ballotProtocol" : {
+      "ballot" : "(4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ])",
+      "heard" : false,
+      "phase" : "EXTERNALIZE",
+      "state" : "i: 1325312 | EXTERNALIZE | b: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p': (<null_ballot>) | h: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | M: 3"
+   },
+   "nomination" : {
+      "roundnumber" : 0,
+      "started" : false
+   },
+   "quorum_sets" : {
+      "59d361" : {
+         "t" : 2,
+         "v" : [ "sdf_testnet_2", "sdf_testnet_3", "sdf_testnet_1" ]
+      }
+   },
+   "statements" : [
+      [
+         1772626451,
+         "{ENV@sdf_testnet_2 |  i: 1325312 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@sdf_testnet_3 |  i: 1325312 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@sdf_testnet_1 |  i: 1325312 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@sdf_testnet_2 |  i: 1325312 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@sdf_testnet_3 |  i: 1325312 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@GDZV3 |  i: 1325312 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@GDZV3 |  i: 1325312 | PREPARE | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 4294967295 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@GDZV3 |  i: 1325312 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@GDZV3 |  i: 1325312 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | h.n: 4294967295 | (lastD): 59d361 }",
+         false
+      ]
+   ],
+   "validated" : false
+}
+
+2026-03-04T12:14:11.280 GDZV3 [SCP FATAL] Exception processing SCP messages at 1325312, envelope: {ENV@GDZV3 |  i: 1325312 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }
+2026-03-04T12:14:11.281 GDZV3 [SCP FATAL] Please report this bug along with this log file if this was not expected
+2026-03-04T12:14:11.281 GDZV3 [SCP FATAL] Exception: Cannot commit transaction. database or disk is full
+2026-03-04T12:14:11.281 GDZV3 [SCP FATAL] SCP context (GDZV3): 
+2026-03-04T12:14:11.281 GDZV3 [SCP FATAL] {
+   "ballotProtocol" : {
+      "ballot" : "(4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ])",
+      "heard" : false,
+      "phase" : "EXTERNALIZE",
+      "state" : "i: 1325312 | EXTERNALIZE | b: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p': (<null_ballot>) | h: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | M: 3"
+   },
+   "nomination" : {
+      "roundnumber" : 0,
+      "started" : false
+   },
+   "quorum_sets" : {
+      "59d361" : {
+         "t" : 2,
+         "v" : [ "sdf_testnet_2", "sdf_testnet_3", "sdf_testnet_1" ]
+      }
+   },
+   "statements" : [
+      [
+         1772626451,
+         "{ENV@sdf_testnet_2 |  i: 1325312 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@sdf_testnet_3 |  i: 1325312 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@sdf_testnet_1 |  i: 1325312 | NOMINATE | D: 59d361 | X: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} | Y: {'[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]'} }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@sdf_testnet_2 |  i: 1325312 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@sdf_testnet_3 |  i: 1325312 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@GDZV3 |  i: 1325312 | PREPARE | D: 59d361 | b: (0,[:empty:]) | p: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 0 | h.n: 0 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@GDZV3 |  i: 1325312 | PREPARE | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p': (<null_ballot>) | c.n: 4294967295 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@GDZV3 |  i: 1325312 | CONFIRM | D: 59d361 | b: (4294967295,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | p.n: 4294967295 | c.n: 1 | h.n: 4294967295 }",
+         false
+      ],
+      [
+         1772626451,
+         "{ENV@GDZV3 |  i: 1325312 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | h.n: 4294967295 | (lastD): 59d361 }",
+         false
+      ]
+   ],
+   "validated" : false
+}
+
+2026-03-04T12:14:11.282 GDZV3 [SCP FATAL] Exception processing SCP messages at 1325312, envelope: {ENV@sdf_testnet_3 |  i: 1325312 | EXTERNALIZE | c: (1,[ SIGNED@sdf_testnet_1 txH: ead9bc, ct: 1772626338, upgrades: [ ] ]) | h.n: 1 | (lastD): 59d361 }
+2026-03-04T12:14:11.282 GDZV3 [SCP FATAL] Please report this bug along with this log file if this was not expected
