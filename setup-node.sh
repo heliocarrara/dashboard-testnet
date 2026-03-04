@@ -58,6 +58,15 @@ echo -e "${BLUE}🔄 Preparando ambiente...${NC}"
 sudo mkdir -p $VOLUME_PATH
 sudo chown $(whoami):$(whoami) $VOLUME_PATH
 
+# Criar subdiretórios de logs para persistência e monitoramento
+echo -e "${BLUE}📁 Criando subdiretórios de logs em $VOLUME_PATH/logs...${NC}"
+mkdir -p $VOLUME_PATH/logs/{stellar-core,horizon,postgresql,supervisor,nginx}
+
+# Se o Zabbix Agent estiver no sistema, aplicar permissões ACL
+if id "zabbix" &>/dev/null; then
+    sudo setfacl -R -m u:zabbix:rx $VOLUME_PATH/logs
+fi
+
 # ------------------------------------------------------------------------------
 # 1.1 Firewall Configuration
 # ------------------------------------------------------------------------------
@@ -118,13 +127,19 @@ fi
 # ------------------------------------------------------------------------------
 # 2. Check Identity & Register
 # ------------------------------------------------------------------------------
-MY_HOSTNAME=$(hostname)
 MY_IP=$(curl -s ifconfig.me)
 
-echo -e "${BLUE}🔑 Hostname: $MY_HOSTNAME | IP: $MY_IP${NC}"
+if [ -z "$MY_IP" ]; then
+    echo -e "${RED}❌ Erro: Não foi possível obter o IP público. Verifique sua conexão.${NC}"
+    exit 1
+fi
+
+MY_HOSTNAME="$MY_IP"
+
+echo -e "${BLUE}🔑 Node ID (Public IP): $MY_IP${NC}"
 
 # Check if exists
-EXISTING=$(run_sql_cmd "SELECT node_seed || '|' || public_key || '|' || COALESCE(role, 'none') || '|' || COALESCE(quorum_group, 0)::text FROM $TABLE_IDENTITY WHERE hostname = '$MY_HOSTNAME' OR ip_address = '$MY_IP' ORDER BY id ASC LIMIT 1;" | xargs)
+EXISTING=$(run_sql_cmd "SELECT node_seed || '|' || public_key || '|' || COALESCE(role, 'none') || '|' || COALESCE(quorum_group, 0)::text FROM $TABLE_IDENTITY WHERE ip_address = '$MY_IP' ORDER BY id ASC LIMIT 1;" | xargs)
 
 if [ -z "$EXISTING" ]; then
     echo -e "${YELLOW}   -> Novo nó detectado. Gerando chaves...${NC}"
@@ -169,7 +184,7 @@ fi
 # ------------------------------------------------------------------------------
 start_heartbeat() {
     while true; do
-        run_sql_cmd "UPDATE $TABLE_IDENTITY SET last_seen = NOW(), status = 'online' WHERE hostname = '$MY_HOSTNAME';" > /dev/null 2>&1
+        run_sql_cmd "UPDATE $TABLE_IDENTITY SET last_seen = NOW(), status = 'online' WHERE ip_address = '$MY_IP';" > /dev/null 2>&1
         sleep 30
     done &
     HEARTBEAT_PID=$!
@@ -188,14 +203,14 @@ start_heartbeat
 while [ "$EXISTING_ROLE" == "none" ] || [ -z "$EXISTING_ROLE" ]; do
     echo -e "${YELLOW}⏳ Aguardando configuração de 'role' no Dashboard... (Verificando em 10s)${NC}"
     sleep 10
-    EXISTING=$(run_sql_cmd "SELECT COALESCE(role, 'none') FROM $TABLE_IDENTITY WHERE hostname = '$MY_HOSTNAME';" | xargs)
+    EXISTING=$(run_sql_cmd "SELECT COALESCE(role, 'none') FROM $TABLE_IDENTITY WHERE ip_address = '$MY_IP';" | xargs)
     EXISTING_ROLE=$EXISTING
 done
 
 echo -e "${GREEN}✅ Configuração recebida: ROLE = $EXISTING_ROLE${NC}"
 
 # Update config status
-run_sql_cmd "UPDATE $TABLE_IDENTITY SET config_status = 'configured' WHERE hostname = '$MY_HOSTNAME';" > /dev/null
+run_sql_cmd "UPDATE $TABLE_IDENTITY SET config_status = 'configured' WHERE ip_address = '$MY_IP';" > /dev/null
 
 # ------------------------------------------------------------------------------
 # 4. Gatekeeper Logic (Quorum Check)
@@ -227,7 +242,7 @@ PEER_DATA=$(run_sql_cmd "
   SELECT t.ip_address || '|' || t.public_key 
   FROM $TABLE_IDENTITY t 
   JOIN node_relationships r ON t.id = r.target_node_id 
-  WHERE r.source_node_id = (SELECT id FROM $TABLE_IDENTITY WHERE hostname = '$MY_HOSTNAME')
+  WHERE r.source_node_id = (SELECT id FROM $TABLE_IDENTITY WHERE ip_address = '$MY_IP')
   AND t.ip_address IS NOT NULL;
 " | awk 'NF')
 
@@ -315,8 +330,12 @@ services:
     volumes:
       # CORREÇÃO CRÍTICA DO DIRETÓRIO INTERNO:
       - $VOLUME_PATH:/opt/stellar
-      # Mapeamento de logs para o Zabbix:
-      - ./logs:/var/log/stellar-core
+      # Mapeamento de logs persistentes em /srv para o Zabbix:
+      - $VOLUME_PATH/logs/stellar-core:/var/log/stellar-core
+      - $VOLUME_PATH/logs/horizon:/var/log/horizon
+      - $VOLUME_PATH/logs/postgresql:/var/log/postgresql
+      - $VOLUME_PATH/logs/supervisor:/var/log/supervisor
+      - $VOLUME_PATH/logs/nginx:/var/log/nginx
     # COMANDO DINÂMICO BASEADO NA ROLE DA MÁQUINA:
     command: ["--testnet", "--enable", "$SERVICES_TO_ENABLE"]
 EOF
