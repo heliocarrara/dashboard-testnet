@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Save, Server, Monitor, LayoutGrid, RotateCcw, X, Check } from 'lucide-react';
+import { Save, Server, LayoutGrid, RotateCcw, X, Check } from 'lucide-react';
 
 interface Node {
   id: number;
@@ -27,7 +27,7 @@ interface LabMapConfig {
   machines: Machine[];
 }
 
-export default function LabMap({ nodes = [] }: { nodes?: Node[] }) {
+export default function LabMap({ nodes = [], readOnly = false }: { nodes?: Node[], readOnly?: boolean }) {
   const [config, setConfig] = useState<LabMapConfig>({
     rows: 3,
     machinesPerRow: 5, // Default to 5 as requested (2 + 3)
@@ -88,7 +88,7 @@ export default function LabMap({ nodes = [] }: { nodes?: Node[] }) {
       const { row, col } = selectedMachine;
       const id = `r${row}-c${col}`;
       const existingIndex = prev.machines.findIndex((m) => m.id === id);
-      let newMachines = [...prev.machines];
+      const newMachines = [...prev.machines];
       
       const machineData = {
         id,
@@ -142,7 +142,7 @@ export default function LabMap({ nodes = [] }: { nodes?: Node[] }) {
       const { row, col } = selectedMachine;
       const id = `r${row}-c${col}`;
       const existingIndex = prev.machines.findIndex((m) => m.id === id);
-      let newMachines = [...prev.machines];
+      const newMachines = [...prev.machines];
       
       if (existingIndex >= 0) {
         newMachines[existingIndex] = {
@@ -232,6 +232,7 @@ export default function LabMap({ nodes = [] }: { nodes?: Node[] }) {
       )}
 
       {/* Header */}
+      {!readOnly && (
       <div className="flex items-center justify-between shrink-0">
         <div>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
@@ -249,8 +250,10 @@ export default function LabMap({ nodes = [] }: { nodes?: Node[] }) {
           <span>Save Layout</span>
         </button>
       </div>
+      )}
 
       {/* Controls */}
+      {!readOnly && (
       <div className="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
         <div className="flex flex-wrap gap-8 items-end">
           <div>
@@ -295,11 +298,22 @@ export default function LabMap({ nodes = [] }: { nodes?: Node[] }) {
           </div>
         </div>
       </div>
+      )}
 
       {/* Grid Visualization */}
       <div className="flex-1 bg-white dark:bg-gray-800 p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-auto flex items-center justify-center">
         <div className="flex flex-col gap-8">
-          {Array.from({ length: config.rows }).map((_, rowIndex) => (
+          {Array.from({ length: config.rows }).map((_, rowIndex) => {
+            // Check if row has any machines associated (only in readOnly mode)
+            if (readOnly) {
+                const hasAssociatedMachines = Array.from({ length: config.machinesPerRow }).some((_, colIndex) => {
+                    const machine = getMachine(rowIndex, colIndex);
+                    return machine?.ip_address || machine?.node_id;
+                });
+                if (!hasAssociatedMachines) return null;
+            }
+
+            return (
             <div key={rowIndex} className="flex items-center gap-4">
               <div className="w-8 text-xs font-bold text-gray-400 uppercase -ml-12 text-right">Row {rowIndex + 1}</div>
               <div className="flex gap-4 p-4 bg-gray-50 dark:bg-gray-900/50 rounded-2xl border border-dashed border-gray-200 dark:border-gray-700">
@@ -346,7 +360,8 @@ export default function LabMap({ nodes = [] }: { nodes?: Node[] }) {
                 })}
               </div>
             </div>
-          ))}
+          );
+          })}
         </div>
       </div>
 

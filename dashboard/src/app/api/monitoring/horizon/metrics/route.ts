@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import os from 'os';
+import fs from 'fs';
 import pool from '@/lib/db';
 
 function getLocalIpAddresses() {
@@ -34,13 +35,21 @@ export async function GET(request: Request) {
         const ipData = await ipRes.json();
         publicIp = ipData.ip;
       }
-    } catch (e) {
+    } catch {
       // Ignore public IP fetch error
     }
 
     const isLocal = localIps.includes(ip) || ip === publicIp;
-    const targetIp = isLocal ? 'localhost' : ip;
+    let targetIp = ip;
 
+    if (isLocal) {
+        // Check if running in Docker
+        const isDocker = fs.existsSync('/.dockerenv');
+        // On Windows/Mac Docker Desktop, use host.docker.internal to reach host services
+        // On Linux, this requires --add-host host.docker.internal:host-gateway
+        targetIp = isDocker ? 'host.docker.internal' : 'localhost';
+    }
+    
     // Start measuring latency
     const start = performance.now();
     

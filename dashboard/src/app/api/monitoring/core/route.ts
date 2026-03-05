@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import os from 'os';
 import net from 'net';
+import fs from 'fs';
 import pool from '@/lib/db';
 
 function checkP2PConnection(host: string, port: number = 11625, timeout: number = 2000): Promise<boolean> {
@@ -61,13 +62,17 @@ export async function GET(request: Request) {
         const ipData = await ipRes.json();
         publicIp = ipData.ip;
       }
-    } catch (e) {
+    } catch {
       // Ignore public IP fetch error
     }
 
     const isLocal = localIps.includes(ip) || ip === publicIp;
     if (isLocal) {
-        targetIp = 'localhost';
+        // Check if running in Docker
+        const isDocker = fs.existsSync('/.dockerenv');
+        // On Windows/Mac Docker Desktop, use host.docker.internal to reach host services
+        // On Linux, this requires --add-host host.docker.internal:host-gateway
+        targetIp = isDocker ? 'host.docker.internal' : 'localhost';
     }
 
     const controller = new AbortController();

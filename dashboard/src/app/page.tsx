@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { RefreshCw, Activity, Database, Cpu, Settings, MoreVertical, Edit2, Trash2, Menu, FileCode, Copy, X } from 'lucide-react';
+import { RefreshCw, Activity, Database, Cpu, Settings, Edit2, Menu, FileCode, Copy, X } from 'lucide-react';
 import NetworkGraph from '@/components/NetworkGraph';
 import ProvisionModal from '@/components/ProvisionModal';
 import TransactionInjection from '@/components/TransactionInjection';
@@ -31,7 +31,6 @@ interface Node {
 
 export default function Home() {
   const [nodes, setNodes] = useState<Node[]>([]);
-  const [loading, setLoading] = useState(true);
   const [editingNode, setEditingNode] = useState<Node | null>(null);
   const [monitoringNode, setMonitoringNode] = useState<Node | null>(null);
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
@@ -47,8 +46,6 @@ export default function Home() {
       setNodes(data);
     } catch (error) {
       console.error('Failed to fetch nodes', error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -123,12 +120,13 @@ export default function Home() {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchNodes();
     const interval = setInterval(fetchNodes, 5000); // Poll every 5 seconds
     return () => clearInterval(interval);
   }, []);
 
-  const handleUpdate = async (node: any) => {
+  const handleUpdate = async (node: Node) => {
     try {
       await fetch('/api/nodes', {
         method: 'PUT',
@@ -239,28 +237,14 @@ export default function Home() {
                     </div>
 
                     {/* Right Column: Metrics & List */}
-                    <div className="col-span-12 xl:col-span-5 flex flex-col gap-6 overflow-hidden">
+                    <div className="col-span-12 xl:col-span-5 flex flex-col gap-6 overflow-hidden h-full">
                         
-                        {/* Metrics Cards */}
-                        <div className="grid grid-cols-2 gap-4 shrink-0">
-                            <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-lg relative overflow-hidden group transition-colors">
-                                <div className="absolute right-0 top-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
-                                    <Activity size={40} className="text-gray-900 dark:text-white" />
-                                </div>
-                                <p className="text-gray-500 dark:text-gray-500 text-[10px] uppercase font-bold tracking-wider mb-1">Validators Ready</p>
-                                <div className="flex items-baseline gap-2">
-                                    <p className="text-3xl font-bold text-gray-900 dark:text-white">{validatorCount}</p>
-                                    <span className="text-xs text-gray-500 dark:text-gray-500 font-medium">/ 5 Target</span>
-                                </div>
-                                <div className="w-full bg-gray-100 dark:bg-gray-700 h-1.5 mt-3 rounded-full overflow-hidden">
-                                    <div className="bg-blue-500 h-full transition-all duration-500" style={{ width: `${Math.min((validatorCount / 5) * 100, 100)}%` }}></div>
-                                </div>
+                        {/* Lab Map Card - Only show when no node is selected to give space for details */}
+                        {!selectedNodeId && (
+                            <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-lg flex flex-col justify-center transition-colors shrink-0 h-1/2 overflow-hidden">
+                                <LabMap nodes={nodes} readOnly={true} />
                             </div>
-
-                            <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-lg flex flex-col justify-center transition-colors">
-                                 <TransactionInjection nodes={nodes} />
-                            </div>
-                        </div>
+                        )}
 
                         {/* Nodes Table (Mini) or Details Panel */}
                         {selectedNodeId ? (
@@ -271,7 +255,7 @@ export default function Home() {
                                 onMonitor={setMonitoringNode}
                              />
                         ) : (
-                        <div className="flex-1 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-xl overflow-hidden flex flex-col min-h-0 animate-in fade-in duration-200 transition-colors">
+                        <div className="flex-1 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-xl overflow-hidden flex flex-col min-h-0 animate-in fade-in duration-200 transition-colors h-1/2">
                             <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-gray-50 dark:bg-gray-800 shrink-0 transition-colors">
                                 <h2 className="text-sm font-bold text-gray-900 dark:text-white flex items-center gap-2">
                                     <Cpu size={16} className="text-purple-600 dark:text-purple-400" />
@@ -323,8 +307,30 @@ export default function Home() {
             )}
 
             {activeTab === 'nodes' && (
-                <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-xl overflow-hidden flex flex-col h-full transition-colors">
-                    <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-gray-50 dark:bg-gray-800 shrink-0 transition-colors">
+                <div className="flex flex-col gap-6 h-full overflow-hidden">
+                    {/* Metrics Cards */}
+                    <div className="grid grid-cols-2 gap-4 shrink-0">
+                        <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-lg relative overflow-hidden group transition-colors">
+                            <div className="absolute right-0 top-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                                <Activity size={40} className="text-gray-900 dark:text-white" />
+                            </div>
+                            <p className="text-gray-500 dark:text-gray-500 text-[10px] uppercase font-bold tracking-wider mb-1">Validators Ready</p>
+                            <div className="flex items-baseline gap-2">
+                                <p className="text-3xl font-bold text-gray-900 dark:text-white">{validatorCount}</p>
+                                <span className="text-xs text-gray-500 dark:text-gray-500 font-medium">/ 5 Target</span>
+                            </div>
+                            <div className="w-full bg-gray-100 dark:bg-gray-700 h-1.5 mt-3 rounded-full overflow-hidden">
+                                <div className="bg-blue-500 h-full transition-all duration-500" style={{ width: `${Math.min((validatorCount / 5) * 100, 100)}%` }}></div>
+                            </div>
+                        </div>
+
+                        <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-lg flex flex-col justify-center transition-colors">
+                             <TransactionInjection nodes={nodes} />
+                        </div>
+                    </div>
+
+                    <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-xl overflow-hidden flex flex-col flex-1 transition-colors">
+                        <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-gray-50 dark:bg-gray-800 shrink-0 transition-colors">
                         <h2 className="text-sm font-bold text-gray-900 dark:text-white flex items-center gap-2">
                             <Cpu size={16} className="text-purple-600 dark:text-purple-400" />
                             Cluster Nodes Inventory
@@ -436,6 +442,7 @@ export default function Home() {
                             </tbody>
                         </table>
                     </div>
+                </div>
                 </div>
             )}
 
