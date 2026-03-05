@@ -7,9 +7,16 @@ interface Node {
   id: number;
   hostname: string;
   ip_address: string;
+  public_key: string;
   role: string | null;
   quorum_group: number | null;
+  node_seed: string;
+  created_at: string;
+  status: string;
+  config_status: string;
+  last_seen: string;
   ordem?: number | null;
+  peers?: number[];
 }
 
 interface EditNodeModalProps {
