@@ -455,6 +455,18 @@ export default function Home() {
                     </div>
                 </div>
             )}
+
+            {activeTab === 'accounts' && (
+                <AccountsPanel nodes={nodes} />
+            )}
+
+            {activeTab === 'transactions' && (
+                <TransactionsPanel nodes={nodes} />
+            )}
+
+            {activeTab === 'lab-map' && (
+                <LabMap nodes={nodes} />
+            )}
         </div>
 
         <ProvisionModal validatorCount={validatorCount} onSuccess={fetchNodes} />
@@ -513,17 +525,6 @@ export default function Home() {
             </div>
         )}
 
-        {activeTab === 'accounts' && (
-                  <AccountsPanel nodes={nodes} />
-                )}
-
-                {activeTab === 'transactions' && (
-                  <TransactionsPanel nodes={nodes} />
-                )}
-
-                {activeTab === 'lab-map' && (
-                  <LabMap nodes={nodes} />
-                )}
       </main>
     </div>
   );
